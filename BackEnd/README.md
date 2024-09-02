@@ -18,7 +18,7 @@ In your project's backend directory, navigate a file named database.py and makes
 # database.py
 
 MONGODB_URL = "mongodb://localhost:27017"
-Then you want to go the mongodb compass and connet with locally.you should need to create database named "TODO_App".
+Then you want to go the mongodb compass and connet with locally.you should need to create database named "TODO_App".activate
 
 MongoDB Cluster
 If you want to use a MongoDB cluster, follow these steps:
@@ -39,7 +39,7 @@ Then you want to go the mongodb atlas using above link and establsh the connecti
 How to run
 Navigate to Project Directory: Open your terminal or command prompt and navigate to the directory where your Python project and virtual environment are located.
 
-Activate Virtual Environment using: .venv_\Scripts\activate #    For Windows .\venv\bin\activate # For Linux/Mac
+Activate Virtual Environment using: .venv\Scripts\activate #    For Windows .\venv\bin\activate # For Linux/Mac
 
 run the program using: uvicorn app.main:app --reload
 
