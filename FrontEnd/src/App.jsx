@@ -1,3 +1,9 @@
+import { useState } from 'react';
+import reactLogo from './assets/react.svg';
+import viteLogo from '/vite.svg';
+import './App.css';
+import TourGenerating from './pages/TourGenerating';
+import Footer from './assets/components/Footer';
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { ThemeProvider } from '@mui/material/styles';
@@ -11,18 +17,24 @@ import theme from './utils/Theme.jsx'; // Import custom theme
 
 function App() {
   return (
-    <ThemeProvider theme={theme}> {/* Wrap  app with ThemeProvider */}
+    <>
+    <ThemeProvider theme={theme}> {/* Wrap app with ThemeProvider */}
       <BrowserRouter>
         <div className="App" style={{ backgroundColor: '#eceff1' }}>
           <Routes>
-            <Route path="/VisaProcessingHome" element={<VisaProcessingHome />} /> 
-            <Route path="/VisaRequested" element={<VisaRequestedTable title="Requested Visa" />} />
-            <Route path="/VisaRejected" element={<VisaRejectTable title="Rejected Visa" />} />  
-            <Route path="/VisaApproved" element={<VisaApproveTable title="Approved Visa" />} />           
+            {/* Set TourGenerating as the default route */}
+            <Route path="/" element={<TourGenerating />} />
+            <Route path="/TourGenerating" element={<TourGenerating />} />
+            {/* Add more routes here as needed */}
+            {/* <Route path="/VisaProcessingHome" element={<VisaProcessingHome />} /> */}
+            
           </Routes>
+         {/* Move Footer inside BrowserRouter */}
         </div>
       </BrowserRouter>
     </ThemeProvider>
+    <Footer />
+    </>
   );
 }
 
