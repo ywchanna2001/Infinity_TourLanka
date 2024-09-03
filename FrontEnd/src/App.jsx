@@ -1,3 +1,9 @@
+import { useState } from 'react'
+import reactLogo from './assets/react.svg'
+import viteLogo from '/vite.svg'
+import './App.css'
+import TourGenerating from './pages/TourGenerating';
+import Footer from './assets/components/Footer';
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { ThemeProvider } from '@mui/material/styles';
@@ -5,6 +11,8 @@ import '@fontsource/poppins';
 
 import VisaProcessingHome from './pages/VisaProcessingHome.jsx';
 import theme from './utils/Theme.jsx'; // Import custom theme
+
+
 
 function App() {
   return (
@@ -17,7 +25,9 @@ function App() {
         </div>
       </BrowserRouter>
     </ThemeProvider>
+  <Footer /> 
   );
 }
 
 export default App;
+
