@@ -11,12 +11,6 @@ import theme from './utils/Theme.jsx'; // Import custom theme
 
 function App() {
   return (
-
-    // <div>
-    //   <VisaApproveTable title="Approved Visa" />
-    //   <VisaRejectTable title="Rejected Visa" />
-    //   <VisaRequestedTable title="Requested Visa" />
-    // </div>
     <ThemeProvider theme={theme}> {/* Wrap  app with ThemeProvider */}
       <BrowserRouter>
         <div className="App" style={{ backgroundColor: '#eceff1' }}>
