@@ -1,7 +1,7 @@
 # models.py
-from pydantic import BaseModel
+from pydantic import BaseModel,Field
 from typing import Optional
-from datetime import datetime
+from datetime import date, datetime
 
 class User_login(BaseModel):
     email: str
@@ -24,4 +24,19 @@ class PersonalInfo(BaseModel):
     cityOfBirth : str 
     nationality : str
     address : str 
+
+class ApplicationCollection(BaseModel):
+    application_id: str
+    user_id: str
+    user_name: str
+    risky: str
     
+class InterpolNotice(BaseModel):
+    notice_id: str
+    name: str
+    date_of_birth: date
+
+    class Config:
+        json_encoders = {
+            date: lambda v: datetime.combine(v, datetime.min.time())
+        }

@@ -1,0 +1,15 @@
+
+.img-panel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .single-user {
+    max-width: 100%; 
+    max-height: 100%;
+  }
+.download-btn-sk{
+  border: none;
+  background: none ;
+}

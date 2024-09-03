@@ -5,8 +5,11 @@ from fastapi import Depends
 from datetime import datetime, timedelta
 from fastapi import HTTPException
 from app.config import SECRET_KEY, ALGORITHM
-from app.database import collection_user
+from app.database import collection_user, notices_collection
+from app.models import InterpolNotice
+from pymongo.collection import Collection
 from fastapi.security import OAuth2PasswordBearer
+from typing import Optional, List
 
 
 def create_access_token(data: dict, expires_delta: timedelta):
@@ -88,3 +91,21 @@ async def get_current_user(token: str = Depends(oauth2_scheme)):
         raise credentials_exception
     return user
 
+
+# def create_notice(notice):
+#     if isinstance(notice.date_of_birth, datetime.date):
+#         notice.date_of_birth = datetime.combine(notice.date_of_birth, datetime.min.time())
+    
+#     notices_collection.insert_one(notice.dict(by_alias=True))
+
+def get_notice_by_name(name: str, collection: Collection = notices_collection) -> Optional[InterpolNotice]:
+    notice_data = collection.find_one({"name": name})
+    if notice_data:
+        return InterpolNotice(**notice_data)
+    return None
+
+# def get_all_notices(collection: Collection = notices_collection) -> List[InterpolNotice]:
+#     notices = []
+#     for document in collection.find():
+#         notices.append(InterpolNotice(**document))
+#     return notices
