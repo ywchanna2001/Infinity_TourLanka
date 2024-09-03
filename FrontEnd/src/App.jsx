@@ -12,22 +12,20 @@ import '@fontsource/poppins';
 import VisaProcessingHome from './pages/VisaProcessingHome.jsx';
 import theme from './utils/Theme.jsx'; // Import custom theme
 
-
-
 function App() {
   return (
-    <ThemeProvider theme={theme}> {/* Wrap  app with ThemeProvider */}
+    <ThemeProvider theme={theme}> {/* Wrap app with ThemeProvider */}
       <BrowserRouter>
         <div className="App" style={{ backgroundColor: '#eceff1' }}>
           <Routes>
-            <Route path="/VisaProcessingHome" element={<VisaProcessingHome />} />         
+            <Route path="/VisaProcessingHome" element={<VisaProcessingHome />} />
+            {/* Add more routes here as needed */}
           </Routes>
+          <Footer /> {/* Move Footer inside BrowserRouter */}
         </div>
       </BrowserRouter>
     </ThemeProvider>
-  <Footer /> 
   );
 }
 
 export default App;
-
