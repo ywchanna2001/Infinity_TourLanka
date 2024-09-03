@@ -35,7 +35,7 @@ function App() {
             <Route path="/VisaApproved" element={<VisaApproveTable title="Approved visa"  />} />
 
 
-            <Route path="/FeatureCard" element={<FeatureCard />} />
+            <Route path="/AdminDashboard" element={<FeatureCard />} />
           </Routes>
          {/* Move Footer inside BrowserRouter */}
         </div>
