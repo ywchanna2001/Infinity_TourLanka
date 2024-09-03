@@ -14,6 +14,7 @@ import VisaRequestedTable from './components/VisaRequestedTable.jsx';
 
 import VisaProcessingHome from './pages/VisaProcessingHome.jsx';
 import theme from './utils/Theme.jsx'; // Import custom theme
+import FeatureCard from './components/FeatureCard.jsx';
 
 function App() {
   return (
@@ -27,7 +28,14 @@ function App() {
             <Route path="/TourGenerating" element={<TourGenerating />} />
             {/* Add more routes here as needed */}
             {/* <Route path="/VisaProcessingHome" element={<VisaProcessingHome />} /> */}
-            
+
+
+            <Route path="/VisaRequested" element={<VisaRequestedTable title="Requested visa" />} />
+            <Route path="/VisaRejected" element={<VisaRejectTable title="Rejected visa" />} />
+            <Route path="/VisaApproved" element={<VisaApproveTable title="Approved visa"  />} />
+
+
+            <Route path="/AdminDashboard" element={<FeatureCard />} />
           </Routes>
          {/* Move Footer inside BrowserRouter */}
         </div>
