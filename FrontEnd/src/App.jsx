@@ -12,7 +12,7 @@ function App() {
       <BrowserRouter>
         <div className="App" style={{ backgroundColor: '#eceff1' }}>
           <Routes>
-            <Route path="/" element={<VisaProcessingHome />} />         
+            <Route path="/VisaProcessingHome" element={<VisaProcessingHome />} />         
           </Routes>
         </div>
       </BrowserRouter>
