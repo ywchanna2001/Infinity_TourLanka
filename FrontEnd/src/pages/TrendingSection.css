@@ -1,0 +1,55 @@
+/* TrendingSection.css */
+
+/* Centering and responsive adjustments */
+.trending-section {
+    padding: 20px 0;
+}
+
+/* Ensuring the container uses the full width of the column */
+.trending-category {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    flex-direction: column;
+    margin-bottom: 30px;
+    align-items: center;
+    /* Spacing between categories */
+}
+
+.package-card-container {
+    display: flex;
+    flex-wrap: wrap; /* Allows items to wrap on small screens */
+    justify-content: center; /* Centers the items within the flex container */
+    gap: 20px; /* Space between cards */
+}
+
+.package-card {
+    width: 100%;
+    max-width: 280px; /* Max width to maintain card size consistency */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s;
+}
+
+.package-card img {
+    width: 100%;
+    height: auto;
+}
+
+.package-card:hover {
+    transform: scale(1.05); /* Slightly enlarge the card on hover */
+}
+
+/* Responsive adjustments */
+@media (min-width: 768px) {
+    .package-card-container {
+        justify-content: space-around; /* Adjust spacing on medium screens */
+    }
+}
+
+@media (min-width: 992px) {
+    .package-card-container {
+        justify-content: center; /* Center content on large screens */
+    }
+}
