@@ -1,0 +1,4 @@
+app/config.js
+venv/
+__pycache__/
+.venv/
