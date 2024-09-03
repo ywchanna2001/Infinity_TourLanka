@@ -108,7 +108,7 @@ function VisaRejectTable(props) {
                                 <TableRow>
                                     <StyledTableCell align="center">Applicant ID</StyledTableCell>
                                     <StyledTableCell align="center">Applicant Name</StyledTableCell>
-                                    <StyledTableCell align="center">Riskey</StyledTableCell>
+                                    <StyledTableCell align="center">Risky</StyledTableCell>
                                     <StyledTableCell align="center">Download Document</StyledTableCell>
                                     <StyledTableCell align="center">Action</StyledTableCell>
                                 </TableRow>
