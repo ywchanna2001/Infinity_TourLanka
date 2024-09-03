@@ -29,17 +29,17 @@ def create_applicant(BaseModel: ApplicationCollection):
     return app.services.create_new_aplicant( BaseModel )
 
 @router.get("/requested-applicants", response_model=List[dict])
-def get_applicants():
+def get_applicants_requested():
     applicants = app.services.get_requested_applicants()
     return applicants
 
 @router.get("/apprvoed-applicants", response_model=List[dict])
-def get_applicants():
+def get_applicants_approved():
     applicants = app.services.get_approved_applicants()
     return applicants
 
 @router.get("/rejected-applicants", response_model=List[dict])
-def get_applicants():
+def get_applicants_rejected():
     applicants = app.services.get_rejected_applicants()
     return applicants
 

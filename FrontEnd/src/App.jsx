@@ -8,6 +8,9 @@ import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { ThemeProvider } from '@mui/material/styles';
 import '@fontsource/poppins'; 
+import VisaApproveTable from './components/VisaApproveTable.jsx';
+import VisaRejectTable from './components/VisaRejectTable.jsx';
+import VisaRequestedTable from './components/VisaRequestedTable.jsx';
 
 import VisaProcessingHome from './pages/VisaProcessingHome.jsx';
 import theme from './utils/Theme.jsx'; // Import custom theme
@@ -24,6 +27,7 @@ function App() {
             <Route path="/TourGenerating" element={<TourGenerating />} />
             {/* Add more routes here as needed */}
             {/* <Route path="/VisaProcessingHome" element={<VisaProcessingHome />} /> */}
+            
           </Routes>
          {/* Move Footer inside BrowserRouter */}
         </div>

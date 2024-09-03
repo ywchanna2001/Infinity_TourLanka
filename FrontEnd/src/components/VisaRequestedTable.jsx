@@ -11,6 +11,7 @@ import Paper from '@mui/material/Paper';
 import VisaDetailsPdf from './VisaDetailsPdf';
 import VisaApproveButton from './VisaApproveButton';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -80,12 +81,19 @@ function VisaRequestedTable(props) {
         setapplicant(updateaplicant);
     };
 
+    const navigate = useNavigate();
+
+    const handleNavigate = (path) => {
+    navigate(path);
+    };
+
+
     return (
         <div className='content00'>
             <div className='content01'>
-                <a href="" className='content011'>rejected visa</a>
-                <a href="" className='content011'>requested visa</a>
-                <a href="" className='content011'>approved visa</a>
+                <a href="" className='content011' onClick={() => handleNavigate('/VisaRejected')}>rejected visa</a>
+                <a href="" className='content011'onClick={() => handleNavigate('/VisaRequested')}>requested visa</a>
+                <a href="" className='content011'onClick={() => handleNavigate('/VisaApproved')}>approved visa</a>
             </div>
 
             <div className="container6">
