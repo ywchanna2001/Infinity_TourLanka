@@ -1,6 +1,8 @@
 import React from 'react';
 import { AppBar, Toolbar, Typography } from '@mui/material';
 import { Link } from 'react-router-dom';
+import Logo from '../Logo.png';
+
 
 const Header = () => {
   return (
@@ -10,11 +12,12 @@ const Header = () => {
         color: '#fff', }}>
       <Toolbar className="flex justify-between items-center">
         <div className="flex items-center space-x-4">
-          <img
-            src="your-logo-url-here" // replace with your logo URL
-            alt="logo"
-            className="h-10 w-auto"
-          />
+        <img
+              src={Logo}
+              alt="Logo"
+              className="mx-auto mb-2"
+              style={{ maxWidth: '100px' }}
+            />
         </div>
         <div className="flex space-x-4">
           <Link to="/" className="text-white hover:text-gray-200">
