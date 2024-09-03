@@ -11,6 +11,7 @@ import '@fontsource/poppins';
 
 import VisaProcessingHome from './pages/VisaProcessingHome.jsx';
 import theme from './utils/Theme.jsx'; // Import custom theme
+import VisaProcessingPayment from './pages/VisaProcessingPayment.jsx';
 
 
 
@@ -18,14 +19,15 @@ function App() {
   return (
     <ThemeProvider theme={theme}> {/* Wrap  app with ThemeProvider */}
       <BrowserRouter>
-        <div className="App" style={{ backgroundColor: '#eceff1' }}>
+        <div className="App flex-grow" style={{ backgroundColor: '#eceff1' }}>
           <Routes>
-            <Route path="/VisaProcessingHome" element={<VisaProcessingHome />} />         
+            <Route path="/VisaProcessingHome" element={<VisaProcessingHome />} />    
+            <Route path="/VisaProcessingPayment" element={<VisaProcessingPayment />} />       
           </Routes>
         </div>
+        <Footer /> 
       </BrowserRouter>
     </ThemeProvider>
-  <Footer /> 
   );
 }
 
