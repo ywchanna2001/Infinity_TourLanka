@@ -1,5 +1,10 @@
 import React from 'react';
 import { Button, Typography, Box } from '@mui/material';
+import bannerImage from '../assets/Images/VisaProcessing/Banner.jpg'
+import FormFillingIcon from '../assets/Images/VisaProcessing/FormFillingIcon.png'
+import LaptopIcon from '../assets/Images/VisaProcessing/LaptopIcon.png'
+import Wallet from '../assets/Images/VisaProcessing/wallet.png'
+
 // import Navbar from '../Navbar';
 // import Footer from ;
 
@@ -20,7 +25,7 @@ function VisaProcessing() {
             justifyContent: 'center',
             alignItems: 'center',
             height: '60vh',
-            backgroundImage: 'url(/path-to-your-image)', // replace with the actual path to  image
+            backgroundImage: `url(${bannerImage})`, 
             backgroundSize: 'cover',
             backgroundPosition: 'center',
             color: '#ffffff',
@@ -35,7 +40,7 @@ function VisaProcessing() {
             <Typography variant="h6" fontWeight={400}>
               Effortlessly apply for your Sri Lanka tourist visa with our streamlined process, ensuring a hassle-free experience for your tropical getaway.
             </Typography>
-            <Box mt={4} display="flex" justifyContent="center" gap={2}>
+            <Box mt={4} display="flex" justifyContent="left" gap={2}>
               <Button variant="contained" color="primary" sx={{ borderRadius: '2rem' }}>
                 Apply Now
               </Button>
@@ -66,8 +71,8 @@ function VisaProcessing() {
           <Box display="flex" justifyContent="center" gap={4}>
             {/* Step 1: Apply */}
             <Box textAlign="center">
-              <img src="/path-to-icon1" alt="Apply Icon" style={{ width: '50px', height: '50px' }} /> {/* Replace with your icon */}
-              <Typography variant="h6" fontWeight={600} mt={2}>
+              <img src={LaptopIcon} alt="Apply Icon" style={{ width: '50px', height: '50px' }} /> {/* Replace with your icon */}
+              <Typography variant="h6" fontWeight={600} mt={2} color='secondary'>
                 Apply
               </Typography>
               <Typography variant="body2" color='secondary'>
@@ -77,7 +82,7 @@ function VisaProcessing() {
 
             {/* Step 2: Fill out Information */}
             <Box textAlign="center">
-              <img src="/path-to-icon2" alt="Fill Information Icon" style={{ width: '50px', height: '50px' }} /> {/* Replace with your icon */}
+              <img src={FormFillingIcon} alt="Fill Information Icon" style={{ width: '50px', height: '50px' }} /> {/* Replace with your icon */}
               <Typography variant="h6" fontWeight={600} mt={2} color='secondary'>
                 Fill out Information
               </Typography>
@@ -88,7 +93,7 @@ function VisaProcessing() {
 
             {/* Step 3: Pay Visa Fee */}
             <Box textAlign="center">
-              <img src="/path-to-icon3" alt="Pay Visa Fee Icon" style={{ width: '50px', height: '50px' }} /> {/* Replace with your icon */}
+              <img src= {Wallet} alt="Pay Visa Fee Icon" style={{ width: '50px', height: '50px' }} /> {/* Replace with your icon */}
               <Typography variant="h6" fontWeight={600} mt={2} color='secondary'>
                 Pay Visa Fee
               </Typography>
