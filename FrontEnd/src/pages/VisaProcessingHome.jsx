@@ -5,10 +5,20 @@ import FormFillingIcon from '../assets/Images/VisaProcessing/FormFillingIcon.png
 import LaptopIcon from '../assets/Images/VisaProcessing/LaptopIcon.png'
 import Wallet from '../assets/Images/VisaProcessing/wallet.png'
 
+import { useNavigate } from 'react-router-dom';
+
+
 // import Navbar from '../Navbar';
 // import Footer from ;
 
 function VisaProcessing() {
+
+  const navigate = useNavigate();
+
+  const handleNavigate = (path) => {
+    navigate(path);
+  };
+
   return (
     <div style={{ 
       backgroundColor: '#ffffff', 
@@ -41,10 +51,10 @@ function VisaProcessing() {
               Effortlessly apply for your Sri Lanka tourist visa with our streamlined process, ensuring a hassle-free experience for your tropical getaway.
             </Typography>
             <Box mt={4} display="flex" justifyContent="left" gap={2}>
-              <Button variant="contained" color="primary" sx={{ borderRadius: '2rem' }}>
+              <Button variant="contained" color="primary" sx={{ borderRadius: '2rem' }} onClick={() => handleNavigate('/VisaProcessingPersonal')}>
                 Apply Now
               </Button>
-              <Button variant="outlined" sx={{ borderRadius: '2rem', color: '#ffffff', borderColor: '#ffffff' }}>
+              <Button variant="outlined" sx={{ borderRadius: '2rem', color: '#ffffff', borderColor: '#ffffff' }} >
                 How to apply
               </Button>
             </Box>
