@@ -1,11 +1,13 @@
 #routes.py
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter, Depends ,UploadFile, HTTPException ,BackgroundTasks
 from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
-from app.models import User_login, User,ApplicationCollection,InterpolNotice
-from app.config import ACCESS_TOKEN_EXPIRE_MINUTES
+from app.models import User_login, User,ApplicationCollection,InterpolNotice,EmailRequest
+from app.config import ACCESS_TOKEN_EXPIRE_MINUTES, EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, EMAILJS_USER_ID
 import app.services
 from app.utils import get_current_user
 from typing import List
+import cloudinary.uploader
+import httpx
 
 router = APIRouter()
 
@@ -46,3 +48,7 @@ def get_applicants_rejected():
 @router.get("/check-applicant/{name}/")
 def check_applicant(name: str):
     return app.services.check_applicant_by(name)
+
+@router.post("/upload-image/")
+async def upload_image(file: UploadFile):
+    return await app.services.upload_image(file)

@@ -1,13 +1,16 @@
 # services.py
+from typing import List, Optional, Dict
 from app.database import collection_user,collection_applicant
 from app.models import User,ApplicationCollection
 from app.utils import hash_password, verify_password, create_access_token,authenticate_user,get_notice_by_name
 from datetime import timedelta
-from fastapi import HTTPException
+from fastapi import HTTPException,UploadFile
 from bson import ObjectId
 from pymongo import DESCENDING
-from typing import List
+import httpx
+from app.config import  EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, EMAILJS_USER_ID
 from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
+import cloudinary.uploader
 
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
 
@@ -119,4 +122,29 @@ def check_applicant_by(name: str):
     if notice:
         return {"risk": True, "notice": notice}
     return {"risk": False, "message": "No matching notice found"}
+
+async def upload_image(file: UploadFile):
+    allowed_extensions = {'png', 'jpg', 'jpeg'}
+    file_extension = file.filename.split('.')[-1]
+
+    if file_extension.lower() not in allowed_extensions:
+        raise HTTPException(status_code=400, detail="Only PNG and JPG files are allowed.")
+
+    try:
+        # Upload the image to Cloudinary
+        result = cloudinary.uploader.upload(await file.read(), public_id=file.filename.split('.')[0])
+
+        # Get the secure URL of the uploaded image
+        image_url = result.get("secure_url")
+
+        if not image_url:
+            raise HTTPException(status_code=500, detail="Failed to upload image to Cloudinary.")
+
+        return {"message": "Image uploaded successfully", "image_url": image_url}
+    
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Image upload failed: {str(e)}")
+
+
+
 
