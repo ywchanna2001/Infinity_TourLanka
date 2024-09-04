@@ -59,7 +59,34 @@ const TripPackageBanner = () => {
       </Container>
     </div>
     <div>
-    <p>testskkdnvlksandvlsknvv</p>
+    <Container maxWidth="lg">
+    <Typography variant="h5" component="h2" gutterBottom>
+            Trending
+          </Typography>
+          <Typography variant="h6" component="h3" gutterBottom>
+            Adventure Packages
+          </Typography>
+          {/* <Grid container spacing={2}> */}
+            {/* Cards for Adventure Packages */}
+            {/* <Grid item xs={12} sm={6} md={3}> */}
+              {/* <Card>
+                <CardMedia
+                 // component="img"
+                  height="140"
+                  image="path_to_cycling_image"
+                  alt="Cycling"
+                />
+                <CardContent>
+                  <Typography variant="body2" color="textSecondary" component="p">
+                    Cycling
+                  </Typography>
+                </CardContent>
+              </Card> */}
+            {/* </Grid>
+            </Grid> */}
+          </Container>
+          
+             
     </div>
     </>
   );
