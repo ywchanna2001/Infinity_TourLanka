@@ -5,16 +5,26 @@ import FormFillingIcon from '../assets/Images/VisaProcessing/FormFillingIcon.png
 import LaptopIcon from '../assets/Images/VisaProcessing/LaptopIcon.png'
 import Wallet from '../assets/Images/VisaProcessing/wallet.png'
 
+import { useNavigate } from 'react-router-dom';
+
+
 // import Navbar from '../Navbar';
 // import Footer from ;
 
 function VisaProcessing() {
+
+  const navigate = useNavigate();
+
+  const handleNavigate = (path) => {
+    navigate(path);
+  };
+
   return (
     <div style={{ 
       backgroundColor: '#ffffff', 
       minHeight: '100vh' 
     }}>
-      {/* <Navbar /> */}
+      
 
       <Box p={2} sx={{ margin: '0 9rem' }}>
         {/* Banner Section */}
@@ -37,14 +47,14 @@ function VisaProcessing() {
             <Typography variant="h3" fontWeight={1000} mb={2}>
               VISA PROCESSING
             </Typography>
-            <Typography variant="h6" fontWeight={400}>
+            <Typography fontSize="15px" fontWeight={400} width="500px">
               Effortlessly apply for your Sri Lanka tourist visa with our streamlined process, ensuring a hassle-free experience for your tropical getaway.
             </Typography>
             <Box mt={4} display="flex" justifyContent="left" gap={2}>
-              <Button variant="contained" color="primary" sx={{ borderRadius: '2rem' }}>
+              <Button variant="contained" color="primary" sx={{ borderRadius: '2rem' }} onClick={() => handleNavigate('/VisaProcessingPersonal')}>
                 Apply Now
               </Button>
-              <Button variant="outlined" sx={{ borderRadius: '2rem', color: '#ffffff', borderColor: '#ffffff' }}>
+              <Button variant="outlined" sx={{ borderRadius: '2rem', color: '#ffffff', borderColor: '#ffffff' }} >
                 How to apply
               </Button>
             </Box>
@@ -68,9 +78,14 @@ function VisaProcessing() {
           <Typography variant="h4" fontWeight={700} mb={4} color='secondary' fontFamily={'Poppins'}>
             How it works
           </Typography>
-          <Box display="flex" justifyContent="center" gap={4}>
+
+          <Box display="flex" justifyContent="center" gap={4} marginTop="60px" alignItems="center">
             {/* Step 1: Apply */}
-            <Box textAlign="center">
+            <Box textAlign="center"
+             display="flex" 
+             flexDirection="column" 
+             alignItems="center"             
+            >
               <img src={LaptopIcon} alt="Apply Icon" style={{ width: '50px', height: '50px' }} /> {/* Replace with your icon */}
               <Typography variant="h6" fontWeight={600} mt={2} color='secondary'>
                 Apply
@@ -81,8 +96,11 @@ function VisaProcessing() {
             </Box>
 
             {/* Step 2: Fill out Information */}
-            <Box textAlign="center">
-              <img src={FormFillingIcon} alt="Fill Information Icon" style={{ width: '50px', height: '50px' }} /> {/* Replace with your icon */}
+            <Box textAlign="center"
+            display="flex" 
+            flexDirection="column" 
+            alignItems="center" >
+              <img src={FormFillingIcon} alt="Fill Information Icon" style={{ width: '50px', height: '50px' }} /> 
               <Typography variant="h6" fontWeight={600} mt={2} color='secondary'>
                 Fill out Information
               </Typography>
@@ -92,8 +110,11 @@ function VisaProcessing() {
             </Box>
 
             {/* Step 3: Pay Visa Fee */}
-            <Box textAlign="center">
-              <img src= {Wallet} alt="Pay Visa Fee Icon" style={{ width: '50px', height: '50px' }} /> {/* Replace with your icon */}
+            <Box textAlign="center"
+            display="flex" 
+            flexDirection="column" 
+            alignItems="center" >
+              <img src= {Wallet} alt="Pay Visa Fee Icon" style={{ width: '50px', height: '50px' }} /> 
               <Typography variant="h6" fontWeight={600} mt={2} color='secondary'>
                 Pay Visa Fee
               </Typography>
@@ -105,10 +126,7 @@ function VisaProcessing() {
         </Box>
       </Box>
 
-      {/* Footer Section */}
-      <Box sx={{ backgroundColor: '#004C41', color: '#ffffff', padding: '2rem' }}>
-        {/* Footer content based on the provided image */}
-      </Box>
+      
     </div>
   );
 }
