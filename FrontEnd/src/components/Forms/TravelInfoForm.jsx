@@ -8,6 +8,13 @@ const TravelInfoForm = () => {
   const handleNavigate = (path) => {
     navigate(path);
   };
+
+  const countries = [
+    "Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Antigua and Barbuda", 
+    "Argentina", "Armenia", "Australia", "Austria", "Azerbaijan", "Bahamas", "Bahrain", 
+    // ... (remaining countries)
+  ];
+
   return (
     <Box
       sx={{
@@ -33,8 +40,9 @@ const TravelInfoForm = () => {
               fullWidth
               variant="outlined"
             >
-              <MenuItem value="type1">Type 1</MenuItem>
-              <MenuItem value="type2">Type 2</MenuItem>
+              <MenuItem value="ordinary">Ordinary Passport</MenuItem>
+              <MenuItem value="diplomatic">Diplomatic passport</MenuItem>
+              <MenuItem value="official">Official passport</MenuItem>
             </TextField>
           </Grid>
           <Grid item xs={12} sm={4}>
@@ -44,8 +52,11 @@ const TravelInfoForm = () => {
               fullWidth
               variant="outlined"
             >
-              <MenuItem value="country1">Country 1</MenuItem>
-              <MenuItem value="country2">Country 2</MenuItem>
+              {countries.map((country) => (
+                <MenuItem key={country} value={country}>
+                  {country}
+                </MenuItem>
+              ))}
             </TextField>
           </Grid>
           <Grid item xs={12} sm={4}>
@@ -115,6 +126,32 @@ const TravelInfoForm = () => {
         <Grid container spacing={2}>
           <Grid item xs={12} sm={6}>
             <TextField
+              select
+              label="Port of entry in Sri Lanka"
+              fullWidth
+              variant="outlined"
+            >
+              <MenuItem value="Colombo">Colombo</MenuItem>
+              <MenuItem value="Mattala">Mattala</MenuItem>
+              <MenuItem value="Jaffna">Jaffna</MenuItem>
+              <MenuItem value="Trincomalee">Trincomalee</MenuItem>
+            </TextField>
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <TextField
+              select
+              label="Port of departure from Sri Lanka"
+              fullWidth
+              variant="outlined"
+            >
+              <MenuItem value="Colombo">Colombo</MenuItem>
+              <MenuItem value="Mattala">Mattala</MenuItem>
+              <MenuItem value="Jaffna">Jaffna</MenuItem>
+              <MenuItem value="Trincomalee">Trincomalee</MenuItem>
+            </TextField>
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <TextField
               label="Visiting cities"
               fullWidth
               variant="outlined"
@@ -133,14 +170,11 @@ const TravelInfoForm = () => {
           </Grid>
           <Grid item xs={12} sm={6}>
             <TextField
-              label="Arrival city"
-              fullWidth
-              variant="outlined"
-            />
-          </Grid>
-          <Grid item xs={12} sm={6}>
-            <TextField
-              label="Departure city"
+              label="Expected date of departure"
+              type="date"
+              InputLabelProps={{
+                shrink: true,
+              }}
               fullWidth
               variant="outlined"
             />

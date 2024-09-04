@@ -8,6 +8,7 @@ function VisaProcessingForm() {
   const handleNavigate = (path) => {
     navigate(path);
   };
+
   return (
     <Box 
       sx={{ 
@@ -23,9 +24,18 @@ function VisaProcessingForm() {
       </Typography>
 
       <Grid container spacing={2}>
-        {/* Row 1: Name and Gender */}
+        {/* Row 1: Prefix, Name */}
         <Grid item xs={12} sm={2}>
-          <TextField label="Prefix" variant="outlined" fullWidth />
+          <FormControl fullWidth variant="outlined">
+            <InputLabel>Prefix</InputLabel>
+            <Select>
+              <MenuItem value="Mr">Mr</MenuItem>
+              <MenuItem value="Ms">Ms</MenuItem>
+              <MenuItem value="Mrs">Mrs</MenuItem>
+              <MenuItem value="Dr">Dr</MenuItem>
+              <MenuItem value="Prof">Prof</MenuItem>
+            </Select>
+          </FormControl>
         </Grid>
         <Grid item xs={12} sm={3}>
           <TextField label="First Name" variant="outlined" fullWidth />
@@ -37,7 +47,7 @@ function VisaProcessingForm() {
           <TextField label="Last Name" variant="outlined" fullWidth />
         </Grid>
 
-        {/* Row 2: Date of Birth and Religion */}
+        {/* Row 2: Date of Birth, Religion, and Gender */}
         <Grid item xs={12} sm={4}>
           <TextField label="Date of Birth" type="date" variant="outlined" fullWidth InputLabelProps={{ shrink: true }} />
         </Grid>
@@ -55,7 +65,20 @@ function VisaProcessingForm() {
           </FormControl>
         </Grid>
 
-        {/* Row 3: Birth Information */}
+        {/* Row 3: Marital Status */}
+        <Grid item xs={12} sm={4}>
+          <FormControl fullWidth>
+            <InputLabel>Marital Status</InputLabel>
+            <Select variant="outlined">
+              <MenuItem value="Single">Single</MenuItem>
+              <MenuItem value="Married">Married</MenuItem>
+              <MenuItem value="Divorced">Divorced</MenuItem>
+              <MenuItem value="Widowed">Widowed</MenuItem>
+            </Select>
+          </FormControl>
+        </Grid>
+
+        {/* Row 4: Birth Information */}
         <Grid item xs={12} sm={6}>
           <TextField label="Country of Birth" variant="outlined" fullWidth />
         </Grid>
@@ -63,12 +86,12 @@ function VisaProcessingForm() {
           <TextField label="City of Birth" variant="outlined" fullWidth />
         </Grid>
 
-        {/* Row 4: Address and Contact */}
+        {/* Row 5: Address and Contact */}
         <Grid item xs={12} sm={6}>
           <TextField label="Present Address (House No/Street)" variant="outlined" fullWidth />
         </Grid>
         <Grid item xs={12} sm={3}>
-          <TextField label="Country" variant="outlined" fullWidth />
+          <TextField label="Country of Recidence" variant="outlined" fullWidth />
         </Grid>
         <Grid item xs={12} sm={3}>
           <TextField label="Postal/Zip Code" variant="outlined" fullWidth />

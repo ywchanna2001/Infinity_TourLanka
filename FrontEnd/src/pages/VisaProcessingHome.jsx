@@ -47,7 +47,7 @@ function VisaProcessing() {
             <Typography variant="h3" fontWeight={1000} mb={2}>
               VISA PROCESSING
             </Typography>
-            <Typography variant="h6" fontWeight={400}>
+            <Typography fontSize="15px" fontWeight={400} width="500px">
               Effortlessly apply for your Sri Lanka tourist visa with our streamlined process, ensuring a hassle-free experience for your tropical getaway.
             </Typography>
             <Box mt={4} display="flex" justifyContent="left" gap={2}>
@@ -78,9 +78,14 @@ function VisaProcessing() {
           <Typography variant="h4" fontWeight={700} mb={4} color='secondary' fontFamily={'Poppins'}>
             How it works
           </Typography>
-          <Box display="flex" justifyContent="center" gap={4}>
+
+          <Box display="flex" justifyContent="center" gap={4} marginTop="60px" alignItems="center">
             {/* Step 1: Apply */}
-            <Box textAlign="center">
+            <Box textAlign="center"
+             display="flex" 
+             flexDirection="column" 
+             alignItems="center"             
+            >
               <img src={LaptopIcon} alt="Apply Icon" style={{ width: '50px', height: '50px' }} /> {/* Replace with your icon */}
               <Typography variant="h6" fontWeight={600} mt={2} color='secondary'>
                 Apply
@@ -91,8 +96,11 @@ function VisaProcessing() {
             </Box>
 
             {/* Step 2: Fill out Information */}
-            <Box textAlign="center">
-              <img src={FormFillingIcon} alt="Fill Information Icon" style={{ width: '50px', height: '50px' }} /> {/* Replace with your icon */}
+            <Box textAlign="center"
+            display="flex" 
+            flexDirection="column" 
+            alignItems="center" >
+              <img src={FormFillingIcon} alt="Fill Information Icon" style={{ width: '50px', height: '50px' }} /> 
               <Typography variant="h6" fontWeight={600} mt={2} color='secondary'>
                 Fill out Information
               </Typography>
@@ -102,8 +110,11 @@ function VisaProcessing() {
             </Box>
 
             {/* Step 3: Pay Visa Fee */}
-            <Box textAlign="center">
-              <img src= {Wallet} alt="Pay Visa Fee Icon" style={{ width: '50px', height: '50px' }} /> {/* Replace with your icon */}
+            <Box textAlign="center"
+            display="flex" 
+            flexDirection="column" 
+            alignItems="center" >
+              <img src= {Wallet} alt="Pay Visa Fee Icon" style={{ width: '50px', height: '50px' }} /> 
               <Typography variant="h6" fontWeight={600} mt={2} color='secondary'>
                 Pay Visa Fee
               </Typography>

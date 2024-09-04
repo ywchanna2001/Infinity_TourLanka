@@ -1,7 +1,7 @@
 # services.py
-from app.database import collection_user
-from app.models import User
-from app.utils import hash_password, verify_password, create_access_token,authenticate_user
+from app.database import collection_user,collection_applicant
+from app.models import User,ApplicationCollection
+from app.utils import hash_password, verify_password, create_access_token,authenticate_user,get_notice_by_name
 from datetime import timedelta
 from fastapi import HTTPException
 from bson import ObjectId
@@ -57,4 +57,66 @@ def login_user_manual(user_login, ACCESS_TOKEN_EXPIRE_MINUTES):
 
     return {"access_token": access_token}
 
+def create_new_aplicant(BaseModel):
+    last_vacancy = collection_applicant.find_one(sort=[("_id", -1)])
+    last_id = last_vacancy["application_id"] if last_vacancy else "A000"
+    last_seq = int(last_id[1:])
+    new_seq = last_seq + 1
+    application_id = f"A{new_seq:03d}"
+    
+        
+    data = {
+        "application_id": application_id,
+        "user_id": BaseModel.user_id,
+        "user_name": BaseModel.user_name,
+        "risky": BaseModel.risky,
+        "status": "Pending"
+
+    }
+    collection_applicant.insert_one(data)
+    
+    return {"message": "Applicant created successfully"}
+
+def get_requested_applicants():
+    applicants = []
+    for applicant in collection_applicant.find():
+        applicant_data = {
+            "application_id": applicant["application_id"],
+            "user_name": applicant["user_name"],
+            "risky": applicant["risky"],
+            "status": applicant["status"]
+                      
+        }
+        applicants.append(applicant_data)
+    return applicants
+
+def get_approved_applicants():
+    applicants = []
+    for applicant in collection_applicant.find({"status": "Approved"}):
+        applicant_data = {
+            "application_id": applicant["application_id"],
+            "user_name": applicant["user_name"],
+            "risky": applicant["risky"],
+            "status": applicant["status"]
+        }
+        applicants.append(applicant_data)
+    return applicants
+
+def get_rejected_applicants():  
+    applicants = []
+    for applicant in collection_applicant.find({"status": "Rejected"}):
+        applicant_data = {
+            "application_id": applicant["application_id"],
+            "user_name": applicant["user_name"],
+            "risky": applicant["risky"],
+            "status": applicant["status"]
+        }
+        applicants.append(applicant_data)
+    return applicants
+
+def check_applicant_by(name: str):
+    notice = get_notice_by_name(name)
+    if notice:
+        return {"risk": True, "notice": notice}
+    return {"risk": False, "message": "No matching notice found"}
 
