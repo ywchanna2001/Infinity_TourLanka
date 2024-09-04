@@ -6,12 +6,13 @@ import VisaApproveTable from './components/VisaApproveTable.jsx';
 import VisaRejectTable from './components/VisaRejectTable.jsx';
 import VisaRequestedTable from './components/VisaRequestedTable.jsx';
 import VisaProcessingHome from './pages/VisaProcessingHome';
-
 import TourGenerating from './pages/TourGenerating';
 import Footer from './assets/components/Footer';
 import Header from './assets/components/Header';
 import theme from './utils/Theme.jsx'; // Import custom theme
+import VisaProcessingPayment from './pages/VisaProcessingPayment.jsx';
 import FeatureCard from './components/FeatureCard.jsx';
+
 
 function App() {
   return (
@@ -27,7 +28,8 @@ function App() {
 
 
             {/* Visa Processing Routes */}
-            <Route path="/VisaProcessingHome" element={<VisaProcessingHome />} />
+            <Route path="/VisaProcessingHome" element={<VisaProcessingHome />} />   
+            <Route path="/VisaProcessingPayment" element={<VisaProcessingPayment />} />  
             
 
             {/* Admin dashboard routes */}
