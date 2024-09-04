@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { ThemeProvider } from '@mui/material/styles';
 import '@fontsource/poppins'; 
 import theme from './utils/Theme.jsx'; // Import custom theme
+import VisaProcessingPayment from './pages/VisaProcessingPayment.jsx';
 
 import VisaProcessingHome from './pages/VisaProcessingHome.jsx';
 import VisaProcessingPersonal from './pages/VisaProcessingPersonal.jsx';
@@ -29,11 +30,9 @@ function App() {
             <Route path="/VisaProcessingHome" element={<VisaProcessingHome />} />
             <Route path="/VisaProcessingPersonal" element={<VisaProcessingPersonal />} />  
             <Route path="/VisaProcessingTravel" element={<VisaProcessingTravel />} />         
-            {/* Set TourGenerating as the default route */}
             <Route path="/" element={<TourGenerating />} />
             <Route path="/TourGenerating" element={<TourGenerating />} />
-            {/* Add more routes here as needed */}
-            {/* <Route path="/VisaProcessingHome" element={<VisaProcessingHome />} /> */}
+         
 
 
             <Route path="/VisaRequested" element={<VisaRequestedTable title="Requested visa" />} />
@@ -41,10 +40,12 @@ function App() {
             <Route path="/VisaApproved" element={<VisaApproveTable title="Approved visa"  />} />
 
 
-            <Route path="/AdminDashboard" element={<FeatureCard />} />
+            <Route path="/AdminDashboard" element={<FeatureCard />} />  
+            <Route path="/VisaProcessingPayment" element={<VisaProcessingPayment />} />       
           </Routes>
-          <Footer /> {/* Move Footer inside BrowserRouter */}
+          
         </div>
+        <Footer /> 
       </BrowserRouter>
     </ThemeProvider>
   );

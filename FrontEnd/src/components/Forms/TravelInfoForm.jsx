@@ -18,7 +18,7 @@ const TravelInfoForm = () => {
   return (
     <Box
       sx={{
-        backgroundColor: 'rgba(255, 255, 255, 0.85)',
+        backgroundColor: 'rgba(255, 255, 255, 0.3)',
         padding: '2rem',
         borderRadius: '8px',
       }}
@@ -38,7 +38,9 @@ const TravelInfoForm = () => {
               select
               label="Passport type"
               fullWidth
-              variant="outlined"
+              variant="filled"
+              size="small"
+              required
             >
               <MenuItem value="ordinary">Ordinary Passport</MenuItem>
               <MenuItem value="diplomatic">Diplomatic passport</MenuItem>
@@ -50,7 +52,9 @@ const TravelInfoForm = () => {
               select
               label="Issuing country"
               fullWidth
-              variant="outlined"
+              variant="filled"
+              size="small"
+              required
             >
               {countries.map((country) => (
                 <MenuItem key={country} value={country}>
@@ -64,7 +68,9 @@ const TravelInfoForm = () => {
               select
               label="Nationality"
               fullWidth
-              variant="outlined"
+              variant="filled"
+              size="small"
+              required
             >
               <MenuItem value="nationality1">Nationality 1</MenuItem>
               <MenuItem value="nationality2">Nationality 2</MenuItem>
@@ -74,14 +80,18 @@ const TravelInfoForm = () => {
             <TextField
               label="Passport number"
               fullWidth
-              variant="outlined"
+              variant="filled"
+              size="small"
+              required
             />
           </Grid>
           <Grid item xs={12} sm={6}>
             <TextField
               label="Place of issue"
               fullWidth
-              variant="outlined"
+              variant="filled"
+              size="small"
+              required
             />
           </Grid>
           <Grid item xs={12} sm={6}>
@@ -92,7 +102,9 @@ const TravelInfoForm = () => {
                 shrink: true,
               }}
               fullWidth
-              variant="outlined"
+              variant="filled"
+              size="small"
+              required
             />
           </Grid>
           <Grid item xs={12} sm={6}>
@@ -103,14 +115,16 @@ const TravelInfoForm = () => {
                 shrink: true,
               }}
               fullWidth
-              variant="outlined"
+              variant="filled"
+              size="small"
+              required
             />
           </Grid>
         </Grid>
 
         {/* Nationality Acquisition */}
         <Box mt={4}>
-          <FormControl component="fieldset">
+          <FormControl component="fieldset" required>
             <FormLabel component="legend">How did you acquire nationality?</FormLabel>
             <RadioGroup row>
               <FormControlLabel value="birth" control={<Radio />} label="By birth" />
@@ -129,7 +143,9 @@ const TravelInfoForm = () => {
               select
               label="Port of entry in Sri Lanka"
               fullWidth
-              variant="outlined"
+              variant="filled"
+              size="small"
+              required
             >
               <MenuItem value="Colombo">Colombo</MenuItem>
               <MenuItem value="Mattala">Mattala</MenuItem>
@@ -142,7 +158,9 @@ const TravelInfoForm = () => {
               select
               label="Port of departure from Sri Lanka"
               fullWidth
-              variant="outlined"
+              variant="filled"
+              size="small"
+              required
             >
               <MenuItem value="Colombo">Colombo</MenuItem>
               <MenuItem value="Mattala">Mattala</MenuItem>
@@ -154,7 +172,9 @@ const TravelInfoForm = () => {
             <TextField
               label="Visiting cities"
               fullWidth
-              variant="outlined"
+              variant="filled"
+              size="small"
+              required
             />
           </Grid>
           <Grid item xs={12} sm={6}>
@@ -165,7 +185,9 @@ const TravelInfoForm = () => {
                 shrink: true,
               }}
               fullWidth
-              variant="outlined"
+              variant="filled"
+              size="small"
+              required
             />
           </Grid>
           <Grid item xs={12} sm={6}>
@@ -176,7 +198,9 @@ const TravelInfoForm = () => {
                 shrink: true,
               }}
               fullWidth
-              variant="outlined"
+              variant="filled"
+              size="small"
+              required
             />
           </Grid>
         </Grid>
@@ -190,21 +214,27 @@ const TravelInfoForm = () => {
             <TextField
               label="Contact name in Sri Lanka"
               fullWidth
-              variant="outlined"
+              variant="filled"
+              size="small"
+              required
             />
           </Grid>
           <Grid item xs={12} sm={4}>
             <TextField
               label="Address"
               fullWidth
-              variant="outlined"
+              variant="filled"
+              size="small"
+              required
             />
           </Grid>
           <Grid item xs={12} sm={4}>
             <TextField
               label="Mobile number"
               fullWidth
-              variant="outlined"
+              variant="filled"
+              size="small"
+              required
             />
           </Grid>
         </Grid>

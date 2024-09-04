@@ -24,7 +24,7 @@ function VisaProcessing() {
       backgroundColor: '#ffffff', 
       minHeight: '100vh' 
     }}>
-      {/* <Navbar /> */}
+      
 
       <Box p={2} sx={{ margin: '0 9rem' }}>
         {/* Banner Section */}
@@ -126,10 +126,7 @@ function VisaProcessing() {
         </Box>
       </Box>
 
-      {/* Footer Section */}
-      <Box sx={{ backgroundColor: '#004C41', color: '#ffffff', padding: '2rem' }}>
-        {/* Footer content based on the provided image */}
-      </Box>
+      
     </div>
   );
 }
