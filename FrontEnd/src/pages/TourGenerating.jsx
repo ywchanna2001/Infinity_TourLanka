@@ -3,29 +3,32 @@ import { Button, Container, Typography } from '@mui/material';
 import TPBackgroundImage1 from '../assets/TPBackgroundImage1.png';
 import TPBackgroundImage2 from '../assets/TPBackgroundImage2.png';
 import TPBackgroundImage3 from '../assets/TPBackgroundImage3.png';
+import TPBackgroundImage4 from '../assets/TPBackgroundImage4.png';
 
 const TripPackageBanner = () => {
   const slides = [
     { url: TPBackgroundImage1 },
     { url: TPBackgroundImage2 },
     { url: TPBackgroundImage3 },
+    { url: TPBackgroundImage4 },
   ];
   const [currentSlide, setCurrentSlide] = useState(0);
 
   useEffect(() => {
     const slideInterval = setInterval(() => {
       setCurrentSlide((prevSlide) => (prevSlide + 1) % slides.length);
-    }, 5000); // Change the slide every 5 seconds
+    }, 5000);
 
-    return () => clearInterval(slideInterval); // Cleanup the interval on component unmount
+    return () => clearInterval(slideInterval); 
   }, [slides.length]);
 
   return (
+    <>
     <div 
     className="relative w-full h-[500px] bg-cover bg-center" 
     style={{ backgroundImage: `url(${slides[currentSlide].url})` }}
   >
-      <div className="absolute inset-0 bg-black opacity-40"></div>
+      {/* <div className="absolute inset-0 bg-black opacity-40"></div> */}
       <Container 
         maxWidth="lg" 
         className="relative z-10 flex flex-col items-center justify-end h-full text-center text-white pb-10"
@@ -55,6 +58,10 @@ const TripPackageBanner = () => {
         </Button>
       </Container>
     </div>
+    <div>
+    <p>testskkdnvlksandvlsknvv</p>
+    </div>
+    </>
   );
 };
 
