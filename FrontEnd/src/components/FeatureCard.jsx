@@ -28,7 +28,7 @@ function FeatureCard() {
     { title: 'Tour Packages Section', image: packages },
     { title: 'Accommodation Section', image: accommodation },
     { title: 'Safety Features Section', image: safety },
-    { title: 'Augmented Reality Visualizations Section', image: augmented }
+    { title: 'AR Visualizations Section', image: augmented }
   ];
 
   // Function to handle button clicks
@@ -53,13 +53,13 @@ function FeatureCard() {
     >
       {/* Centered heading inside the background image */}
       <Typography
-        variant="h2"
+        variant="h3"
         sx={{
           textAlign: 'center',
           color: 'white',
           fontWeight: 'bold',
           position: 'absolute',
-          top: '20px',
+          top: '60px',
           left: '50%',
           transform: 'translateX(-50%)',
           zIndex: 1,
@@ -78,13 +78,14 @@ function FeatureCard() {
       >
         {cardData.map((card, index) => (
           <Grid item xs={12} sm={6} md={4} key={index}>
-            <Card sx={{ maxWidth: 400, height: 200, margin: 'auto', marginTop: 1, marginBottom: 1, opacity: 0.8 }}> {/* Set width and height for landscape orientation */}
+            <Card sx={{ maxWidth: 400, height:220, margin: 'auto', padding: '10px 30px',  marginTop: 1, marginBottom: 1, opacity: 0.8, borderRadius: 7, border: '2px solid black'}}> {/* Set width and height for landscape orientation */}
               <CardActionArea sx={{ display: 'flex', flexDirection: 'row' }}> {/* Flex layout for content and media */}
                 <CardMedia
                   component="img"
-                  sx={{ width: 150, height: '100%' }} // Adjust width for landscape and maintain height
+                  sx={{ width: 120, height: 120 }} // Adjust width for landscape and maintain height
                   image={card.image} // Use specific image from cardData
                   alt={card.title}
+                  opacity={1}
                 />
                 <CardContent sx={{ flex: 1 }}> {/* Make content fill remaining space */}
                   <Typography gutterBottom variant="h6" component="div" color='black'> {/* Adjust font size variant */}

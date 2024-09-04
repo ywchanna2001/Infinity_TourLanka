@@ -1,6 +1,6 @@
 # services.py
 from typing import List, Optional, Dict
-from app.database import collection_user,collection_applicant
+from app.database import collection_user,collection_applicant,collection_personal_info,collection_travel_history
 from app.models import User,ApplicationCollection
 from app.utils import hash_password, verify_password, create_access_token,authenticate_user,get_notice_by_name
 from datetime import timedelta
@@ -60,6 +60,39 @@ def login_user_manual(user_login, ACCESS_TOKEN_EXPIRE_MINUTES):
 
     return {"access_token": access_token}
 
+def get_personal_info(BaseModel):
+    data = {
+        "prefix": BaseModel.prefix,
+        "firstName": BaseModel.firstName,
+        "middleName": BaseModel.middleName,
+        "lastName": BaseModel.lastName,
+        "dateOfBirth": BaseModel.dateOfBirth,
+        "religion": BaseModel.religion,
+        "gender": BaseModel.gender,
+        "maritalStatus": BaseModel.maritalStatus,
+        "countryOfBirth": BaseModel.countryOfBirth,
+        "cityOfBirth": BaseModel.cityOfBirth,
+        "presentAddress": BaseModel.presentAddress,
+        "countryOfResidence": BaseModel.countryOfResidence,
+        "postalCode": BaseModel.postalCode,
+        "mobileNumber": BaseModel.mobileNumber,
+        "email": BaseModel.email,
+        "educationLevel": BaseModel.educationLevel,
+        "fieldOfStudy": BaseModel.fieldOfStudy,
+        "occupation": BaseModel.occupation,
+        "companyName": BaseModel.companyName,
+        "companyAddress": BaseModel.companyAddress,
+        "fathersName": BaseModel.fathersName,
+        "fathersCountryOfBirth": BaseModel.fathersCountryOfBirth,
+        "fathersNationality": BaseModel.fathersNationality,
+        "mothersName": BaseModel.mothersName,
+        "mothersCountryOfBirth": BaseModel.mothersCountryOfBirth,
+        "mothersNationality": BaseModel.mothersNationality
+        
+    }
+    collection_personal_info.insert_one(data)
+    return {"message": "Personal info created successfully"}
+
 def create_new_aplicant(BaseModel):
     last_vacancy = collection_applicant.find_one(sort=[("_id", -1)])
     last_id = last_vacancy["application_id"] if last_vacancy else "A000"
@@ -79,6 +112,28 @@ def create_new_aplicant(BaseModel):
     collection_applicant.insert_one(data)
     
     return {"message": "Applicant created successfully"}
+
+def create_travel_history(BaseModel):
+    data = {
+        "passportType": BaseModel.passportType,
+        "issuingCountry": BaseModel.issuingCountry,
+        "nationality": BaseModel.nationality,
+        "passportNumber": BaseModel.passportNumber,
+        "placeOfIssue": BaseModel.placeOfIssue,
+        "dateOfIssue": BaseModel.dateOfIssue,
+        "dateOfExpire": BaseModel.dateOfExpire,
+        "nationalityAcquisition": BaseModel.nationalityAcquisition,
+        "portOfEntry": BaseModel.portOfEntry,
+        "portOfDeparture": BaseModel.portOfDeparture,
+        "visitingCities": BaseModel.visitingCities,
+        "expectedArrivalDate": BaseModel.expectedArrivalDate,
+        "expectedDepartureDate": BaseModel.expectedDepartureDate,
+        "emergencyContactName": BaseModel.emergencyContactName,
+        "emergencyAddress": BaseModel.emergencyAddress,
+        "emergencyMobileNumber": BaseModel.emergencyMobileNumber
+    }
+    collection_travel_history.insert_one(data)
+    return {"message": "Travel history created successfully"}
 
 def get_requested_applicants():
     applicants = []

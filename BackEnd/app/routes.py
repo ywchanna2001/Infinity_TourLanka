@@ -1,7 +1,7 @@
 #routes.py
 from fastapi import APIRouter, Depends ,UploadFile, HTTPException ,BackgroundTasks
 from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
-from app.models import User_login, User,ApplicationCollection,InterpolNotice,EmailRequest
+from app.models import User_login, User,ApplicationCollection,PersonalInfo,TravelHistory
 from app.config import ACCESS_TOKEN_EXPIRE_MINUTES, EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, EMAILJS_USER_ID
 import app.services
 from app.utils import get_current_user
@@ -26,9 +26,17 @@ async def login(user_login: User_login ):
     return app.services.login_user_manual(user_login, ACCESS_TOKEN_EXPIRE_MINUTES)
 
 
-@router.post("/create_vacancy")
+@router.post("/create_new_aplicant")
 def create_applicant(BaseModel: ApplicationCollection):
     return app.services.create_new_aplicant( BaseModel )
+
+@router.post("/personal-info")
+def get_personal_info(BaseModel: PersonalInfo):
+    return app.services.get_personal_info(BaseModel)
+
+@router.post("/travel-info")
+def create_travel_history(BaseModel: TravelHistory):
+    return app.services.create_travel_history(BaseModel)
 
 @router.get("/requested-applicants", response_model=List[dict])
 def get_applicants_requested():

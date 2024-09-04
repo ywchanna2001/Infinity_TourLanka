@@ -38,6 +38,8 @@ function App() {
             <Route path="/VisaRejected" element={<VisaRejectTable title="Rejected visa" />} />
             <Route path="/VisaApproved" element={<VisaApproveTable title="Approved visa"  />} />
 
+            
+
           </Routes>
           <Footer /> {/* Move Footer inside BrowserRouter */}
         </div>

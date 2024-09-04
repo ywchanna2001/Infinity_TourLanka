@@ -49,7 +49,7 @@ function VisaApproveButton(onStatusChange, id, endpointUrl ) {
               Approve
             </button>
             <button className="img-button2" onClick={() => handleStatusChange("rejected")}>
-              Reject
+              Deny
             </button>
           </>
         )}
