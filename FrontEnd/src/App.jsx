@@ -3,6 +3,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css'; // Optional, for additional styling
 import TrendingSection from './pages/TrendingSection';
 
+
+
 function App() {
   return (
     <div className="App">

@@ -1,7 +1,7 @@
 import React from 'react';
-import PackageCard from './PackageCard';
+import PackageCard2 from './PackageCard2';
 
-function PackageCategory({ category }) {
+function PackageCategory2({ category }) {
   return (
     <div className="mb-5">
       <h2 className="text-center mb-3">{category.title}</h2>
@@ -9,7 +9,7 @@ function PackageCategory({ category }) {
       <div className="row">
         {category.packages.map((pkg, index) => (
           <div className="col-md-3" key={index}>
-            <PackageCard packageInfo={pkg} />
+            <PackageCard2 packageInfo={pkg} />
           </div>
         ))}
       </div>
@@ -17,4 +17,4 @@ function PackageCategory({ category }) {
   );
 }
 
-export default PackageCategory;
+export default PackageCategory2;
