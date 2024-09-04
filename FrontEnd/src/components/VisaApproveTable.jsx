@@ -12,6 +12,7 @@ import Paper from '@mui/material/Paper';
 import VisaDetailsPdf from './VisaDetailsPdf';
 import VisaApproveButton from './VisaApproveButton';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -58,7 +59,7 @@ function VisaApproveTable(props) {
                 setapplicant(Array.isArray(response.data) ? response.data : []);
             } catch (error) {
                 console.error('Error fetching data:', error);
-                setapplicant([]);  // Ensure hrbills is an empty array on error
+                setapplicant([]);  
             }
         };
         fetchAppicant();
@@ -80,14 +81,19 @@ function VisaApproveTable(props) {
         );
         setapplicant(updateaplicant);
     };
+    const navigate = useNavigate();
+
+    const handleNavigate = (path) => {
+    navigate(path);
+    };
 
   return (
 
     <div className='content00'>
             <div className='content01'>
-                <a href="" className='content011'>rejected visa</a>
-                <a href="" className='content011'>requested visa</a>
-                <a href="" className='content011'>approved visa</a>
+                <a href="" className='content011' onClick={() => handleNavigate('/VisaRejected')}>rejected visa</a>
+                <a href="" className='content011'onClick={() => handleNavigate('/VisaRequested')}>requested visa</a>
+                <a href="" className='content011'onClick={() => handleNavigate('/VisaApproved')}>approved visa</a>
             </div>
 
             <div className="container6">
@@ -101,7 +107,7 @@ function VisaApproveTable(props) {
                                 <TableRow>
                                     <StyledTableCell align="center">Applicant ID</StyledTableCell>
                                     <StyledTableCell align="center">Applicant Name</StyledTableCell>
-                                    <StyledTableCell align="center">Riskey</StyledTableCell>
+                                    <StyledTableCell align="center">Risky</StyledTableCell>
                                     <StyledTableCell align="center">Download Document</StyledTableCell>
                                     <StyledTableCell align="center">Action</StyledTableCell>
                                 </TableRow>
