@@ -1,6 +1,7 @@
 # models.py
 from pydantic import BaseModel,Field
-from typing import Optional
+from typing import List, Optional, Dict
+
 from datetime import date, datetime
 
 class User_login(BaseModel):
@@ -40,3 +41,7 @@ class InterpolNotice(BaseModel):
         json_encoders = {
             date: lambda v: datetime.combine(v, datetime.min.time())
         }
+class EmailRequest(BaseModel):
+    to_email: str
+    subject: str
+    message: str

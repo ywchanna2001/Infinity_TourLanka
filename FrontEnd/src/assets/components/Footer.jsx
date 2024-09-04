@@ -9,12 +9,21 @@ import Youtube from "../Youtube.png";
 const Footer = () => {
   return (
     <Box 
-      component="footer" 
-      className="text-white py-5 w-full mt-auto"  
-      style={{ backgroundColor: '#006666', color: '#fff'}}  // Adding custom background color here
-      sx={{ padding: '20px 0' }}
-    >
-      <Container>
+  component="footer" 
+  className="text-white py-5"  
+  style={{ 
+    backgroundColor: '#006666', 
+    color: '#fff', 
+    width: {
+      xs: '100%',  // Full width on extra small screens
+      sm: '80%',   // 80% width on small screens
+      md: '60%',   // 60% width on medium screens
+      lg: '40%',   // 40% width on large screens
+      xl: '30%'    // 30% width on extra large screens
+    } 
+  }}
+>
+      <Container maxWidth={false} sx={{ width: '100%', padding: 0 }}>
         <Grid container spacing={4} justifyContent="center">
           {/* Tourism Authority Section */}
           <Grid item xs={12} md={3} className="text-center">
