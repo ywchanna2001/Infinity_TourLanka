@@ -12,14 +12,14 @@ import Header from './assets/components/Header';
 import theme from './utils/Theme.jsx'; // Import custom theme
 import VisaProcessingPayment from './pages/VisaProcessingPayment.jsx';
 import FeatureCard from './components/FeatureCard.jsx';
-
+import Login from './pages/Login.jsx';
 
 function App() {
   return (
     <ThemeProvider theme={theme}> {/* Wrap app with ThemeProvider */}
       <BrowserRouter> {/* BrowserRouter should wrap the entire routing structure */}
         <div className="App" style={{ backgroundColor: '#eceff1' }}>
-          <Header /> {/* Move Header inside BrowserRouter */}
+          <Header />
           <Routes>
             {/* Set TourGenerating as the default route */}
             <Route path="/" element={<TourGenerating />} />
@@ -38,8 +38,11 @@ function App() {
             <Route path="/VisaRejected" element={<VisaRejectTable title="Rejected visa" />} />
             <Route path="/VisaApproved" element={<VisaApproveTable title="Approved visa"  />} />
 
+            {/* login routes */}
+            <Route path="/login" element={<Login/>} />
+
           </Routes>
-          <Footer /> {/* Move Footer inside BrowserRouter */}
+          <Footer />
         </div>
       </BrowserRouter>
     </ThemeProvider>
