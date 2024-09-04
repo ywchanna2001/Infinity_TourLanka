@@ -5,6 +5,7 @@ import '@fontsource/poppins';
 import VisaApproveTable from './components/VisaApproveTable.jsx';
 import VisaRejectTable from './components/VisaRejectTable.jsx';
 import VisaRequestedTable from './components/VisaRequestedTable.jsx';
+import VisaProcessingHome from './pages/VisaProcessingHome';
 
 import TourGenerating from './pages/TourGenerating';
 import Footer from './assets/components/Footer';
@@ -23,15 +24,18 @@ function App() {
             <Route path="/" element={<TourGenerating />} />
             <Route path="/TourGenerating" element={<TourGenerating />} />
             {/* Add more routes here as needed */}
-            {/* <Route path="/VisaProcessingHome" element={<VisaProcessingHome />} /> */}
 
 
+            {/* Visa Processing Routes */}
+            <Route path="/VisaProcessingHome" element={<VisaProcessingHome />} />
+            
+
+            {/* Admin dashboard routes */}
+            <Route path="/AdminDashboard" element={<FeatureCard />} />
             <Route path="/VisaRequested" element={<VisaRequestedTable title="Requested visa" />} />
             <Route path="/VisaRejected" element={<VisaRejectTable title="Rejected visa" />} />
             <Route path="/VisaApproved" element={<VisaApproveTable title="Approved visa"  />} />
 
-
-            <Route path="/AdminDashboard" element={<FeatureCard />} />
           </Routes>
           <Footer /> {/* Move Footer inside BrowserRouter */}
         </div>
