@@ -8,9 +8,9 @@ function VisaProcessingBackground({ children }) {
         minHeight: '100vh', // Ensure it covers at least the full viewport height
         height: 'auto',
         backgroundImage: `url(${bannerImage})`,
-        // backgroundSize: 'cover', 
+         backgroundSize: 'cover', 
         // backgroundPosition: 'center', 
-        // backgroundRepeat: 'no-repeat',
+        backgroundRepeat: 'no-repeat',
         display: 'flex', 
         flexDirection: 'column',
         justifyContent: 'center',
