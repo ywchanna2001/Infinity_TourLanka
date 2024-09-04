@@ -19,6 +19,7 @@ import Header from './assets/components/Header';
 // import theme from './utils/Theme.jsx'; // Import custom theme
 import FeatureCard from './components/FeatureCard.jsx';
 
+
 function App() {
   return (
     <ThemeProvider theme={theme}> {/* Wrap app with ThemeProvider */}
@@ -35,17 +36,22 @@ function App() {
          
 
 
+            {/* Visa Processing Routes */}
+             
+            <Route path="/VisaProcessingPayment" element={<VisaProcessingPayment />} />  
+            
+
+            {/* Admin dashboard routes */}
+            <Route path="/AdminDashboard" element={<FeatureCard />} />
             <Route path="/VisaRequested" element={<VisaRequestedTable title="Requested visa" />} />
             <Route path="/VisaRejected" element={<VisaRejectTable title="Rejected visa" />} />
             <Route path="/VisaApproved" element={<VisaApproveTable title="Approved visa"  />} />
 
-
-            <Route path="/AdminDashboard" element={<FeatureCard />} />  
-            <Route path="/VisaProcessingPayment" element={<VisaProcessingPayment />} />       
           </Routes>
+          <Footer/>
           
         </div>
-        <Footer /> 
+
       </BrowserRouter>
     </ThemeProvider>
   );

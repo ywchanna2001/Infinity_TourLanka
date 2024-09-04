@@ -9,7 +9,10 @@ from app.database import collection_user, notices_collection
 from app.models import InterpolNotice
 from pymongo.collection import Collection
 from fastapi.security import OAuth2PasswordBearer
-from typing import Optional, List
+from typing import List, Optional, Dict
+import cloudinary
+import cloudinary.uploader
+
 
 
 def create_access_token(data: dict, expires_delta: timedelta):
@@ -109,3 +112,42 @@ def get_notice_by_name(name: str, collection: Collection = notices_collection) -
 #     for document in collection.find():
 #         notices.append(InterpolNotice(**document))
 #     return notices
+
+
+def upload_pdf(file):
+    allowed_extensions = {'pdf'}
+    file_extension = file.filename.split('.')[-1]
+
+    if file_extension.lower() not in allowed_extensions:
+        raise Exception("Only PDF files are allowed.")
+
+    # Upload the PDF to Cloudinary
+    result = cloudinary.uploader.upload(file.read(), resource_type="raw", public_id=file.filename.split('.')[0])
+
+    # Get the secure URL of the uploaded PDF
+    pdf_url = result.get("secure_url")
+
+    if not pdf_url:
+        raise Exception("Failed to upload PDF to Cloudinary.")
+
+    return {"message": "PDF uploaded successfully", "pdf_url": pdf_url}
+
+
+# @router.post("/upload-pdf/")
+# async def upload_pdf(file: UploadFile):
+#     allowed_extensions = {'pdf'}
+#     file_extension = file.filename.split('.')[-1]
+
+#     if file_extension.lower() not in allowed_extensions:
+#         raise HTTPException(status_code=400, detail="Only PDF files are allowed.")
+
+#     # Upload the PDF to Cloudinary
+#     result = cloudinary.uploader.upload(await file.read(), resource_type="raw", public_id=file.filename.split('.')[0])
+
+#     # Get the secure URL of the uploaded PDF
+#     pdf_url = result.get("secure_url")
+
+#     if not pdf_url:
+#         raise HTTPException(status_code=500, detail="Failed to upload PDF to Cloudinary.")
+
+#     return {"message": "PDF uploaded successfully", "pdf_url": pdf_url}

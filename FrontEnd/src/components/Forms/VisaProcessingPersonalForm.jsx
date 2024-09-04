@@ -15,6 +15,10 @@ import { useNavigate } from "react-router-dom";
 function VisaProcessingForm() {
   const navigate = useNavigate();
 
+  const handleNavigate = (path) => {
+    navigate(path);
+  };
+
   // State to manage form inputs
   const [formData, setFormData] = useState({
     prefix: "Mr",
@@ -82,7 +86,7 @@ function VisaProcessingForm() {
   return (
     <Box
       sx={{
-        backgroundColor: "rgba(255, 255, 255, 0.3)",
+        backgroundColor: "rgba(255, 255, 255, 0)",
         padding: "2rem",
         borderRadius: "10px",
         margin: "auto",
@@ -90,7 +94,7 @@ function VisaProcessingForm() {
         boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.1)",
       }}
     >
-      <Typography variant="h6" fontWeight="bold" color="black" mb={2}>
+      <Typography fontSize='24px' fontWeight="700" color="primary" mb={2} >
         Personal Information
       </Typography>
 
@@ -98,13 +102,15 @@ function VisaProcessingForm() {
         <Grid container spacing={2}>
           {/* Row 1: Prefix, Name */}
           <Grid item xs={12} sm={2}>
-            <FormControl fullWidth variant="filled" required size="small">
+            <FormControl fullWidth variant="filled" required size="small" color="primary" focused>
               <InputLabel>Prefix</InputLabel>
               <Select
                 name="prefix"
                 value={formData.prefix}
                 onChange={handleChange}
                 size="small"
+                color="primary"
+                focused
               >
                 <MenuItem value="Mr">Mr</MenuItem>
                 <MenuItem value="Ms">Ms</MenuItem>
@@ -124,6 +130,8 @@ function VisaProcessingForm() {
               size="small"
               error={!!errors.firstName}
               helperText={errors.firstName}
+              color="primary"
+              focused
             />
           </Grid>
           <Grid item xs={12} sm={3}>
@@ -137,6 +145,8 @@ function VisaProcessingForm() {
               size="small"
               error={!!errors.middleName}
               helperText={errors.middleName}
+              color="primary"
+              focused
             />
           </Grid>
           <Grid item xs={12} sm={4}>
@@ -151,6 +161,8 @@ function VisaProcessingForm() {
               size="small"
               error={!!errors.lastName}
               helperText={errors.lastName}
+              color="primary"
+              focused
             />
           </Grid>
 
@@ -169,6 +181,8 @@ function VisaProcessingForm() {
               size="small"
               error={!!errors.dateOfBirth}
               helperText={errors.dateOfBirth}
+              color="primary"
+              focused
             />
           </Grid>
           <Grid item xs={12} sm={4}>
@@ -183,16 +197,20 @@ function VisaProcessingForm() {
               size="small"
               error={!!errors.religion}
               helperText={errors.religion}
+              color="primary"
+              focused
             />
           </Grid>
           <Grid item xs={12} sm={4}>
-            <FormControl fullWidth required variant="filled" size="small">
+            <FormControl fullWidth required variant="filled" size="small" color="primary" focused>
               <InputLabel>Gender</InputLabel>
               <Select
                 name="gender"
                 value={formData.gender}
                 onChange={handleChange}
                 size="small"
+                color="primary"
+                focused
               >
                 <MenuItem value="Male">Male</MenuItem>
                 <MenuItem value="Female">Female</MenuItem>
@@ -203,13 +221,15 @@ function VisaProcessingForm() {
 
           {/* Row 3: Marital Status */}
           <Grid item xs={12} sm={4}>
-            <FormControl fullWidth required variant="filled" size="small">
+            <FormControl fullWidth required variant="filled" size="small" color="primary" focused>
               <InputLabel>Marital Status</InputLabel>
               <Select
                 name="maritalStatus"
                 value={formData.maritalStatus}
                 onChange={handleChange}
                 size="small"
+                color="primary"
+                focused
               >
                 <MenuItem value="Single">Single</MenuItem>
                 <MenuItem value="Married">Married</MenuItem>
@@ -232,6 +252,8 @@ function VisaProcessingForm() {
               size="small"
               error={!!errors.countryOfBirth}
               helperText={errors.countryOfBirth}
+              color="primary"
+              focused
             />
           </Grid>
           <Grid item xs={12} sm={6}>
@@ -246,6 +268,8 @@ function VisaProcessingForm() {
               size="small"
               error={!!errors.cityOfBirth}
               helperText={errors.cityOfBirth}
+              color="primary"
+              focused
             />
           </Grid>
 
@@ -262,6 +286,8 @@ function VisaProcessingForm() {
               size="small"
               error={!!errors.presentAddress}
               helperText={errors.presentAddress}
+              color="primary"
+              focused
             />
           </Grid>
           <Grid item xs={12} sm={3}>
@@ -276,6 +302,8 @@ function VisaProcessingForm() {
               size="small"
               error={!!errors.countryOfResidence}
               helperText={errors.countryOfResidence}
+              color="primary"
+              focused
             />
           </Grid>
           <Grid item xs={12} sm={3}>
@@ -290,8 +318,12 @@ function VisaProcessingForm() {
               size="small"
               error={!!errors.postalCode}
               helperText={errors.postalCode}
+              color="primary"
+              focused
             />
           </Grid>
+
+          {/* Row 6: Mobile and Email */}
           <Grid item xs={12} sm={6}>
             <TextField
               label="Mobile Number"
@@ -304,6 +336,8 @@ function VisaProcessingForm() {
               size="small"
               error={!!errors.mobileNumber}
               helperText={errors.mobileNumber}
+              color="primary"
+              focused
             />
           </Grid>
           <Grid item xs={12} sm={6}>
@@ -311,7 +345,6 @@ function VisaProcessingForm() {
               label="Email"
               variant="filled"
               fullWidth
-              type="email"
               required
               name="email"
               value={formData.email}
@@ -319,16 +352,13 @@ function VisaProcessingForm() {
               size="small"
               error={!!errors.email}
               helperText={errors.email}
+              color="primary"
+              focused
             />
           </Grid>
 
-          {/* Education and Occupation */}
-          <Grid item xs={12}>
-            <Typography variant="h6" fontWeight="bold" color="black" mb={2}>
-              Education and Occupation
-            </Typography>
-          </Grid>
-          <Grid item xs={12} sm={4}>
+          {/* Row 7: Education and Occupation */}
+          <Grid item xs={12} sm={6}>
             <TextField
               label="Education Level"
               variant="filled"
@@ -340,9 +370,11 @@ function VisaProcessingForm() {
               size="small"
               error={!!errors.educationLevel}
               helperText={errors.educationLevel}
+              color="primary"
+              focused
             />
           </Grid>
-          <Grid item xs={12} sm={4}>
+          <Grid item xs={12} sm={6}>
             <TextField
               label="Field of Study"
               variant="filled"
@@ -354,9 +386,11 @@ function VisaProcessingForm() {
               size="small"
               error={!!errors.fieldOfStudy}
               helperText={errors.fieldOfStudy}
+              color="primary"
+              focused
             />
           </Grid>
-          <Grid item xs={12} sm={4}>
+          <Grid item xs={12} sm={6}>
             <TextField
               label="Occupation"
               variant="filled"
@@ -368,6 +402,8 @@ function VisaProcessingForm() {
               size="small"
               error={!!errors.occupation}
               helperText={errors.occupation}
+              color="primary"
+              focused
             />
           </Grid>
           <Grid item xs={12} sm={6}>
@@ -375,34 +411,35 @@ function VisaProcessingForm() {
               label="Company Name"
               variant="filled"
               fullWidth
+              required
               name="companyName"
               value={formData.companyName}
               onChange={handleChange}
               size="small"
               error={!!errors.companyName}
               helperText={errors.companyName}
+              color="primary"
+              focused
             />
           </Grid>
-          <Grid item xs={12} sm={6}>
+          <Grid item xs={12} sm={12}>
             <TextField
               label="Company Address"
               variant="filled"
               fullWidth
+              required
               name="companyAddress"
               value={formData.companyAddress}
               onChange={handleChange}
               size="small"
               error={!!errors.companyAddress}
               helperText={errors.companyAddress}
+              color="primary"
+              focused
             />
           </Grid>
 
-          {/* Parent Information */}
-          <Grid item xs={12}>
-            <Typography variant="h6" fontWeight="bold" color="black" mb={2}>
-              Parent Information
-            </Typography>
-          </Grid>
+          {/* Row 8: Parents' Information */}
           <Grid item xs={12} sm={6}>
             <TextField
               label="Father's Name"
@@ -415,6 +452,8 @@ function VisaProcessingForm() {
               size="small"
               error={!!errors.fathersName}
               helperText={errors.fathersName}
+              color="primary"
+              focused
             />
           </Grid>
           <Grid item xs={12} sm={6}>
@@ -422,12 +461,15 @@ function VisaProcessingForm() {
               label="Father's Country of Birth"
               variant="filled"
               fullWidth
+              required
               name="fathersCountryOfBirth"
               value={formData.fathersCountryOfBirth}
               onChange={handleChange}
               size="small"
               error={!!errors.fathersCountryOfBirth}
               helperText={errors.fathersCountryOfBirth}
+              color="primary"
+              focused
             />
           </Grid>
           <Grid item xs={12} sm={6}>
@@ -435,12 +477,15 @@ function VisaProcessingForm() {
               label="Father's Nationality"
               variant="filled"
               fullWidth
+              required
               name="fathersNationality"
               value={formData.fathersNationality}
               onChange={handleChange}
               size="small"
               error={!!errors.fathersNationality}
               helperText={errors.fathersNationality}
+              color="primary"
+              focused
             />
           </Grid>
           <Grid item xs={12} sm={6}>
@@ -455,6 +500,8 @@ function VisaProcessingForm() {
               size="small"
               error={!!errors.mothersName}
               helperText={errors.mothersName}
+              color="primary"
+              focused
             />
           </Grid>
           <Grid item xs={12} sm={6}>
@@ -462,12 +509,15 @@ function VisaProcessingForm() {
               label="Mother's Country of Birth"
               variant="filled"
               fullWidth
+              required
               name="mothersCountryOfBirth"
               value={formData.mothersCountryOfBirth}
               onChange={handleChange}
               size="small"
               error={!!errors.mothersCountryOfBirth}
               helperText={errors.mothersCountryOfBirth}
+              color="primary"
+              focused
             />
           </Grid>
           <Grid item xs={12} sm={6}>
@@ -475,41 +525,38 @@ function VisaProcessingForm() {
               label="Mother's Nationality"
               variant="filled"
               fullWidth
+              required
               name="mothersNationality"
               value={formData.mothersNationality}
               onChange={handleChange}
               size="small"
               error={!!errors.mothersNationality}
               helperText={errors.mothersNationality}
+              color="primary"
+              focused
             />
           </Grid>
-
-          {/* Submit Button */}
-          <Box mt={4}>
-            <Grid container justifyContent="space-between">
-              <Grid item>
-                <Button
-                  variant="contained"
-                  color="secondary"
-                  onClick={() => handleNavigate("/VisaProcessingHome")}
-                  size="small"
-                >
-                  Go Back
-                </Button>
-              </Grid>
-              <Grid item>
-                <Button
-                  type="submit"
-                  variant="contained"
-                  color="primary"
-                  size="small"
-                >
-                  Save and Continue
-                </Button>
-              </Grid>
-            </Grid>
-          </Box>
         </Grid>
+
+        <Box mt={2} display="flex" justifyContent="space-between">
+  <Button 
+    variant="contained" 
+    color="primary"  
+    onClick={() => handleNavigate('/VisaProcessingHome')}
+  >
+    Back
+  </Button>
+  
+  <Button
+    type="submit"
+    variant="contained"
+    color="primary"
+    sx={{ marginLeft: 'auto' }}
+  >
+    Save and Continue
+  </Button>
+</Box>
+
       </form>
     </Box>
   );
