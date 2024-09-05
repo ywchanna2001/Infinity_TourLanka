@@ -61,7 +61,8 @@ const TravelInfoForm = () => {
     expectedDepartureDate: '',
     emergencyContactName: '',
     emergencyAddress: '',
-    emergencyMobileNumber: ''
+    emergencyMobileNumber: '',
+    travelHistory: ''
   });
 
   // Handle input changes
@@ -184,6 +185,7 @@ const TravelInfoForm = () => {
                 },
               }}
             >
+              
               {countries.map((country) => (
                 <MenuItem key={country} value={country}>
                   {country}
@@ -493,6 +495,28 @@ const TravelInfoForm = () => {
             />
           </Grid>
         </Grid>
+
+        <Typography variant="h6" mt={4} mb={2}>
+          Travel History of last 12 months
+        </Typography>
+        <Grid container spacing={2}>
+          </Grid>
+          <Grid item xs={12} sm={4}>
+            <TextField
+              label="Travelled countries"
+              helperText="Add the countries that you travelled in last 12 months"
+              fullWidth
+              variant="filled"
+              size="small"
+              required
+              name="travelHistory"
+              value={formData.travelHistory}
+              onChange={handleInputChange}
+              focused
+              color="primary"
+            />
+          </Grid>
+        
 
         {/* Buttons */}
         <Box mt={4} display="flex" justifyContent="space-between">

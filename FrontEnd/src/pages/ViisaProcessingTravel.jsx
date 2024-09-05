@@ -4,6 +4,7 @@ import TravelInfoForm from "../components/Forms/TravelInfoForm";
 import VisaProcessingBG from "../components/VisaProcessingBackground";
 import ProgressBar from "../components/VisaProcessingProgressBar/ProgressBarTravelInfo";
 
+
 function VisaProcessingTravel() {
   return (
     <VisaProcessingBG>

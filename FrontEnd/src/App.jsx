@@ -14,8 +14,8 @@ import VisaRejectTable from './components/VisaRejectTable.jsx';
 import VisaRequestedTable from './components/VisaRequestedTable.jsx';
 
 import TourGenerating from './pages/TourGenerating';
-import Footer from './assets/components/Footer';
-import Header from './assets/components/Header';
+import Footer from './assets/components/Footer.jsx';
+import Header from './assets/components/Header.jsx';
 import FeatureCard from './components/FeatureCard.jsx';
 import Login from './components/Login.jsx';
 import Signup from './components/Signup.jsx';
