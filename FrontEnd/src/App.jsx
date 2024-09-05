@@ -7,7 +7,8 @@ import VisaProcessingPayment from './pages/VisaProcessingPayment.jsx';
 
 import VisaProcessingHome from './pages/VisaProcessingHome.jsx';
 import VisaProcessingPersonal from './pages/VisaProcessingPersonal.jsx';
-import VisaProcessingTravel from './pages/ViisaProcessingTravel.jsx'
+import VisaProcessingTravel from './pages/ViisaProcessingTravel.jsx';
+import VisaProcessingUpload from './pages/VisaProcesssingUpload.jsx';
 
 import VisaApproveTable from './components/VisaApproveTable.jsx';
 import VisaRejectTable from './components/VisaRejectTable.jsx';
@@ -33,7 +34,7 @@ function App() {
             <Route path="/VisaProcessingTravel" element={<VisaProcessingTravel />} />         
             <Route path="/" element={<TourGenerating />} />
             <Route path="/TourGenerating" element={<TourGenerating />} />
-         
+            <Route path="/VisaProcessingUpload" element={<VisaProcessingUpload />} />
 
 
             {/* Visa Processing Routes */}
