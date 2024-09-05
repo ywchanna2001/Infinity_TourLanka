@@ -20,6 +20,8 @@ import FeatureCard from './components/FeatureCard.jsx';
 import Login from './components/Login.jsx';
 import Signup from './components/Signup.jsx';
 
+import Home from './pages/Home.jsx';
+
 function App() {
   return (
     <ThemeProvider theme={theme}> {/* Wrap app with ThemeProvider */}
@@ -36,6 +38,7 @@ function App() {
             <Route path="/VisaRejected" element={<VisaRejectTable title="Rejected visa" />} />
             <Route path="/VisaApproved" element={<VisaApproveTable title="Approved visa" />} />
             <Route path="/Login" element={<Login />} />
+            <Route path="/Home" element={<Home />} />
           </Route>
         </Routes>
       </BrowserRouter>
@@ -63,6 +66,7 @@ function Layout() {
         <Route path="/VisaRejected" element={<VisaRejectTable title="Rejected visa" />} />
         <Route path="/VisaApproved" element={<VisaApproveTable title="Approved visa" />} />
         <Route path="/Login" element={<Login />} />
+        <Route path="/Home" element={<Home />} />
         {/* <Route path="/signup" element={<Signup />} /> */}
       </Routes>
 
