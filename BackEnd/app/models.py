@@ -9,9 +9,9 @@ class User_login(BaseModel):
     password: str
     
 class User(BaseModel):
-    name:str
-    user_email:str
-    user_pw:str
+    user_email: str
+    user_pw: str
+    user_name: str
 
 class PersonalInfo(BaseModel):
     prefix: str

@@ -17,7 +17,7 @@ oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
 async def login_for_access_token(form_data: OAuth2PasswordRequestForm = Depends()):
     return await app.services.login_user(form_data, ACCESS_TOKEN_EXPIRE_MINUTES)
 
-@router.post("/users")
+@router.post("/signup")
 async def create_user(user: User):
     return app.services.create_new_user(user)
 

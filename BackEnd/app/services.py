@@ -43,7 +43,7 @@ def create_new_user(user:User):
 def login_user_manual(user_login, ACCESS_TOKEN_EXPIRE_MINUTES):
     existing_user = collection_user.find_one(
         {"user_email": user_login.email}, 
-        {"_id": 0, "user_email": 1, "user_pw": 1, "user_type": 1}
+        {"_id": 0, "user_email": 1, "user_pw": 1}
     )
     if not existing_user:
         raise HTTPException(status_code=401, detail="Invalid credentials")
@@ -58,7 +58,7 @@ def login_user_manual(user_login, ACCESS_TOKEN_EXPIRE_MINUTES):
         data={"email": user_login.email}, expires_delta=access_token_expires
     )
 
-    return {"access_token": access_token}
+    return {"access_token": access_token , "user_email": user_login.email}
 
 def get_personal_info(BaseModel):
     data = {
