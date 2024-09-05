@@ -43,6 +43,37 @@ const TravelInfoForm = () => {
     "Zambia", "Zimbabwe"
   ];
   
+  const nationalities = [
+    "Afghan", "Albanian", "Algerian", "Andorran", "Angolan", "Antiguan and Barbudan",
+    "Argentine", "Armenian", "Australian", "Austrian", "Azerbaijani", "Bahamian", "Bahraini",
+    "Bangladeshi", "Barbadian", "Belarusian", "Belgian", "Belizean", "Beninese", "Bhutanese",
+    "Bolivian", "Bosnian and Herzegovinian", "Botswana", "Brazilian", "Bruneian", "Bulgarian",
+    "Burkinabe", "Burundian", "Cape Verdean", "Cambodian", "Cameroonian", "Canadian",
+    "Central African", "Chadian", "Chilean", "Chinese", "Colombian", "Comorian", "Congolese",
+    "Costa Rican", "Croatian", "Cuban", "Cypriot", "Czech", "Danish", "Djiboutian", "Dominican",
+    "Dominican", "Ecuadorian", "Egyptian", "El Salvadoran", "Equatorial Guinean", "Eritrean",
+    "Estonian", "Eswatini", "Ethiopian", "Fijian", "Finnish", "French", "Gabonese", "Gambian",
+    "Georgian", "German", "Ghanaian", "Greek", "Grenadian", "Guatemalan", "Guinean",
+    "Guinea-Bissauan", "Guyanese", "Haitian", "Honduran", "Hungarian", "Icelandic", "Indian",
+    "Indonesian", "Iranian", "Iraqi", "Irish", "Israeli", "Italian", "Jamaican", "Japanese",
+    "Jordanian", "Kazakh", "Kenyan", "Kiribati", "Kuwaiti", "Kyrgyzstani", "Laotian", "Latvian",
+    "Lebanese", "Lesotho", "Liberian", "Libyan", "Liechtensteiner", "Lithuanian", "Luxembourger",
+    "Malagasy", "Malawian", "Malaysian", "Maldivian", "Malian", "Maltese", "Marshallese",
+    "Mauritanian", "Mauritian", "Mexican", "Micronesian", "Moldovan", "Monegasque", "Mongolian",
+    "Montenegrin", "Moroccan", "Mozambican", "Burmese", "Namibian", "Nauruan", "Nepalese",
+    "Dutch", "New Zealander", "Nicaraguan", "Nigerien", "Nigerian", "North Korean", "North Macedonian",
+    "Norwegian", "Omani", "Pakistani", "Palauan", "Panamanian", "Papua New Guinean", "Paraguayan",
+    "Peruvian", "Philippine", "Polish", "Portuguese", "Qatari", "Romanian", "Russian", "Rwandan",
+    "Kittitian and Nevisian", "Saint Lucian", "Saint Vincentian", "Samoan", "Sammarinese",
+    "Sao Tomean", "Saudi", "Senegalese", "Serbian", "Seychellois", "Sierra Leonean", "Singaporean",
+    "Slovak", "Slovenian", "Solomon Islander", "Somali", "South African", "South Korean", "South Sudanese",
+    "Spanish", "Sri Lankan", "Sudanese", "Surinamese", "Swedish", "Swiss", "Syrian", "Taiwanese",
+    "Tajik", "Tanzanian", "Thai", "Timorese", "Togolese", "Tongan", "Trinidadian and Tobagonian",
+    "Tunisian", "Turkish", "Turkmen", "Tuvaluan", "Ugandan", "Ukrainian", "Emirati", "British",
+    "American", "Uruguayan", "Uzbekistani", "Vanuatuan", "Vatican", "Venezuelan", "Vietnamese",
+    "Yemeni", "Zambian", "Zimbabwean"
+];
+
 
   // State for each input field
   const [formData, setFormData] = useState({
@@ -192,6 +223,9 @@ const TravelInfoForm = () => {
                 </MenuItem>
               ))}
             </TextField>
+
+
+            
           </Grid>
           <Grid item xs={12} sm={4}>
             <TextField
@@ -222,8 +256,11 @@ const TravelInfoForm = () => {
                 },
               }}
             >
-              <MenuItem value="nationality1">Nationality 1</MenuItem>
-              <MenuItem value="nationality2">Nationality 2</MenuItem>
+              {nationalities.map((nationality) => (
+                <MenuItem key={nationality} value={nationality}>
+                  {nationality}
+                </MenuItem>
+              ))}
             </TextField>
           </Grid>
           <Grid item xs={12} sm={6}>
