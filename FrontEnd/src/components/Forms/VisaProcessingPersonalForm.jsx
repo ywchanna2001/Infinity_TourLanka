@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 import {
   Box,
   TextField,
@@ -10,7 +12,7 @@ import {
   InputLabel,
   FormControl,
 } from "@mui/material";
-import { useNavigate } from "react-router-dom";
+
 
 function VisaProcessingForm() {
   const navigate = useNavigate();
@@ -94,7 +96,7 @@ function VisaProcessingForm() {
         boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.1)",
       }}
     >
-      <Typography fontSize='24px' fontWeight="700" color="primary" mb={2} >
+      <Typography fontSize="24px" fontWeight="700" color="primary" mb={2}>
         Personal Information
       </Typography>
 
@@ -102,7 +104,14 @@ function VisaProcessingForm() {
         <Grid container spacing={2}>
           {/* Row 1: Prefix, Name */}
           <Grid item xs={12} sm={2}>
-            <FormControl fullWidth variant="filled" required size="small" color="primary" focused>
+            <FormControl
+              fullWidth
+              variant="filled"
+              required
+              size="small"
+              color="primary"
+              focused
+            >
               <InputLabel>Prefix</InputLabel>
               <Select
                 name="prefix"
@@ -111,6 +120,19 @@ function VisaProcessingForm() {
                 size="small"
                 color="primary"
                 focused
+                MenuProps={{
+                  PaperProps: {
+                    sx: {
+                      bgcolor: "black", // Background color for the dropdown
+                      "& .MuiMenuItem-root": {
+                        color: "white", // Text color for the dropdown options
+                      },
+                      "& .MuiMenuItem-root:hover": {
+                        bgcolor: "grey", // Background color on hover
+                      },
+                    },
+                  },
+                }}
               >
                 <MenuItem value="Mr">Mr</MenuItem>
                 <MenuItem value="Ms">Ms</MenuItem>
@@ -202,7 +224,14 @@ function VisaProcessingForm() {
             />
           </Grid>
           <Grid item xs={12} sm={4}>
-            <FormControl fullWidth required variant="filled" size="small" color="primary" focused>
+            <FormControl
+              fullWidth
+              required
+              variant="filled"
+              size="small"
+              color="primary"
+              focused
+            >
               <InputLabel>Gender</InputLabel>
               <Select
                 name="gender"
@@ -211,6 +240,19 @@ function VisaProcessingForm() {
                 size="small"
                 color="primary"
                 focused
+                MenuProps={{
+                  PaperProps: {
+                    sx: {
+                      bgcolor: "black", // Background color for the dropdown
+                      "& .MuiMenuItem-root": {
+                        color: "white", // Text color for the dropdown options
+                      },
+                      "& .MuiMenuItem-root:hover": {
+                        bgcolor: "grey", // Background color on hover
+                      },
+                    },
+                  },
+                }}
               >
                 <MenuItem value="Male">Male</MenuItem>
                 <MenuItem value="Female">Female</MenuItem>
@@ -221,7 +263,14 @@ function VisaProcessingForm() {
 
           {/* Row 3: Marital Status */}
           <Grid item xs={12} sm={4}>
-            <FormControl fullWidth required variant="filled" size="small" color="primary" focused>
+            <FormControl
+              fullWidth
+              required
+              variant="filled"
+              size="small"
+              color="primary"
+              focused
+            >
               <InputLabel>Marital Status</InputLabel>
               <Select
                 name="maritalStatus"
@@ -230,6 +279,19 @@ function VisaProcessingForm() {
                 size="small"
                 color="primary"
                 focused
+                MenuProps={{
+                  PaperProps: {
+                    sx: {
+                      bgcolor: "black", // Background color for the dropdown
+                      "& .MuiMenuItem-root": {
+                        color: "white", // Text color for the dropdown options
+                      },
+                      "& .MuiMenuItem-root:hover": {
+                        bgcolor: "grey", // Background color on hover
+                      },
+                    },
+                  },
+                }}
               >
                 <MenuItem value="Single">Single</MenuItem>
                 <MenuItem value="Married">Married</MenuItem>
@@ -539,24 +601,26 @@ function VisaProcessingForm() {
         </Grid>
 
         <Box mt={2} display="flex" justifyContent="space-between">
-  <Button 
-    variant="contained" 
-    color="primary"  
-    onClick={() => handleNavigate('/VisaProcessingHome')}
-  >
-    Back
-  </Button>
-  
-  <Button
-    type="submit"
-    variant="contained"
-    color="primary"
-    sx={{ marginLeft: 'auto' }}
-  >
-    Save and Continue
-  </Button>
-</Box>
+          <Button
+            variant="contained"
+            sx={{ backgroundColor: "#006666", color: "white" }}
+            onClick={() => handleNavigate("/VisaProcessingHome")}
+          >
+            Back
+          </Button>
 
+          <Button
+            type="submit"
+            variant="contained"
+            sx={{
+              backgroundColor: "#006666",
+              color: "white",
+              marginLeft: "auto",
+            }}
+          >
+            Save and Continue
+          </Button>
+        </Box>
       </form>
     </Box>
   );

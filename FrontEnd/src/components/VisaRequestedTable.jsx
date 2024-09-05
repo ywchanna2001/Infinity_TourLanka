@@ -52,18 +52,39 @@ function VisaRequestedTable(props) {
     const [applicant, setapplicant] = useState([]);
 
     useEffect(() => {
-        const fetchAppicant = async () => {
+        const fetchApplicant = async () => {
             try {
-                const response = await axios.get('http://localhost:8000/requested-applicants');
-                console.log('Response data:', response.data);
-                setapplicant(Array.isArray(response.data) ? response.data : []);
+              const accessToken = localStorage.getItem('access_token');
+              if (!accessToken) {
+                console.error('Token not found');
+                return;
+              }
+          
+              const response = await axios.get('http://localhost:8000/requested-applicants', {
+                headers: {
+                  Authorization: `Bearer ${accessToken}`,
+                  'Content-Type': 'application/json',
+                },
+              });
+          
+              setapplicant(Array.isArray(response.data) ? response.data : []);
             } catch (error) {
+              if (error.response && error.response.status === 403) {
+                console.error('Unauthorized: Admin access required');
+                alert('You are not authorized to view this information. Admin access required.');
+              } else if (error.response && error.response.status === 401) {
+                console.error('Unauthorized: Invalid or missing token');
+                alert('Unauthorized: Please log in again.');
+              } else {
                 console.error('Error fetching data:', error);
-                setapplicant([]);  // Ensure hrbills is an empty array on error
+              }
+              setapplicant([]);  // Ensure applicants is an empty array on error
             }
-        };
-        fetchAppicant();
+          };
+                  
+        fetchApplicant();
     }, []);
+    
 
     const indexOfLastItem = currentPage * itemsPerPages;
     const indexOfFirstItem = indexOfLastItem - itemsPerPages;
@@ -116,23 +137,23 @@ function VisaRequestedTable(props) {
                             <TableBody>
                                 {currentItems.map((row4) => (
                                     <StyledTableRow key={row4.ID}>
-                                        <StyledTableCell align="center">{row4.application_id}</StyledTableCell>
-                                        <StyledTableCell align="center">{row4.user_name}</StyledTableCell>
-                                        <StyledTableCell align="center">{row4.status}</StyledTableCell>
+                                        <StyledTableCell align="center">{row4.user_id}</StyledTableCell>
+                                        <StyledTableCell align="center">{row4.firstName}&nbsp;{row4.lastName} </StyledTableCell>
+                                        <StyledTableCell align="center">{row4.risky_status}</StyledTableCell>
                                         <StyledTableCell align="center">
                                             <VisaDetailsPdf
                                                 endpointUrl=""
-                                                cvId={row4.application_id}
+                                                cvId={row4.personal_info_id}
                                                 filename="Employeebill"
                                             />
                                         </StyledTableCell>
                                         <StyledTableCell align="center">
                                             <VisaApproveButton
                                                 onStatusChange={handleStatusChange}
-                                                id={row4.application_id}
-                                                endpointUrl=""
-                                            />
-                                        </StyledTableCell>
+                                                id={row4.personal_info_id}
+                                                endpointUrl={`http://localhost:5173/update_personal_info_visa_approve_status/${row4.personal_info_id}`}
+                                             />
+                                            </StyledTableCell>
                                     </StyledTableRow>
                                 ))}
                             </TableBody>
