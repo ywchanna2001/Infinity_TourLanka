@@ -77,6 +77,8 @@ const Login = () => {
       if (response.ok) {
         localStorage.setItem('access_token', data.access_token);
         console.log('User_email:', data.user_email);
+
+        console.log(localStorage.getItem('access_token'));
   
         if (data.user_email === "admin@gmail.com") {
           navigate('/AdminDashboard');

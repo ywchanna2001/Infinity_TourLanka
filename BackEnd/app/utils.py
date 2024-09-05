@@ -69,7 +69,7 @@ async def authenticate_user(email: str, password: str):
 
 
 async def authenticate_user_exist(email: str):
-    existing_user = collection_user.find_one({"user_email": email}, {"_id": 0, "user_email": 1, "user_type": 1})
+    existing_user = collection_user.find_one({"user_email": email}, {"_id": 0, "user_email": 1, "user_id": 1, "user_type": 1})
     if not existing_user:
         raise HTTPException(status_code=401, detail="Incorrect email")
     return existing_user
