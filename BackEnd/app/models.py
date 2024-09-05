@@ -78,3 +78,6 @@ class EmailRequest(BaseModel):
     to_email: str
     subject: str
     message: str
+
+class Update_personal_info_approve_satats(BaseModel):
+    new_status: str
