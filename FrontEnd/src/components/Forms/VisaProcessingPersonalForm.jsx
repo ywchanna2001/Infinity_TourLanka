@@ -103,20 +103,34 @@ function VisaProcessingForm() {
           {/* Row 1: Prefix, Name */}
           <Grid item xs={12} sm={2}>
             <FormControl fullWidth variant="filled" required size="small" color="primary" focused>
-              <InputLabel>Prefix</InputLabel>
-              <Select
-                name="prefix"
-                value={formData.prefix}
-                onChange={handleChange}
-                size="small"
-                color="primary"
-                focused
-              >
-                <MenuItem value="Mr">Mr</MenuItem>
-                <MenuItem value="Ms">Ms</MenuItem>
-                <MenuItem value="Mrs">Mrs</MenuItem>
-              </Select>
-            </FormControl>
+  <InputLabel>Prefix</InputLabel>
+  <Select
+    name="prefix"
+    value={formData.prefix}
+    onChange={handleChange}
+    size="small"
+    color="primary"
+    focused
+    MenuProps={{
+      PaperProps: {
+        sx: {
+          bgcolor: 'black', // Background color for the dropdown
+          '& .MuiMenuItem-root': {
+            color: 'white', // Text color for the dropdown options
+          },
+          '& .MuiMenuItem-root:hover': {
+            bgcolor: 'grey', // Background color on hover
+          },
+        },
+      },
+    }}
+  >
+    <MenuItem value="Mr">Mr</MenuItem>
+    <MenuItem value="Ms">Ms</MenuItem>
+    <MenuItem value="Mrs">Mrs</MenuItem>
+  </Select>
+</FormControl>
+
           </Grid>
           <Grid item xs={12} sm={3}>
             <TextField
@@ -211,6 +225,19 @@ function VisaProcessingForm() {
                 size="small"
                 color="primary"
                 focused
+                MenuProps={{
+                  PaperProps: {
+                    sx: {
+                      bgcolor: 'black', // Background color for the dropdown
+                      '& .MuiMenuItem-root': {
+                        color: 'white', // Text color for the dropdown options
+                      },
+                      '& .MuiMenuItem-root:hover': {
+                        bgcolor: 'grey', // Background color on hover
+                      },
+                    },
+                  },
+                }}
               >
                 <MenuItem value="Male">Male</MenuItem>
                 <MenuItem value="Female">Female</MenuItem>
@@ -230,6 +257,19 @@ function VisaProcessingForm() {
                 size="small"
                 color="primary"
                 focused
+                MenuProps={{
+                  PaperProps: {
+                    sx: {
+                      bgcolor: 'black', // Background color for the dropdown
+                      '& .MuiMenuItem-root': {
+                        color: 'white', // Text color for the dropdown options
+                      },
+                      '& .MuiMenuItem-root:hover': {
+                        bgcolor: 'grey', // Background color on hover
+                      },
+                    },
+                  },
+                }}
               >
                 <MenuItem value="Single">Single</MenuItem>
                 <MenuItem value="Married">Married</MenuItem>
