@@ -6,8 +6,8 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 
-export default function SurfCard() {
-  const [likes, setLikes] = React.useState(15); // Initialize like count to 500
+export default function FestiFeverCard() {
+  const [likes, setLikes] = React.useState(48); // Initialize like count to 500
   const [shared, setShared] = React.useState(false); // Track if the button has been clicked
 
   // Function to handle the share button click
@@ -24,7 +24,7 @@ export default function SurfCard() {
       maxWidth: 450,
       position: 'relative',
       overflow: 'hidden',
-      backgroundImage: 'url(https://s3-alpha-sig.figma.com/img/e06a/68bc/485aae2fb7f597c6e539ce3c25179f8d?Expires=1726444800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=GFmP1dmxMfgcTVc1w-SWcSTtRa75AKCwJQEGlRd9WvayPUHbkGJA0ZVFmzDsr8rgPw9DJ9NR8pobg2QY225Mbyx~LcgpQlh91-~aGWEcFmMHJF90K97a3h3m-nXifXkzpOr3eLxnrhbO9zhmP8ZQsoyldffljjVCWJ3T9HsH54Ozed5iS4uCC-UkY~oKSNQ5U5ddb2s5MGEA5lZF6vguv-0MOhHZWaelMNTK4BX9ioG5dhWNwoiMfLuWR6WXVCnWqNo2S~a1K9oXlEG6hsSWqri92uxRLkqpm9kviNNbGfPwRoO0XPVEDoXy7AV9lNhUFMR1cfGiNgUCQwD29tacgg__)',
+      backgroundImage: 'url(https://s3-alpha-sig.figma.com/img/ecdb/a91d/4856254c29b9c69958a2b366bdc9ebe8?Expires=1726444800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=aS~Md1ywsJtHknf3-ZeslOJr42aE1yg6rALJQpUUZlmoR-Gr8hWcCmBEsa2bBIhUD56uDf6ZWvSLQyTUng881LifJbZ3SHuEkm-sT7K~A~FOehApRZ4YILwhfDgVSVi6Quz7zCmqJIoHYDLXgFB4rrqI3qYLl0pY27mp1LYCJ5aBjRAoDD-~l7MdOF8y3Dj00~-37u1h5l4eUnaIdv8yEDXR-eQCOAIOTWwbdBEHFnelAR~rIjKr0yMJb0yCV9v61eZFyTyrwOa-O949EQG5uwBq4eLh~YS~a~k1PwtgfLObPhWk28kuAeXEmZRDf~IMI62epYWIK5PggvNQdiOQEQ__)',
       backgroundSize: 'cover',  // Change to 'contain' to fit the image within the card
       backgroundPosition: '25',  // Adjust to 'top', 'bottom', or specific coordinates like '50% 50%'
       backgroundRepeat: 'no-repeat',
@@ -44,10 +44,10 @@ export default function SurfCard() {
         }}
       >
         <Typography variant="h4" component="div" color="white" >
-        Surfing
+        Eestival Fever
         </Typography>
         <Typography align='left' variant="h5" component="div" color="white">
-           {likes} 
+           {likes}
         </Typography>
       </CardContent>
       <CardActions

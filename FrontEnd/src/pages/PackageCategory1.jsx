@@ -1,6 +1,8 @@
 import React from 'react';
 import PackageCard1 from './PackageCard1';
 import './PackageCategory1.css'; // Assuming you'll add your styles here
+import CycleCard from './Cards/CycleCard';
+import Variants from './Variants';
 
 function PackageCategory1({ category }) {
   return (
@@ -10,9 +12,7 @@ function PackageCategory1({ category }) {
       <p className="text-center description">{category.description}</p>
       <div className="row">
         {category.packages.map((pkg, index) => (
-          <div className="col-md-3" key={index}>
-            <PackageCard1 packageInfo={pkg} />
-          </div>
+          <Variants></Variants>
         ))}
       </div>
     </div>

@@ -6,7 +6,7 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 
-export default function SurfCard() {
+export default function AntientCard() {
   const [likes, setLikes] = React.useState(15); // Initialize like count to 500
   const [shared, setShared] = React.useState(false); // Track if the button has been clicked
 
@@ -24,7 +24,7 @@ export default function SurfCard() {
       maxWidth: 450,
       position: 'relative',
       overflow: 'hidden',
-      backgroundImage: 'url(https://s3-alpha-sig.figma.com/img/e06a/68bc/485aae2fb7f597c6e539ce3c25179f8d?Expires=1726444800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=GFmP1dmxMfgcTVc1w-SWcSTtRa75AKCwJQEGlRd9WvayPUHbkGJA0ZVFmzDsr8rgPw9DJ9NR8pobg2QY225Mbyx~LcgpQlh91-~aGWEcFmMHJF90K97a3h3m-nXifXkzpOr3eLxnrhbO9zhmP8ZQsoyldffljjVCWJ3T9HsH54Ozed5iS4uCC-UkY~oKSNQ5U5ddb2s5MGEA5lZF6vguv-0MOhHZWaelMNTK4BX9ioG5dhWNwoiMfLuWR6WXVCnWqNo2S~a1K9oXlEG6hsSWqri92uxRLkqpm9kviNNbGfPwRoO0XPVEDoXy7AV9lNhUFMR1cfGiNgUCQwD29tacgg__)',
+      backgroundImage: 'url(https://s3-alpha-sig.figma.com/img/104b/a262/49ba13ccbb1817e2164fd042d0088eb3?Expires=1726444800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=DHnTK02nkEF4eBjgG5S1VkvESpPUjbsNg2uGdFAArBNlF0zTaYeUyz-VXwWkiK~CQJz~CxchHfWignBLepEbdLOgubzaX6okaNH2kmuJoJQG9Unp04j~wXHiTi8LsLlSx3qMDyw~ZOIKY83cNh22-2ZLXdA2AQUQaU9HDKZnKAhBdgWkYX7QnyUZ-YTCi5ygx5~6fcgMZzk8DmmZOo9WyZeSXBan4HSIZWygBf34Mpr8RaVwHAq6QzxSWpTv9Wc1O0DrjRfe0XlBQ~9DOWmEHFKkd27qYL5haEbcMYjf4V1Ctwn7DUJmNA~tHyv4gFLkxznm96Vcp3R0HH5uxH1rMg__)',
       backgroundSize: 'cover',  // Change to 'contain' to fit the image within the card
       backgroundPosition: '25',  // Adjust to 'top', 'bottom', or specific coordinates like '50% 50%'
       backgroundRepeat: 'no-repeat',
@@ -44,7 +44,7 @@ export default function SurfCard() {
         }}
       >
         <Typography variant="h4" component="div" color="white" >
-        Surfing
+        Antient Kingdoms
         </Typography>
         <Typography align='left' variant="h5" component="div" color="white">
            {likes} 

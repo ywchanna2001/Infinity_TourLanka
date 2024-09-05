@@ -6,8 +6,8 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 
-export default function CycleCard() {
-  const [likes, setLikes] = React.useState(50); // Initialize like count to 500
+export default function SummerCard() {
+  const [likes, setLikes] = React.useState(89); // Initialize like count to 500  
   const [shared, setShared] = React.useState(false); // Track if the button has been clicked
 
   // Function to handle the share button click
@@ -21,14 +21,14 @@ export default function CycleCard() {
   return (
     <Card
     sx={{
-      maxWidth: 300,
+      maxWidth: 450,
       position: 'relative',
       overflow: 'hidden',
-      backgroundImage: 'url(https://s3-alpha-sig.figma.com/img/0559/2840/cc468d7de57f7546bff53d4318f8e80e?Expires=1726444800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=EE~VaIZ3-6YJ-V0ptmoh81V4B9dzA0kUuTvQCTgDVZ87k~VPIRn00UXdMdqQP-n8g9VQAEhMnMHvaTkkqghe3mKijgPTKyf8W0MXa0yC3BxNNhxzI2yIp4TojryMYjjsh5hainWWa3rfy7NuHdbwL-bIo4jsjBLm9f-FvB99QwERpiCIFqXwhdgMk~pZ6vhglYoWMItdYpyv-~HqR5KdGP5VExA7fNS4ecV7A3zALw1WcFevbNn95g5LG3409MMdGpXP1B9bJOAz1AyubSyl83SyDyvfkQrLPnDUW6X7ByoI2fSMzsaSPxZUzp-jLxx9W8doseQDpD5nJNv7HPcl8w__)',
+      backgroundImage: 'url(https://s3-alpha-sig.figma.com/img/b1e6/af18/dadeb99a001c9c56ad378436e29dc35d?Expires=1726444800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=eYyfVUq9UabZhxcpEZMLE5GwvCXu4OTMy7rhaWLxuesFhpbw6bHZLZx1ta~N4KVGeFJbbKIgtxLxHf4KmoM-qoBedJGnP8wAeregn2K2NqK1cLF2Ml4FJxXoQuKG-y~X3XkYv~Mye08FrjKEPt0jSl~kYdZUZ82moZ6NKYSO-3ysI7AKGr9dV~hYXiiO9owhRNw~B4Eg-qVEicSOqq-I8VHaqxea5dzamVzn10KzG966LUQ4MMCqp~KafH-EZm4a4Afgy~O47akAq4eXC6CPqZSxUVHQWSol1C~2ymW6CfAc2Hz5dOZ5cMC8iDmXPEFkHp~aEWWgdAASZbqSHH6yig__)',
       backgroundSize: 'cover',  // Change to 'contain' to fit the image within the card
-      backgroundPosition: '25',  // Adjust to 'top', 'bottom', or specific coordinates like '50% 50%'
+      backgroundPosition: '95%',  // Adjust to 'top', 'bottom', or specific coordinates like '50% 50%'
       backgroundRepeat: 'no-repeat',
-      height: 300,
+      height: 200,
       display: 'flex',
       flexDirection: 'column' 
       }}
@@ -44,10 +44,10 @@ export default function CycleCard() {
         }}
       >
         <Typography variant="h4" component="div" color="white" >
-        Cycling
+        Summer Serenity
         </Typography>
-        <Typography variant="h5" component="div" color="white">
-           {likes} Likes
+        <Typography align='left' variant="h5" component="div" color="white">
+           {likes}
         </Typography>
       </CardContent>
       <CardActions

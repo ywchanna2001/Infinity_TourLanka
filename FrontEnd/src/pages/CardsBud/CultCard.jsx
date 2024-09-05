@@ -6,8 +6,8 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 
-export default function SurfCard() {
-  const [likes, setLikes] = React.useState(15); // Initialize like count to 500
+export default function CultCard() {
+  const [likes, setLikes] = React.useState(857); // Initialize like count to 500
   const [shared, setShared] = React.useState(false); // Track if the button has been clicked
 
   // Function to handle the share button click
@@ -24,7 +24,7 @@ export default function SurfCard() {
       maxWidth: 450,
       position: 'relative',
       overflow: 'hidden',
-      backgroundImage: 'url(https://s3-alpha-sig.figma.com/img/e06a/68bc/485aae2fb7f597c6e539ce3c25179f8d?Expires=1726444800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=GFmP1dmxMfgcTVc1w-SWcSTtRa75AKCwJQEGlRd9WvayPUHbkGJA0ZVFmzDsr8rgPw9DJ9NR8pobg2QY225Mbyx~LcgpQlh91-~aGWEcFmMHJF90K97a3h3m-nXifXkzpOr3eLxnrhbO9zhmP8ZQsoyldffljjVCWJ3T9HsH54Ozed5iS4uCC-UkY~oKSNQ5U5ddb2s5MGEA5lZF6vguv-0MOhHZWaelMNTK4BX9ioG5dhWNwoiMfLuWR6WXVCnWqNo2S~a1K9oXlEG6hsSWqri92uxRLkqpm9kviNNbGfPwRoO0XPVEDoXy7AV9lNhUFMR1cfGiNgUCQwD29tacgg__)',
+      backgroundImage: 'url(https://s3-alpha-sig.figma.com/img/956c/3402/8b8429dbc20d842e1aba6ac26901ea4f?Expires=1726444800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=o1WBl4ioMpTbrlTiB2gBXsaRwkLGpr6pvrdZLQlsBxdMscdK6QwLr7d5B4NPsBk2BdCsMjeudu4~-CdVN53KhYGraLKImcWX5W7VYvyvI5WeSDuwgsG3vFgaZfZg945s3Xi9~mXl01iGBPVVHR6ptjZV2yQ1HHKqFKkzaOct3VT25A4mYnZPO~e04MNucMDEF9~IBnSHT5qk-oYV5gzPcOLmF3Y6vpsA72vFJY9o--M3-ekuN9tep7pmi1foJ5J-2lBiNsEajWMzwRE9Vp2v6zUXTKzaCr-STVdvRfC6M0-xV8asQUj5SocKSQ2cI7VGGUrsTcvJsnLavpuOs3YIpQ__)',
       backgroundSize: 'cover',  // Change to 'contain' to fit the image within the card
       backgroundPosition: '25',  // Adjust to 'top', 'bottom', or specific coordinates like '50% 50%'
       backgroundRepeat: 'no-repeat',
@@ -44,10 +44,10 @@ export default function SurfCard() {
         }}
       >
         <Typography variant="h4" component="div" color="white" >
-        Surfing
+        Cultural Discoveries
         </Typography>
         <Typography align='left' variant="h5" component="div" color="white">
-           {likes} 
+           {likes}
         </Typography>
       </CardContent>
       <CardActions

@@ -6,8 +6,8 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 
-export default function SurfCard() {
-  const [likes, setLikes] = React.useState(15); // Initialize like count to 500
+export default function SecCard() {
+  const [likes, setLikes] = React.useState(578); // Initialize like count to 500
   const [shared, setShared] = React.useState(false); // Track if the button has been clicked
 
   // Function to handle the share button click
@@ -24,7 +24,7 @@ export default function SurfCard() {
       maxWidth: 450,
       position: 'relative',
       overflow: 'hidden',
-      backgroundImage: 'url(https://s3-alpha-sig.figma.com/img/e06a/68bc/485aae2fb7f597c6e539ce3c25179f8d?Expires=1726444800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=GFmP1dmxMfgcTVc1w-SWcSTtRa75AKCwJQEGlRd9WvayPUHbkGJA0ZVFmzDsr8rgPw9DJ9NR8pobg2QY225Mbyx~LcgpQlh91-~aGWEcFmMHJF90K97a3h3m-nXifXkzpOr3eLxnrhbO9zhmP8ZQsoyldffljjVCWJ3T9HsH54Ozed5iS4uCC-UkY~oKSNQ5U5ddb2s5MGEA5lZF6vguv-0MOhHZWaelMNTK4BX9ioG5dhWNwoiMfLuWR6WXVCnWqNo2S~a1K9oXlEG6hsSWqri92uxRLkqpm9kviNNbGfPwRoO0XPVEDoXy7AV9lNhUFMR1cfGiNgUCQwD29tacgg__)',
+      backgroundImage: 'url(https://s3-alpha-sig.figma.com/img/446b/c5c1/19b1278b7a97e41f262ff29a79255698?Expires=1726444800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=A3bjoXqdbkIISAil8D6EOKMtbCe00gvnUia~Kk8EyhP9gFCQ9pgPkZZjCt~1dn6Rk0XZ5H3kdfE6~af6ZAiqnBdeS-ZSmVkCSdwWhE~lOj6HDtqJUTka-Hp62R126QjN6bM9ePQYQAAFkfZEJfziN4LhFEBGqMvhI08YZsD8r1DkdBm6UpXKWsZr9mloVLTlE~7LwSb-A6vxAMSR3YquzfDoaCydET6ZR320mOHR9aIgHMQK56J66QutPZba6pdJ~oqIxZfcm6rstdiqILPQKRcYB6bARi03m0B6GNXLyI5VndkX884WLMAijZUcgPiyVY9k-ihF-FddVL~3xceW3g__)',
       backgroundSize: 'cover',  // Change to 'contain' to fit the image within the card
       backgroundPosition: '25',  // Adjust to 'top', 'bottom', or specific coordinates like '50% 50%'
       backgroundRepeat: 'no-repeat',
@@ -44,7 +44,7 @@ export default function SurfCard() {
         }}
       >
         <Typography variant="h4" component="div" color="white" >
-        Surfing
+        Scenic Less
         </Typography>
         <Typography align='left' variant="h5" component="div" color="white">
            {likes} 

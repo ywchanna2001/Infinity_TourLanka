@@ -6,6 +6,11 @@ import CycleCard from './Cards/CycleCard';
 import RaftingCard from './Cards/RaftingCard';
 import SurfCard from './Cards/SurfCard';
 import SafariCard from './Cards/SafariCard';
+import MonsCard from './SeaCard/MonsCard';
+import SummerCard from './SeaCard/SummerCard';
+import WinterCard from './SeaCard/WinterCard';
+import FestiCard from './CardsCul/FestiCard';
+import FestiFeverCard from './SeaCard/FestiFeverCard';
 
 
 const DemoPaper = styled(Paper)(({ theme }) => ({
@@ -17,13 +22,13 @@ const DemoPaper = styled(Paper)(({ theme }) => ({
   backgroundColor :'White',
 }));
 
-export default function Variants() {
+export default function VariantsSea() {
   return (
     <Stack direction="row" spacing={5}>
-      <DemoPaper square={false}><CycleCard/> </DemoPaper>
-      <DemoPaper square={false}><SafariCard/></DemoPaper>
-      <DemoPaper square={false}><SurfCard/></DemoPaper>
-      <DemoPaper square={false}><RaftingCard/></DemoPaper>
+      <DemoPaper square={false}><MonsCard></MonsCard> </DemoPaper>
+      <DemoPaper square={false}><SummerCard></SummerCard> </DemoPaper>
+      <DemoPaper square={false}><WinterCard></WinterCard> </DemoPaper>
+      <DemoPaper square={false}><FestiFeverCard></FestiFeverCard> </DemoPaper>
            
     </Stack>
   );

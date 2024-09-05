@@ -6,8 +6,8 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 
-export default function SurfCard() {
-  const [likes, setLikes] = React.useState(15); // Initialize like count to 500
+export default function MonsCard() {
+  const [likes, setLikes] = React.useState(650); // Initialize like count to 500
   const [shared, setShared] = React.useState(false); // Track if the button has been clicked
 
   // Function to handle the share button click
@@ -24,9 +24,9 @@ export default function SurfCard() {
       maxWidth: 450,
       position: 'relative',
       overflow: 'hidden',
-      backgroundImage: 'url(https://s3-alpha-sig.figma.com/img/e06a/68bc/485aae2fb7f597c6e539ce3c25179f8d?Expires=1726444800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=GFmP1dmxMfgcTVc1w-SWcSTtRa75AKCwJQEGlRd9WvayPUHbkGJA0ZVFmzDsr8rgPw9DJ9NR8pobg2QY225Mbyx~LcgpQlh91-~aGWEcFmMHJF90K97a3h3m-nXifXkzpOr3eLxnrhbO9zhmP8ZQsoyldffljjVCWJ3T9HsH54Ozed5iS4uCC-UkY~oKSNQ5U5ddb2s5MGEA5lZF6vguv-0MOhHZWaelMNTK4BX9ioG5dhWNwoiMfLuWR6WXVCnWqNo2S~a1K9oXlEG6hsSWqri92uxRLkqpm9kviNNbGfPwRoO0XPVEDoXy7AV9lNhUFMR1cfGiNgUCQwD29tacgg__)',
+      backgroundImage: 'url(https://s3-alpha-sig.figma.com/img/ac1e/b8de/b76b35256ebb36f7d657d7d137ce3922?Expires=1726444800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=RuQs09-GAGCJzpL2w4TZw7cASN9IIWTpplTxfj7a4v4b9Ndi5t8nQdITYVKOQYsnQnVWW8dZ8iWdsnSrhYY1JbtHboMtO8-rLzZUXdc2cJZm7pIFYWzXSnGXGa5vSRtycN5hQxVYb01~1rKKOeFthMH3PsSptjkScqHZMHbdLddCSgjkHvseDg2DRXGwB8mh2gHQv-rP7nNG~18cPGEQAV99Ymw~LzTbD1p5S7pOZFeaErrL7F2HGyy98Ckb5JIdVwmbSlnChKEfbd85G1nAC4XApzS0cpdhF37HV~lxXtILfz75XcYVaxqbcoRg-KmXylxFd-qDXoLcpZCFi12LlA__)',
       backgroundSize: 'cover',  // Change to 'contain' to fit the image within the card
-      backgroundPosition: '25',  // Adjust to 'top', 'bottom', or specific coordinates like '50% 50%'
+      backgroundPosition: '10%',  // Adjust to 'top', 'bottom', or specific coordinates like '50% 50%'
       backgroundRepeat: 'no-repeat',
       height: 200,
       display: 'flex',
@@ -44,16 +44,15 @@ export default function SurfCard() {
         }}
       >
         <Typography variant="h4" component="div" color="white" >
-        Surfing
+        Monsoon Magic
         </Typography>
-        <Typography align='left' variant="h5" component="div" color="white">
+                <Typography variant="h5" component="div" color="white" align='left'>
            {likes} 
         </Typography>
-      </CardContent>
-      <CardActions
+        <CardActions
         sx={{
           position: 'absolute',
-          bottom: 0,
+          bottom: 10,
           left: 0,
           right: 0,
           padding: '16px',
@@ -71,6 +70,8 @@ export default function SurfCard() {
           </Button>
         )}
       </CardActions>
+      </CardContent>
+      
     </Card>
   );
 }

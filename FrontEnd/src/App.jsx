@@ -8,8 +8,8 @@ function App() {
   return (
     <div className="App">
       <h1 className="text-center mt-4">Trending</h1>
+      <hr />
       <TrendingSection />
-      <Variants/>
     </div>
   );
 }

@@ -1,16 +1,16 @@
 import React from 'react';
-import PackageCard2 from './PackageCard2';
+import './PackageCategory1.css'; 
+import VariantsCul from './VariantsCul';
 
 function PackageCategory2({ category }) {
   return (
     <div className="mb-5">
       <h2 className="text-center mb-3">{category.title}</h2>
-      <p className="text-center">{category.description}</p>
+      {/* Added className 'description' for the description text */}
+      <p className="text-center description">{category.description}</p>
       <div className="row">
         {category.packages.map((pkg, index) => (
-          <div className="col-md-3" key={index}>
-            <PackageCard2 packageInfo={pkg} />
-          </div>
+          <VariantsCul></VariantsCul>
         ))}
       </div>
     </div>

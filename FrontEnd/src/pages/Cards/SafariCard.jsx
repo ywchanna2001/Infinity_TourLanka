@@ -21,14 +21,14 @@ export default function SafariCard() {
   return (
     <Card
     sx={{
-      maxWidth: 300,
+      maxWidth: 450,
       position: 'relative',
       overflow: 'hidden',
       backgroundImage: 'url(https://s3-alpha-sig.figma.com/img/f684/e485/e76f70a1ed6964edb0565520a7e96a6e?Expires=1726444800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=IhJY2uSHFmrNSRutZdVM7HUrXDk6odPZTm2rtYZYbv~~Ly4gjrjl0Me1DxrKG0dNSU4ozTTXDGy6W4-3yhE3F6gSC5gPWyZjpROJgLnqDQDWG1BrztVbAy0AItuAUNOYMOCU4sxkuL-6cYvMMzDLXmQZUyti2UkNyVLlHttMB14QYBfwDNjOkMbXC5Xr2mbrqCN2k52p2Ei2glZ5T58j3u8yQJyN8KY1S1y6alzwU~UMmrGgnIAykvvOdwfnUsDZ9NCVmZiW-wk-FpHg15eFJmY56-W68-a-Bo36K3zMQ2G~5y-jGQpXI~GvweomfAlkYPaSE8tILD6MyeXbRRnIBg__)',
       backgroundSize: 'cover',  // Change to 'contain' to fit the image within the card
       backgroundPosition: '25',  // Adjust to 'top', 'bottom', or specific coordinates like '50% 50%'
       backgroundRepeat: 'no-repeat',
-      height: 300,
+      height: 200,
       display: 'flex',
       flexDirection: 'column' 
       }}
@@ -46,8 +46,8 @@ export default function SafariCard() {
         <Typography variant="h4" component="div" color="white" >
         Safari
         </Typography>
-        <Typography variant="h5" component="div" color="white">
-           {likes} Likes
+        <Typography align='left' variant="h5" component="div" color="white">
+           {likes}
         </Typography>
       </CardContent>
       <CardActions

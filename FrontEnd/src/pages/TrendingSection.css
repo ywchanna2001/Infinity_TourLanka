@@ -5,12 +5,13 @@
     padding: 20px 0;
 }
 .description {
-    color: #007bff; /* Change this to your desired color */
+    color: #0F6466; /* Change this to your desired color */
     font-size: 16px; /* Adjust the font size if needed */
   }
   
 /* Ensuring the container uses the full width of the column */
 .trending-category {
+    
     display: flex;
     justify-content: center; /* Center horizontally */
     align-items: center; /* Center vertically */
@@ -21,6 +22,7 @@
 }
 
 .package-card-container {
+    
     display: flex;
     flex-wrap: wrap; /* Allows items to wrap on small screens */
     justify-content: center; /* Centers the items within the flex container */
@@ -30,7 +32,7 @@
 .package-card {
     width: 100%;
     max-width: 280px; /* Max width to maintain card size consistency */
-    box-shadow: 0 4px 8px rgba(9, 211, 76, 0.1);
+    box-shadow: 0 4px 8px rgba(78, 16, 248, 0.1);
     border-radius: 8px;
     overflow: hidden;
     transition: transform 0.3s;

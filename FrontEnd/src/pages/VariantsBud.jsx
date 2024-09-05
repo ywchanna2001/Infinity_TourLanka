@@ -6,6 +6,10 @@ import CycleCard from './Cards/CycleCard';
 import RaftingCard from './Cards/RaftingCard';
 import SurfCard from './Cards/SurfCard';
 import SafariCard from './Cards/SafariCard';
+import EcoCard from './CardsBud/EcoCard';
+import EssCard from './CardsBud/EssCard';
+import CultCard from './CardsBud/CultCard';
+import SecCard from './CardsBud/SecCard';
 
 
 const DemoPaper = styled(Paper)(({ theme }) => ({
@@ -17,13 +21,13 @@ const DemoPaper = styled(Paper)(({ theme }) => ({
   backgroundColor :'White',
 }));
 
-export default function Variants() {
+export default function VariantsBud() {
   return (
     <Stack direction="row" spacing={5}>
-      <DemoPaper square={false}><CycleCard/> </DemoPaper>
-      <DemoPaper square={false}><SafariCard/></DemoPaper>
-      <DemoPaper square={false}><SurfCard/></DemoPaper>
-      <DemoPaper square={false}><RaftingCard/></DemoPaper>
+      <DemoPaper square={false}><EssCard></EssCard> </DemoPaper>
+      <DemoPaper square={false}><EcoCard></EcoCard> </DemoPaper>
+      <DemoPaper square={false}><CultCard></CultCard> </DemoPaper>
+      <DemoPaper square={false}><SecCard></SecCard> </DemoPaper>
            
     </Stack>
   );

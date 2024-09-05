@@ -6,8 +6,8 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 
-export default function SurfCard() {
-  const [likes, setLikes] = React.useState(15); // Initialize like count to 500
+export default function TempleCard() {
+  const [likes, setLikes] = React.useState(650); // Initialize like count to 500
   const [shared, setShared] = React.useState(false); // Track if the button has been clicked
 
   // Function to handle the share button click
@@ -24,9 +24,9 @@ export default function SurfCard() {
       maxWidth: 450,
       position: 'relative',
       overflow: 'hidden',
-      backgroundImage: 'url(https://s3-alpha-sig.figma.com/img/e06a/68bc/485aae2fb7f597c6e539ce3c25179f8d?Expires=1726444800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=GFmP1dmxMfgcTVc1w-SWcSTtRa75AKCwJQEGlRd9WvayPUHbkGJA0ZVFmzDsr8rgPw9DJ9NR8pobg2QY225Mbyx~LcgpQlh91-~aGWEcFmMHJF90K97a3h3m-nXifXkzpOr3eLxnrhbO9zhmP8ZQsoyldffljjVCWJ3T9HsH54Ozed5iS4uCC-UkY~oKSNQ5U5ddb2s5MGEA5lZF6vguv-0MOhHZWaelMNTK4BX9ioG5dhWNwoiMfLuWR6WXVCnWqNo2S~a1K9oXlEG6hsSWqri92uxRLkqpm9kviNNbGfPwRoO0XPVEDoXy7AV9lNhUFMR1cfGiNgUCQwD29tacgg__)',
+      backgroundImage: 'url(https://s3-alpha-sig.figma.com/img/e085/f29b/43b9ec136c89d83504ef3a5039f1346c?Expires=1726444800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=bCo4gZcMVU0JNGNL1qIiwyuhD1ADXHoVDSum~~VdFpccRGL18rREEj7uJ~pVkQLcsjPQdO48a7g1dfQX2WxwcV8b7dJWsyQBO1gR8ynh8vItNqT8RKW02jMXVSdNd-Yxzh2QRhbLKCCRuUeDqsuKv6QPnm-53tlPQ7eLNgZd4OBVyVQtG2B1BtC2lN73C765tzEVxyoS7CKBNRJFFTTQl1MLuztLQbDpfEi2keV7rAFrn5sGd8u9FPk0fEn71YJc3newALPwCQ6i4sY8WEO5KLxvZ0fl0cNDIreZS52wBOw8YnkIxqLVkaY5xCNDMkrBKAtCC2duBNuombCQ0rDGnw__)',
       backgroundSize: 'cover',  // Change to 'contain' to fit the image within the card
-      backgroundPosition: '25',  // Adjust to 'top', 'bottom', or specific coordinates like '50% 50%'
+      backgroundPosition: '10%',  // Adjust to 'top', 'bottom', or specific coordinates like '50% 50%'
       backgroundRepeat: 'no-repeat',
       height: 200,
       display: 'flex',
@@ -44,16 +44,15 @@ export default function SurfCard() {
         }}
       >
         <Typography variant="h4" component="div" color="white" >
-        Surfing
+        Temple Trails
         </Typography>
-        <Typography align='left' variant="h5" component="div" color="white">
+                <Typography variant="h5" component="div" color="white" align='left'>
            {likes} 
         </Typography>
-      </CardContent>
-      <CardActions
+        <CardActions
         sx={{
           position: 'absolute',
-          bottom: 0,
+          bottom: 10,
           left: 0,
           right: 0,
           padding: '16px',
@@ -71,6 +70,8 @@ export default function SurfCard() {
           </Button>
         )}
       </CardActions>
+      </CardContent>
+      
     </Card>
   );
 }

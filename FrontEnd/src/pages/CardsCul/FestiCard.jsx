@@ -6,8 +6,8 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 
-export default function SurfCard() {
-  const [likes, setLikes] = React.useState(15); // Initialize like count to 500
+export default function FestiCard() {
+  const [likes, setLikes] = React.useState(89); // Initialize like count to 500  
   const [shared, setShared] = React.useState(false); // Track if the button has been clicked
 
   // Function to handle the share button click
@@ -24,9 +24,9 @@ export default function SurfCard() {
       maxWidth: 450,
       position: 'relative',
       overflow: 'hidden',
-      backgroundImage: 'url(https://s3-alpha-sig.figma.com/img/e06a/68bc/485aae2fb7f597c6e539ce3c25179f8d?Expires=1726444800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=GFmP1dmxMfgcTVc1w-SWcSTtRa75AKCwJQEGlRd9WvayPUHbkGJA0ZVFmzDsr8rgPw9DJ9NR8pobg2QY225Mbyx~LcgpQlh91-~aGWEcFmMHJF90K97a3h3m-nXifXkzpOr3eLxnrhbO9zhmP8ZQsoyldffljjVCWJ3T9HsH54Ozed5iS4uCC-UkY~oKSNQ5U5ddb2s5MGEA5lZF6vguv-0MOhHZWaelMNTK4BX9ioG5dhWNwoiMfLuWR6WXVCnWqNo2S~a1K9oXlEG6hsSWqri92uxRLkqpm9kviNNbGfPwRoO0XPVEDoXy7AV9lNhUFMR1cfGiNgUCQwD29tacgg__)',
+      backgroundImage: 'url(https://s3-alpha-sig.figma.com/img/93e3/d4f3/67de3577262cba0fe6ccae72bc634495?Expires=1726444800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=kNuiDf-bVG8wGlIL5b-IJE9Pf7dS3X4JjBVkcFttDBL-ztzNrSOj4RBzHAiGlRXvlvSAPsU7GJgcX7ZBedIYeH28kYXgwIRs86WaI7MgSsqoBTUXCXL8CoJqGnNnviBzoO1QTLTtWzcSm64pq1gLeI2IimiVRCp64zDjxkdB-Irqr70FiQwSOnywOUUK1EaCE~pgB~wW1DwYC0y2UaOazCutmEjw~9P-q8n-QfqajKWV3BQj1KouU~MJyOIE0o6LKHP2ncET42mXlNrAyLdAd02mR1C9kAz-JT8pAoqUc85SO8Fqsot3ikfXk3gEFXZuXzMwBiKwoEJFOGR5M0O~RA__)',
       backgroundSize: 'cover',  // Change to 'contain' to fit the image within the card
-      backgroundPosition: '25',  // Adjust to 'top', 'bottom', or specific coordinates like '50% 50%'
+      backgroundPosition: '95%',  // Adjust to 'top', 'bottom', or specific coordinates like '50% 50%'
       backgroundRepeat: 'no-repeat',
       height: 200,
       display: 'flex',
@@ -44,10 +44,10 @@ export default function SurfCard() {
         }}
       >
         <Typography variant="h4" component="div" color="white" >
-        Surfing
+        Festivals & Celebrations
         </Typography>
         <Typography align='left' variant="h5" component="div" color="white">
-           {likes} 
+           {likes}
         </Typography>
       </CardContent>
       <CardActions
