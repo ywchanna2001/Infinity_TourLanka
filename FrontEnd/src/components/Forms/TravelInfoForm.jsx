@@ -496,12 +496,29 @@ const TravelInfoForm = () => {
 
         {/* Buttons */}
         <Box mt={4} display="flex" justifyContent="space-between">
-          <Button variant="contained" color="primary" onClick={() => handleNavigate('/VisaProcessingPersonal')}>
+          
+          
+          <Button
+            variant="contained"
+            sx={{ backgroundColor: "#006666", color: "white" }}
+            onClick={() => handleNavigate("/VisaProcessingPersonal")}
+          >
             Back
           </Button>
-          <Button variant="contained" color="primary" type="submit">
+
+          <Button
+            type="submit"
+            variant="contained"
+            sx={{
+              backgroundColor: "#006666",
+              color: "white",
+              marginLeft: "auto",
+            }}
+          >
             Save and Continue
           </Button>
+
+
         </Box>
       </Box>
     </Box>

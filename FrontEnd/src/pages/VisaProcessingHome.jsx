@@ -8,9 +8,6 @@ import Wallet from '../assets/Images/VisaProcessing/wallet.png'
 import { useNavigate } from 'react-router-dom';
 
 
-// import Navbar from '../Navbar';
-// import Footer from ;
-
 function VisaProcessing() {
 
   const navigate = useNavigate();
