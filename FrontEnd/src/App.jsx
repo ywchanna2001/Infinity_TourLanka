@@ -19,6 +19,7 @@ import Header from './assets/components/Header';
 // import theme from './utils/Theme.jsx'; // Import custom theme
 import FeatureCard from './components/FeatureCard.jsx';
 import Login from './pages/Login.jsx';
+import VisaProcessingPaymentSuccessful from './pages/VisaProcessingPaymentSuccessful.jsx';
 
 function App() {
   return (
@@ -39,6 +40,7 @@ function App() {
             {/* Visa Processing Routes */}
              
             <Route path="/VisaProcessingPayment" element={<VisaProcessingPayment />} />  
+            <Route path="/VisaProcessingPaymentSuccessful" element={<VisaProcessingPaymentSuccessful />} /> 
             
 
             {/* Admin dashboard routes */}
