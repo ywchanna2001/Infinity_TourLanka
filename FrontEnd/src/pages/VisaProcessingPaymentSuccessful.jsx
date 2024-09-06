@@ -80,7 +80,7 @@ function VisaProcessingPaymentSuccessful() {
             text="Back to Home Page"
             backgroundColor="#0F6466"
             width="10rem"
-            onClick={() => navigate("/")}
+            onClick={() => navigate("/Home")}
           />
         </div>
       </div>
