@@ -20,7 +20,7 @@ function VisaProcessingForm() {
   const navigate = useNavigate();
 
   // Initialize formData with values from localStorage if available
-  const initialFormData = JSON.parse(localStorage.getItem("visaFormData")) || {
+  const [formData, setFormData] = useState({
     prefix: "",
     firstName: "",
     middleName: "",
@@ -47,18 +47,10 @@ function VisaProcessingForm() {
     mothersName: "",
     mothersCountryOfBirth: "",
     mothersNationality: "",
-  };
+  });
 
-  const [formData, setFormData] = useState(initialFormData);
   const [errors, setErrors] = useState({});
 
-  useEffect(() => {
-    // Load form data from localStorage when the component mounts
-    const savedData = JSON.parse(localStorage.getItem("visaFormData"));
-    if (savedData) {
-      setFormData(savedData);
-    }
-  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();

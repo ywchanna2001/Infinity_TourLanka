@@ -64,3 +64,32 @@ const countries = [
     "American", "Uruguayan", "Uzbekistani", "Vanuatuan", "Vatican", "Venezuelan", "Vietnamese",
     "Yemeni", "Zambian", "Zimbabwean"
 ];
+
+
+
+prefix: "",
+    firstName: "",
+    middleName: "",
+    lastName: "",
+    dateOfBirth: "",
+    religion: "",
+    gender: "",
+    maritalStatus: "",
+    countryOfBirth: "",
+    cityOfBirth: "",
+    presentAddress: "",
+    countryOfResidence: "",
+    postalCode: "",
+    mobileNumber: "",
+    email: "",
+    educationLevel: "",
+    fieldOfStudy: "",
+    occupation: "",
+    companyName: "",
+    companyAddress: "",
+    fathersName: "",
+    fathersCountryOfBirth: "",
+    fathersNationality: "",
+    mothersName: "",
+    mothersCountryOfBirth: "",
+    mothersNationality: "",

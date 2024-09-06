@@ -43,13 +43,17 @@ Navigate to Project Directory: Open your terminal or command prompt and navigate
 
 1) first you need to create virtual environment using this code : python -m venv .venv
 
-2) Activate Virtual Environment using: .venv\Scripts\activate      For Windows .\venv\bin\activate # For Linux/Mac
+2) Activate Virtual Environment using: 
+      # For Windows : .venv\Scripts\activate    
+      # For Linux/Mac : .\venv\bin\activate
 
-3) You ned to install requirements.txt file using this code : pip install -r requirements.txt
+3) You need to install requirements.txt file  : 
+      # using this code : pip install -r requirements.txt
 
-4) run the program using: uvicorn app.main:app --reload
+4) run the program using: 
+      # using this code : uvicorn app.main:app --reload
 
-Now you run the backend server.
+Now you run can the backend server.
 
 # Usage
 Open your browser and navigate to http://localhost:8000 to access the application.
