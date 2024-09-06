@@ -190,41 +190,41 @@ const TravelInfoForm = () => {
 
           </Grid>
           <Grid item xs={12} sm={4}>
-            <TextField
-              select
-              label="Issuing country"
-              fullWidth
-              variant="filled"
-              size="small"
-              required
-              name="issuingCountry"
-              value={formData.issuingCountry}
-              onChange={handleInputChange}
-              focused
-              color="primary"
-              SelectProps={{
-                MenuProps: {
-                  PaperProps: {
-                    sx: {
-                      bgcolor: 'black', // Background color for the entire dropdown
-                      '& .MuiMenuItem-root': {
-                        color: 'white', // Text color for each dropdown option
-                      },
-                      '& .MuiMenuItem-root:hover': {
-                        bgcolor: 'grey', // Background color on hover
-                      },
-                    },
-                  },
-                },
-              }}
-            >
-              
-              {countries.map((country) => (
-                <MenuItem key={country} value={country}>
-                  {country}
-                </MenuItem>
-              ))}
-            </TextField>
+          <TextField
+  select
+  label="Issuing country"
+  fullWidth
+  variant="filled"
+  size="small"
+  required
+  name="issuingCountry"
+  value={formData.issuingCountry}
+  onChange={handleInputChange}
+  focused
+  color="primary"
+  SelectProps={{
+    MenuProps: {
+      PaperProps: {
+        sx: {
+          bgcolor: 'black', // Background color for the entire dropdown
+          '& .MuiMenuItem-root': {
+            color: 'white', // Text color for each dropdown option
+          },
+          '& .MuiMenuItem-root:hover': {
+            bgcolor: 'grey', // Background color on hover
+          },
+        },
+      },
+    },
+  }}
+>
+  {countries.map((country) => (
+    <MenuItem key={country} value={country}>
+      {country}
+    </MenuItem>
+  ))}
+</TextField>
+
 
 
             
@@ -564,7 +564,7 @@ const TravelInfoForm = () => {
           <Button
             variant="contained"
             sx={{ backgroundColor: "#006666", color: "white" }}
-            onClick={() => handleNavigate("/VisaProcessingPersonal")}
+            onClick={() => handleNavigate("/VisaProcessingTravel")}
           >
             Back
           </Button>
@@ -577,7 +577,7 @@ const TravelInfoForm = () => {
               color: "white",
               marginLeft: "auto",
             }}
-            onClick={() => handleNavigate("/VisaProcessingUpload")}
+            
           >
             Save and Continue
           </Button>

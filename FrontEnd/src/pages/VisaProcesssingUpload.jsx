@@ -306,7 +306,7 @@ function VisaProcessingUpload() {
             color: "white",
             mb: isSmallScreen ? "16px" : "0",
           }}
-          onClick={() => navigate("/VisaProcessingPersonal")}
+          onClick={() => navigate("/VisaProcessingTravel")}
         >
           Back
         </Button>
@@ -319,7 +319,8 @@ function VisaProcessingUpload() {
             color: "white",
             marginLeft: "auto",
           }}
-          onClick={() => navigate("/VisaProcessingPayment")}
+          onClick={handleSubmit}
+          
         >
           Save and Continue
         </Button>
