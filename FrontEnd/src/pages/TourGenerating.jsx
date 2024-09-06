@@ -197,9 +197,18 @@ const TripPackageBanner = () => {
       {/* Trending Section */}
       <Container maxWidth="lg">
         <div>
-        <Typography variant="h5" component="h2" gutterBottom sx={{fontSize:50,fontWeight: 800,color: '#006666' }}>
+        
+        <Typography variant="h5" component="h2" gutterBottom sx={{fontSize:50,fontWeight: 800,color: '#006666',marginTop:10 }}>
           Trending
         </Typography>
+        <Divider
+      
+      sx={{ 
+        marginTop: 2,
+         borderColor: 'black', 
+         color: 'black' 
+        }}
+    ></Divider>
         <Box display="flex" justifyContent="center" textAlign="center">
   <Typography variant="h6" component="h3" gutterBottom sx={{fontSize:30,fontWeight: 800,color: '#006666' }}>
     Adventure Packages
