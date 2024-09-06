@@ -284,3 +284,4 @@ def get_applicant_details(user_id: str, current_user: User):
     }
 
     return applicant_data
+
