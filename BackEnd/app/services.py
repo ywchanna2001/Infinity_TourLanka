@@ -368,6 +368,7 @@ def send_visa_application(user_id: str, current_user: User):
         "firstName": application.get("firstName", ""),
         "lastName": application.get("lastName", ""),
         "personal_info_id": application.get("personal_info_id", ""),
+        "email": application.get("email", ""),
     }
     return applicant_data
 
