@@ -1,4 +1,4 @@
-# TraveApp Project
+## TraveApp Project Backend
 
 This is a Travelapp project using fastapi and mongodb for backend.
 
@@ -39,8 +39,11 @@ Then you want to go the mongodb atlas using above link and establsh the connecti
 
 # How to run
 
-Navigate to Project Directory: Open your terminal or command prompt and navigate to the directory where your Python project and virtual environment are located.
-
+Navigate to Project Directory: Open your terminal or command prompt and navigate to the directory where our Python project located.
+  type: cd Backend
+ 
+ Then 
+ 
 1) first you need to create virtual environment using this code : python -m venv .venv
 
 2) Activate Virtual Environment using: 
@@ -58,3 +61,4 @@ Now you run can the backend server.
 # Usage
 Open your browser and navigate to http://localhost:8000 to access the application.
 navigate the http://localhost:8000/docs  you can see your endpoints.
+
