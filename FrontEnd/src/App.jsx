@@ -2,6 +2,22 @@ import React from 'react';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { ThemeProvider } from '@mui/material/styles';
 import '@fontsource/poppins'; 
+import VisaProcessingHome from './pages/VisaProcessingHome';
+import VisaProcessingPersonal from './pages/VisaProcessingPersonal';
+import VisaProcessingTravel from './pages/VisaProcessingTravel';
+import VisaProcessingUpload from './pages/VisaProcessingUpload.jsx';
+
+
+import VisaProcessingPayment from './pages/VisaProcessingPayment';
+import VisaProcessingPaymentSuccessful from './pages/VisaProcessingPaymentSuccessful';
+import FeatureCard from './components/FeatureCard';
+import VisaRequestedTable from './components/VisaRequestedTable';
+import VisaRejectTable from './components/VisaRejectTable';
+import VisaApproveTable from './components/VisaApproveTable';
+import Login from './pages/Login';
+import Home from './pages/Home';
+
+
 
 import TourGenerating from './pages/TourGenerating';
 import Footer from './components/Footer';
