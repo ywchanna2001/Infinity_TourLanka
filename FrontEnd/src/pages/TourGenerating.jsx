@@ -8,6 +8,7 @@ import Adventure from '../assets/Images/TourGeneration/Adventure.png';
 import Rafting from '../assets/Images/TourGeneration/Rafting.png';
 import Safari from '../assets/Images/TourGeneration/Safari.png';
 import Surfing from '../assets/Images/TourGeneration/Surfing.png';
+import '@fontsource/poppins';
 
 const TripPackageBanner = () => {
   const slides = [
@@ -35,7 +36,7 @@ const TripPackageBanner = () => {
     <>
       {/* Background Image Container */}
       <div
-        className="relative w-full h-[1000px] bg-cover bg-center"
+        className="relative w-full h-[950px] bg-cover bg-center"
         style={{ backgroundImage: `url(${slides[currentSlide].url})` }}
       >
         <Container
@@ -47,7 +48,7 @@ const TripPackageBanner = () => {
               <Typography
                 variant="h4"
                 component="h1"
-                style={{ textAlign: 'right', alignSelf: 'flex-center', fontWeight: 'bold' }}
+                style={{ textAlign: 'right', alignSelf: 'flex-center', fontWeight: 'bold',fontSize:50 }}
               >
                 PLAN YOUR TRIP PACKAGE WITH AI
               </Typography>
@@ -146,7 +147,7 @@ const TripPackageBanner = () => {
     >Preferences</Divider>
     <Grid container spacing={2}justifyContent="space-between" alignItems="center">
       <Grid item xs={4}>
-        <TextField label="Accommodation Type" variant="outlined" small required />
+        <TextField label="Accommodation Type" variant="outlined" small required  />
       </Grid>
       <Grid item xs={4}>
         <TextField label="Transportation" variant="outlined" small required />
@@ -195,31 +196,122 @@ const TripPackageBanner = () => {
 
       {/* Trending Section */}
       <Container maxWidth="lg">
-        <Typography variant="h5" component="h2" gutterBottom>
+        <div>
+        <Typography variant="h5" component="h2" gutterBottom sx={{fontSize:50,fontWeight: 800,color: '#006666' }}>
           Trending
         </Typography>
-        <Typography variant="h6" component="h3" gutterBottom>
-          Adventure Packages
-        </Typography>
-
+        <Box display="flex" justifyContent="center" textAlign="center">
+  <Typography variant="h6" component="h3" gutterBottom sx={{fontSize:30,fontWeight: 800,color: '#006666' }}>
+    Adventure Packages
+  </Typography>
+</Box>
+<Typography variant="h6" component="h3" gutterBottom sx={{fontSize:20,fontWeight: 600,color: '#006666' }}>
+Explore Sri Lanka’s most thrilling adventures with our top-rated packages, 
+loved by travelers for their blend of excitement and stunning scenery. 
+From mountain treks to underwater exploration,these tried-and-true experiences
+promise unforgettable moments for every adventurer. 
+  </Typography>
         <Grid container spacing={2} justifyContent="center" padding={2}>
-          <Card>
+        <Card sx={{ padding: 0, margin: 0 }}>
             <CardMedia component="img" height="140" image={Adventure} alt="Adventure" />
-            <CardContent>{/* Card content goes here */}</CardContent>
+            
           </Card>
-          <Card>
+          <Card sx={{ padding: 0, margin: 0 }}>
             <CardMedia component="img" height="140" image={Rafting} alt="Rafting" />
-            <CardContent>{/* Card content goes here */}</CardContent>
           </Card>
-          <Card>
+          <Card sx={{ padding: 0, margin: 0 }}>
             <CardMedia component="img" height="140" image={Safari} alt="Safari" />
-            <CardContent>{/* Card content goes here */}</CardContent>
           </Card>
-          <Card>
+          <Card sx={{ padding: 0, margin: 0 }}>
             <CardMedia component="img" height="140" image={Surfing} alt="Surfing" />
-            <CardContent>{/* Card content goes here */}</CardContent>
           </Card>
         </Grid>
+        </div>
+        <div>
+        <Box display="flex" justifyContent="center" textAlign="center">
+  <Typography variant="h6" component="h3" gutterBottom sx={{fontSize:30,fontWeight: 800,color: '#006666' }}>
+  Cultural and Historical Packages
+  </Typography>
+</Box>
+<Typography variant="h6" component="h3" gutterBottom sx={{fontSize:20,fontWeight: 600,color: '#006666' }}>
+Immerse yourself in Sri Lanka’s rich cultural heritage with our top-rated packages, cherished by travelers
+ for their deep connection to the island’s history and traditions. From ancient temples to vibrant festivals,
+these thoughtfully curated experiences offer a journey through the heart of Sri Lanka’s diverse and 
+captivating culture.
+  </Typography>
+        <Grid container spacing={2} justifyContent="center" padding={2}>
+        <Card sx={{ padding: 0, margin: 0 }}>
+            <CardMedia component="img" height="140" image={Adventure} alt="Adventure" />
+            
+          </Card>
+          <Card sx={{ padding: 0, margin: 0 }}>
+            <CardMedia component="img" height="140" image={Rafting} alt="Rafting" />
+          </Card>
+          <Card sx={{ padding: 0, margin: 0 }}>
+            <CardMedia component="img" height="140" image={Safari} alt="Safari" />
+          </Card>
+          <Card sx={{ padding: 0, margin: 0 }}>
+            <CardMedia component="img" height="140" image={Surfing} alt="Surfing" />
+          </Card>
+        </Grid>
+        </div>
+        
+        <div>
+        <Box display="flex" justifyContent="center" textAlign="center">
+  <Typography variant="h6" component="h3" gutterBottom sx={{fontSize:30,fontWeight: 800,color: '#006666' }}>
+  Budget-Friendly Packages
+  </Typography>
+</Box>
+<Typography variant="h6" component="h3" gutterBottom sx={{fontSize:20,fontWeight: 600,color: '#006666' }}>
+Experience the magic of Sri Lanka with our Budget packages, designed for travelers seeking unforgettable adventures
+ without overspending. This value-packed option offers a perfect blend of cultural highlights, scenic beauty, and 
+ local experiences, all while keeping your wallet happy. Enjoy a thoughtfully curated journey that ensures you make 
+ the most of your trip, all at a fraction of the cost.
+  </Typography>
+        <Grid container spacing={2} justifyContent="center" padding={2}>
+        <Card sx={{ padding: 0, margin: 0 }}>
+            <CardMedia component="img" height="140" image={Adventure} alt="Adventure" />
+            
+          </Card>
+          <Card sx={{ padding: 0, margin: 0 }}>
+            <CardMedia component="img" height="140" image={Rafting} alt="Rafting" />
+          </Card>
+          <Card sx={{ padding: 0, margin: 0 }}>
+            <CardMedia component="img" height="140" image={Safari} alt="Safari" />
+          </Card>
+          <Card sx={{ padding: 0, margin: 0 }}>
+            <CardMedia component="img" height="140" image={Surfing} alt="Surfing" />
+          </Card>
+        </Grid>
+        </div>
+
+        <div>
+        <Box display="flex" justifyContent="center" textAlign="center">
+  <Typography variant="h6" component="h3" gutterBottom sx={{fontSize:30,fontWeight: 800,color: '#006666' }}>
+  Seasonal Packages
+  </Typography>
+</Box>
+<Typography variant="h6" component="h3" gutterBottom sx={{fontSize:20,fontWeight: 600,color: '#006666' }}>
+Explore Sri Lanka throughout the year with our Seasonal Escapes packages. Whether it’s the vibrant summer 
+beaches, serene winter retreats, or the enchanting monsoon rains, each package offers a unique experience 
+tailored to the season, ensuring you enjoy the island’s beauty in every weather.
+  </Typography>
+        <Grid container spacing={2} justifyContent="center" padding={2}>
+        <Card sx={{ padding: 0, margin: 0 }}>
+            <CardMedia component="img" height="140" image={Adventure} alt="Adventure" />
+            
+          </Card>
+          <Card sx={{ padding: 0, margin: 0 }}>
+            <CardMedia component="img" height="140" image={Rafting} alt="Rafting" />
+          </Card>
+          <Card sx={{ padding: 0, margin: 0 }}>
+            <CardMedia component="img" height="140" image={Safari} alt="Safari" />
+          </Card>
+          <Card sx={{ padding: 0, margin: 0 }}>
+            <CardMedia component="img" height="140" image={Surfing} alt="Surfing" />
+          </Card>
+        </Grid>
+        </div>
       </Container>
     </>
   );
