@@ -18,7 +18,7 @@ import Footer from './assets/components/Footer';
 import Header from './assets/components/Header';
 import FeatureCard from './components/FeatureCard.jsx';
 import Login from './components/Login.jsx';
-import Signup from './components/Signup.jsx';
+// import LandingPage from './pages/LandingPage .jsx';
 
 function App() {
   return (
@@ -36,6 +36,8 @@ function App() {
             <Route path="/VisaRejected" element={<VisaRejectTable title="Rejected visa" />} />
             <Route path="/VisaApproved" element={<VisaApproveTable title="Approved visa" />} />
             <Route path="/Login" element={<Login />} />
+            {/* <Route path="/LandingPage" element={<LandingPage />} /> */}
+            
           </Route>
         </Routes>
       </BrowserRouter>
@@ -63,6 +65,7 @@ function Layout() {
         <Route path="/VisaRejected" element={<VisaRejectTable title="Rejected visa" />} />
         <Route path="/VisaApproved" element={<VisaApproveTable title="Approved visa" />} />
         <Route path="/Login" element={<Login />} />
+        {/* <Route path="/LandingPage" element={<LandingPage />} /> */}
         {/* <Route path="/signup" element={<Signup />} /> */}
       </Routes>
 
