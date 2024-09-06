@@ -19,7 +19,8 @@ function VisaProcessing() {
   return (
     <div style={{ 
       backgroundColor: '#ffffff', 
-      minHeight: '100vh' 
+      minHeight: '100vh', 
+      
     }}>
       
 
