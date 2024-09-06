@@ -83,7 +83,7 @@ const Login = () => {
         if (data.user_email === "admin@gmail.com") {
           navigate('/AdminDashboard');
         } else {
-          navigate('/VisaProcessingHome');
+          navigate('/Home');
         }
       } else {
         setApiError(data.detail || 'An error occurred');

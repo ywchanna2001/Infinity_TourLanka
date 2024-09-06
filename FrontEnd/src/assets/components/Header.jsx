@@ -20,13 +20,13 @@ const Header = () => {
             />
         </div>
         <div className="flex space-x-4">
-          <Link to="/" className="text-white hover:text-gray-200">
+          <Link to="/Home" className="text-white hover:text-gray-200">
             Home
           </Link>
-          <Link to="/visa" className="text-white hover:text-gray-200">
+          <Link to="/VisaProcessingHome" className="text-white hover:text-gray-200">
             Visa
           </Link>
-          <Link to="/tours" className="text-white hover:text-gray-200">
+          <Link to="/TourGenerating" className="text-white hover:text-gray-200">
             Tours
           </Link>
           <Link to="/security" className="text-white hover:text-gray-200">
