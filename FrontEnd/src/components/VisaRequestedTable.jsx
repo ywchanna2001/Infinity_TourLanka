@@ -167,7 +167,12 @@ function VisaRequestedTable(props) {
                                     <StyledTableRow key={applicant.user_id}>
                                         <StyledTableCell align="center">{applicant.user_id}</StyledTableCell>
                                         <StyledTableCell align="center">{`${applicant.firstName} ${applicant.lastName}`}</StyledTableCell>
-                                        <StyledTableCell align="center">{applicant.risky_status}</StyledTableCell>
+                                        <StyledTableCell align="center">
+<button 
+  className="more_details_btn_2" 
+  style={{ backgroundColor: applicant.risky_status === 'Yes' ? 'red' : 'green' }}>
+  Check Risk
+</button></StyledTableCell>
                                         <StyledTableCell align="center">
                                         <button className="more_details_btn" onClick={() => openModal(applicant.user_id)}>View Details</button>
                                         </StyledTableCell>
@@ -247,7 +252,7 @@ function VisaRequestedTable(props) {
         <div className="image-container">
           <h4>Passport Image</h4>
           <img
-            src={selectedDetails.passportImageUrl}
+            src={selectedDetails.passportPhoto_url}
             alt="Passport"
             className="passport-image"
           />
@@ -255,7 +260,7 @@ function VisaRequestedTable(props) {
         <div className="image-container">
           <h4>Current Face Image</h4>
           <img
-            src={selectedDetails.currentFaceImageUrl}
+            src={selectedDetails.bioPagePhoto_url}
             alt="Current Face"
             className="face-image"
           />
@@ -263,51 +268,84 @@ function VisaRequestedTable(props) {
       </div>
 
       <div className="modal-body">
-        {/* Personal Information */}
-        <div className="modal-section">
-          <h4>Personal Information</h4>
-          <p>
-            <strong>Full Name:</strong> {`${selectedDetails.prefix} ${selectedDetails.firstName} ${selectedDetails.middleName} ${selectedDetails.lastName}`}
-          </p>
-          <p><strong>Date of Birth:</strong> {selectedDetails.dateOfBirth}</p>
-          <p><strong>Gender:</strong> {selectedDetails.gender}</p>
-          <p><strong>Religion:</strong> {selectedDetails.religion}</p>
-          <p><strong>Marital Status:</strong> {selectedDetails.maritalStatus}</p>
-          <p><strong>Country of Birth:</strong> {selectedDetails.countryOfBirth}</p>
-          <p><strong>City of Birth:</strong> {selectedDetails.cityOfBirth}</p>
-        </div>
+  {/* Personal Information */}
+  <div className="modal-section">
+    <h4>Personal Information</h4>
+    <p>
+      <strong>Full Name:</strong> {`${selectedDetails.prefix} ${selectedDetails.firstName} ${selectedDetails.middleName} ${selectedDetails.lastName}`}
+    </p>
+    <p><strong>Date of Birth:</strong> {selectedDetails.dateOfBirth}</p>
+    <p><strong>Gender:</strong> {selectedDetails.gender}</p>
+    <p><strong>Religion:</strong> {selectedDetails.religion}</p>
+    <p><strong>Marital Status:</strong> {selectedDetails.maritalStatus}</p>
+    <p><strong>Country of Birth:</strong> {selectedDetails.countryOfBirth}</p>
+    <p><strong>City of Birth:</strong> {selectedDetails.cityOfBirth}</p>
+  </div>
 
-        {/* Contact Information */}
-        <div className="modal-section">
-          <h4>Contact Information</h4>
-          <p><strong>Present Address:</strong> {selectedDetails.presentAddress}</p>
-          <p><strong>Country of Residence:</strong> {selectedDetails.countryOfResidence}</p>
-          <p><strong>Postal Code:</strong> {selectedDetails.postalCode}</p>
-          <p><strong>Mobile Number:</strong> {selectedDetails.mobileNumber}</p>
-          <p><strong>Email:</strong> {selectedDetails.email}</p>
-        </div>
+  {/* Contact Information */}
+  <div className="modal-section">
+    <h4>Contact Information</h4>
+    <p><strong>Present Address:</strong> {selectedDetails.presentAddress}</p>
+    <p><strong>Country of Residence:</strong> {selectedDetails.countryOfResidence}</p>
+    <p><strong>Postal Code:</strong> {selectedDetails.postalCode}</p>
+    <p><strong>Mobile Number:</strong> {selectedDetails.mobileNumber}</p>
+    <p><strong>Email:</strong> {selectedDetails.email}</p>
+  </div>
 
-        {/* Education and Employment */}
-        <div className="modal-section">
-          <h4>Education and Employment</h4>
-          <p><strong>Education Level:</strong> {selectedDetails.educationLevel}</p>
-          <p><strong>Field of Study:</strong> {selectedDetails.fieldOfStudy}</p>
-          <p><strong>Occupation:</strong> {selectedDetails.occupation}</p>
-          <p><strong>Company Name:</strong> {selectedDetails.companyName}</p>
-          <p><strong>Company Address:</strong> {selectedDetails.companyAddress}</p>
-        </div>
+  {/* Education and Employment */}
+  <div className="modal-section">
+    <h4>Education and Employment</h4>
+    <p><strong>Education Level:</strong> {selectedDetails.educationLevel}</p>
+    <p><strong>Field of Study:</strong> {selectedDetails.fieldOfStudy}</p>
+    <p><strong>Occupation:</strong> {selectedDetails.occupation}</p>
+    <p><strong>Company Name:</strong> {selectedDetails.companyName}</p>
+    <p><strong>Company Address:</strong> {selectedDetails.companyAddress}</p>
+  </div>
 
-        {/* Parental Information */}
-        <div className="modal-section">
-          <h4>Parental Information</h4>
-          <p><strong>Father's Name:</strong> {selectedDetails.fathersName}</p>
-          <p><strong>Father's Country of Birth:</strong> {selectedDetails.fathersCountryOfBirth}</p>
-          <p><strong>Father's Nationality:</strong> {selectedDetails.fathersNationality}</p>
-          <p><strong>Mother's Name:</strong> {selectedDetails.mothersName}</p>
-          <p><strong>Mother's Country of Birth:</strong> {selectedDetails.mothersCountryOfBirth}</p>
-          <p><strong>Mother's Nationality:</strong> {selectedDetails.mothersNationality}</p>
-        </div>
-      </div>
+  {/* Parental Information */}
+  <div className="modal-section">
+    <h4>Parental Information</h4>
+    <p><strong>Father's Name:</strong> {selectedDetails.fathersName}</p>
+    <p><strong>Father's Country of Birth:</strong> {selectedDetails.fathersCountryOfBirth}</p>
+    <p><strong>Father's Nationality:</strong> {selectedDetails.fathersNationality}</p>
+    <p><strong>Mother's Name:</strong> {selectedDetails.mothersName}</p>
+    <p><strong>Mother's Country of Birth:</strong> {selectedDetails.mothersCountryOfBirth}</p>
+    <p><strong>Mother's Nationality:</strong> {selectedDetails.mothersNationality}</p>
+  </div>
+
+  {/* Passport and Travel Information */}
+  <div className="modal-section">
+    <h4>Passport and Travel Information</h4>
+    <p><strong>Passport Type:</strong> {selectedDetails.passportType}</p>
+    <p><strong>Issuing Country:</strong> {selectedDetails.issuingCountry}</p>
+    <p><strong>Nationality:</strong> {selectedDetails.nationality}</p>
+    <p><strong>Passport Number:</strong> {selectedDetails.passportNumber}</p>
+    <p><strong>Place of Issue:</strong> {selectedDetails.placeOfIssue}</p>
+    <p><strong>Date of Issue:</strong> {selectedDetails.dateOfIssue}</p>
+    <p><strong>Date of Expiry:</strong> {selectedDetails.dateOfExpire}</p>
+    <p><strong>Nationality Acquisition:</strong> {selectedDetails.nationalityAcquisition}</p>
+    <p><strong>Port of Entry:</strong> {selectedDetails.portOfEntry}</p>
+    <p><strong>Port of Departure:</strong> {selectedDetails.portOfDeparture}</p>
+    <p><strong>Visiting Cities:</strong> {selectedDetails.visitingCities}</p>
+    <p><strong>Expected Arrival Date:</strong> {selectedDetails.expectedArrivalDate}</p>
+    <p><strong>Expected Departure Date:</strong> {selectedDetails.expectedDepartureDate}</p>
+  </div>
+
+  {/* Emergency Contact Information */}
+  <div className="modal-section">
+    <h4>Emergency Contact Information</h4>
+    <p><strong>Emergency Contact Name:</strong> {selectedDetails.emergencyContactName}</p>
+    <p><strong>Emergency Address:</strong> {selectedDetails.emergencyAddress}</p>
+    <p><strong>Emergency Mobile Number:</strong> {selectedDetails.emergencyMobileNumber}</p>
+  </div>
+
+  {/* Travel History */}
+  <div className="modal-section">
+    <h4>Travel History</h4>
+    <p><strong>Travel History:</strong> {selectedDetails.travelHistory}</p>
+  </div>
+</div>
+
     </div>
   ) : (
     <div className="modal-error">

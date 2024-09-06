@@ -58,6 +58,7 @@ class TravelHistory(BaseModel):
     emergencyContactName: str
     emergencyAddress: str
     emergencyMobileNumber:str
+    travelHistory : str
 
 class ApplicationCollection(BaseModel):
     application_id: str

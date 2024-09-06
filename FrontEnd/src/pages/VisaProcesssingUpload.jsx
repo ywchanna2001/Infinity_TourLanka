@@ -3,6 +3,7 @@ import { Box, Typography, Button, useMediaQuery } from "@mui/material";
 import VisaProcessingBG from "../components/VisaProcessingBackground";
 import ProgressBar from "../components/VisaProcessingProgressBar/ProgressBarUploadDocs";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 function VisaProcessingUpload() {
   const [passportPhoto, setPassportPhoto] = useState(null);
@@ -32,24 +33,26 @@ function VisaProcessingUpload() {
       alert("Please upload both the passport photo and bio page.");
       return;
     }
-
+  
     // Create a FormData object to submit the photos
     const formData = new FormData();
-    formData.append("passportPhoto", passportPhoto); // Name these as per your backend API's expectation
+    formData.append("passportPhoto", passportPhoto); // Use different keys
     formData.append("bioPagePhoto", bioPagePhoto);
+    
+    const accessToken = localStorage.getItem("access_token");
 
     try {
-      // Replace the URL with your API endpoint
-      const response = await fetch("https://your-backend-url.com/upload", {
-        method: "POST",
-        body: formData,
+      const response = await axios.post("http://localhost:8000/upload-images/", formData, {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+          'Content-Type': 'multipart/form-data',
+        },
       });
-
-      if (response.ok) {
-        // Navigate to the next step if upload is successful
-        navigate("/VisaProcessingHome");
+  
+      if (response.status === 200) {
+        console.log("Files uploaded successfully:", response.data);
+        navigate("/VisaProcessingPayment");
       } else {
-        // Handle errors if the upload fails
         alert("Error uploading files. Please try again.");
       }
     } catch (error) {
@@ -57,6 +60,7 @@ function VisaProcessingUpload() {
       alert("Error uploading files. Please try again.");
     }
   };
+  
 
   return (
     <VisaProcessingBG>

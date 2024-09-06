@@ -1,5 +1,5 @@
 # services.py
-from typing import List, Optional, Dict
+from typing import List, Optional, Dict,Any
 from app.database import collection_user,collection_applicant,collection_personal_info,collection_travel_history
 from app.models import User,ApplicationCollection
 from app.utils import hash_password, verify_password, create_access_token,authenticate_user,get_notice_by_name
@@ -10,7 +10,8 @@ from pymongo import DESCENDING
 import httpx
 from app.config import  EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, EMAILJS_USER_ID
 from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
-import cloudinary.uploader
+from cloudinary import uploader
+import asyncio
 
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
 
@@ -109,14 +110,16 @@ def get_personal_info(request_data, current_user):
         "mothersName": request_data.mothersName,
         "mothersCountryOfBirth": request_data.mothersCountryOfBirth,
         "mothersNationality": request_data.mothersNationality,
-        "visa_approve_status": "Pending"
+        "visa_approve_status": "Pending",
+        "passportPhoto_url": "null",
+        "bioPagePhoto_url": "null"
     }
     collection_personal_info.insert_one(data)
     return {"message": "Personal info created successfully"}
     
     
 def create_travel_history(request_data,current_user):
-    existing_user = collection_personal_info.find_one({"user_email": current_user.get("user_email")})
+    existing_user = collection_travel_history.find_one({"user_email": current_user.get("user_email")})
     if existing_user:
         raise HTTPException(status_code=400, detail="Email already registered")
     
@@ -144,7 +147,8 @@ def create_travel_history(request_data,current_user):
         "expectedDepartureDate": request_data.expectedDepartureDate,
         "emergencyContactName": request_data.emergencyContactName,
         "emergencyAddress": request_data.emergencyAddress,
-        "emergencyMobileNumber": request_data.emergencyMobileNumber
+        "emergencyMobileNumber": request_data.emergencyMobileNumber,
+        "travelHistory": request_data.travelHistory
     }
     collection_travel_history.insert_one(data)
     return {"message": "Travel history created successfully"}
@@ -163,7 +167,7 @@ def get_requested_applicants(current_user):
             "personal_info_id": aplication["personal_info_id"],
             "firstName": aplication["firstName"],
             "lastName": aplication["lastName"],
-            "risky_status": "pending",
+            "risky_status": "No",
         }
         applicant.append(applicant_data)
     return applicant
@@ -196,7 +200,7 @@ def get_rejected_applicants(current_user):
             "personal_info_id": aplication["personal_info_id"],
             "firstName": aplication["firstName"],
             "lastName": aplication["lastName"],
-            "risky_status": "Yes",
+            "risky_status": "No",
             "visa_approve_status": aplication["visa_approve_status"]
         }
         applicant.append(applicant_data)
@@ -208,25 +212,65 @@ def check_applicant_by(name: str):
         return {"risk": True, "notice": notice}
     return {"risk": False, "message": "No matching notice found"}
 
-async def upload_image(file: UploadFile):
-    allowed_extensions = {'png', 'jpg', 'jpeg'}
-    file_extension = file.filename.split('.')[-1]
+async def upload_image(passportPhoto, bioPagePhoto, current_user: Any):
+    if current_user.get("user_type") != "user":
+        raise HTTPException(status_code=403, detail="Unauthorized, only admin can upload image")
 
-    if file_extension.lower() not in allowed_extensions:
+    allowed_extensions = {'png', 'jpg', 'jpeg'}
+    
+    # Extract and validate file extensions
+    passport_ext = passportPhoto.filename.rsplit('.', 1)[-1].lower()
+    bio_ext = bioPagePhoto.filename.rsplit('.', 1)[-1].lower()
+
+    if passport_ext not in allowed_extensions or bio_ext not in allowed_extensions:
         raise HTTPException(status_code=400, detail="Only PNG and JPG files are allowed.")
 
     try:
-        # Upload the image to Cloudinary
-        result = cloudinary.uploader.upload(await file.read(), public_id=file.filename.split('.')[0])
+        # Read both files concurrently
+        passport_data, bio_data = await asyncio.gather(
+            passportPhoto.read(),
+            bioPagePhoto.read()
+        )
 
-        # Get the secure URL of the uploaded image
-        image_url = result.get("secure_url")
+        # Define upload tasks
+        async def upload_to_cloudinary(file_data, public_id):
+            # Use asyncio.to_thread to run the blocking upload in a separate thread
+            return await asyncio.to_thread(uploader.upload, file_data, public_id=public_id)
 
-        if not image_url:
+        # Create upload tasks for both images
+        upload_task1 = upload_to_cloudinary(passport_data, passportPhoto.filename.rsplit('.', 1)[0])
+        upload_task2 = upload_to_cloudinary(bio_data, bioPagePhoto.filename.rsplit('.', 1)[0])
+
+        # Execute uploads concurrently
+        result1, result2 = await asyncio.gather(upload_task1, upload_task2)
+
+        image_url_1 = result1.get("secure_url")
+        image_url_2 = result2.get("secure_url")
+
+        if not image_url_1 or not image_url_2:
             raise HTTPException(status_code=500, detail="Failed to upload image to Cloudinary.")
 
-        return {"message": "Image uploaded successfully", "image_url": image_url}
-    
+        # Perform a single database update for both URLs
+        update_result = await asyncio.to_thread(
+            collection_personal_info.update_one,
+            {"user_email": current_user.get("user_email")},
+            {"$set": {
+                "passportPhoto_url": image_url_1,
+                "bioPagePhoto_url": image_url_2
+            }}
+        )
+
+        if update_result.modified_count == 0:
+            raise HTTPException(status_code=500, detail="Failed to update user information.")
+
+        return {
+            "message": "Images uploaded successfully",
+            "passportPhoto_url": image_url_1,
+            "bioPagePhoto_url": image_url_2
+        }
+
+    except HTTPException as he:
+        raise he  # Re-raise HTTP exceptions as they are
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Image upload failed: {str(e)}")
     
@@ -251,6 +295,10 @@ def get_applicant_details(user_id: str, current_user: User):
     if not application:
         raise HTTPException(status_code=404, detail="Applicant not found")
     
+    aplicant_travel_history = collection_travel_history.find_one({"user_email": application.get("user_email")})
+    if not aplicant_travel_history:
+        raise HTTPException(status_code=404, detail="Applicant travel history not found")
+
     applicant_data = {
         "user_id": application["user_id"],
         "personal_info_id": application["personal_info_id"],
@@ -281,7 +329,45 @@ def get_applicant_details(user_id: str, current_user: User):
         "mothersCountryOfBirth": application.get("mothersCountryOfBirth", ""),
         "mothersNationality": application.get("mothersNationality", ""),
         "visa_approve_status": application.get("visa_approve_status", ""),
+        "passportPhoto_url": application.get("passportPhoto_url", ""),
+        "bioPagePhoto_url": application.get("bioPagePhoto_url", ""),
+        "passportType": aplicant_travel_history.get("passportType", ""),
+        "issuingCountry": aplicant_travel_history.get("issuingCountry", ""),
+        "nationality": aplicant_travel_history.get("nationality"),
+        "passportNumber": aplicant_travel_history.get("passportNumber"),
+        "placeOfIssue": aplicant_travel_history.get("placeOfIssue"),
+        "dateOfIssue": aplicant_travel_history.get("dateOfIssue"),
+        "dateOfExpire": aplicant_travel_history.get("dateOfExpire"),
+        "nationalityAcquisition": aplicant_travel_history.get("nationalityAcquisition"),
+        "portOfEntry": aplicant_travel_history.get("portOfEntry"),
+        "portOfDeparture": aplicant_travel_history.get("portOfDeparture"),
+        "visitingCities": aplicant_travel_history.get("visitingCities"),
+        "expectedArrivalDate": aplicant_travel_history.get("expectedArrivalDate"),
+        "expectedDepartureDate": aplicant_travel_history.get("expectedDepartureDate"),
+        "emergencyContactName": aplicant_travel_history.get("emergencyContactName"),
+        "emergencyAddress": aplicant_travel_history.get("emergencyAddress"),
+        "emergencyMobileNumber": aplicant_travel_history.get("emergencyMobileNumber"),
+        "travelHistory": aplicant_travel_history.get("travelHistory")
     }
 
+    return applicant_data
+
+
+def send_visa_application(user_id: str, current_user: User):
+    if current_user.get("user_type") != "admin":
+        raise HTTPException(status_code=403, detail="Unauthorized, only admin can send visa application")
+    
+    application = collection_personal_info.find_one({"user_id": user_id})
+    if not application:
+        raise HTTPException(status_code=404, detail="Applicant not found")
+
+    applicant_data = {
+        "EMAILJS_SERVICE_ID": EMAILJS_SERVICE_ID,
+        "EMAILJS_TEMPLATE_ID": EMAILJS_TEMPLATE_ID,
+        "EMAILJS_USER_ID": EMAILJS_USER_ID,
+        "firstName": application.get("firstName", ""),
+        "lastName": application.get("lastName", ""),
+        "personal_info_id": application.get("personal_info_id", ""),
+    }
     return applicant_data
 
