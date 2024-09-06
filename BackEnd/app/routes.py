@@ -29,7 +29,6 @@ async def login(user_login: User_login ):
 def get_personal_info(request_data: PersonalInfo , current_user: User = Depends(get_current_user)):
     return app.services.get_personal_info(request_data, current_user)
 
-
 @router.post("/travel-info")
 def create_travel_history(request_data: TravelHistory ,current_user: User = Depends(get_current_user)):
     return app.services.create_travel_history(request_data,current_user)
@@ -57,3 +56,8 @@ async def upload_image(file: UploadFile):
 @router.put("/update_personal_info_visa_approve_status/{personal_info_id}")
 def update_personal_info_visa_approve_status(personal_info_id: str , newStatus_data:Update_personal_info_approve_satats, current_user: User = Depends(get_current_user)):
     return app.services.update_personal_info_visa_approve_status(personal_info_id,newStatus_data,current_user)
+
+@router.get("/applicant/{user_id}")
+def get_applicant(user_id: str , current_user: User = Depends(get_current_user)):
+    return app.services.get_applicant_details(user_id,current_user)
+
