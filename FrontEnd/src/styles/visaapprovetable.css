@@ -1,0 +1,383 @@
+
+.container6 {
+    margin-top: 40px;
+    width: 100%;
+    max-width: 980px;
+    height: auto;
+    flex-shrink: 0;
+    border-radius: 30px;
+    /* border: 3px solid #180505; */
+    background: #eaeaea;
+    position: relative;
+    margin-bottom: 40px;
+    /* padding-bottom: 20px; */
+    align-items: center;
+    opacity: .75;
+    
+
+  }
+  
+  .title6 {
+    align-items: center;
+    position: absolute;
+    width: auto;
+    height: 40px;
+    flex-shrink: 0;
+    right: 10px;
+    background-color: #0F6466;
+    color: white;
+    border-radius: 27px;
+    padding: 5px;
+    margin-top: -23px;
+    margin-right: 380px;
+    border: 2px solid #eef3f2;
+  }
+  
+  .title-para6 {
+    margin-top: 5px;
+    text-align: center;
+    color: #fff;
+    font-family: Inter;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    margin-left: 30px;
+    margin-right: 30px;
+    letter-spacing: 0.18px;
+  }
+  
+  .table-div2 {
+    width: 100%;
+    max-width: 950px;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 35px;
+    overflow-x: auto; /* Make the table scrollable on smaller screens */
+  }
+  
+  .vacancy-table {
+    width: 100%;
+    height: 60px;
+    border: none; /* Eliminate border */
+    flex-shrink: 0;
+    background: #fff;
+  }
+  
+  .table-raw1,
+  .table-raw {
+    text-align: center;
+    height: 60px;
+    background: #939393;
+    border: none; /* Eliminate border */
+  }
+  
+  .Page-navigation {
+    max-width: 200px;
+  }
+  
+  .pagination {
+    display: flex;
+    max-width: 100%;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 15px;
+  }
+  
+  .page-item1 {
+    margin-right: 12px;
+    margin-left: 5px;
+    list-style: none;
+    background: #e0e0e0;
+    border: none;
+    border-radius: 8px;
+  }
+  
+  .page-link1 {
+    color: #000000;
+    text-decoration: none;
+    font-family: Montserrat;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    border: none;
+  }
+  
+  .page-item {
+    list-style: none;
+    margin-right: 9px;
+  }
+  
+  .page-link {
+    text-decoration: none;
+    width: 12px;
+    height: 15px;
+    display: flex;
+    padding: 8px 9px;
+    padding-bottom: 2px;
+    align-items: center;
+    gap: 4px;
+    margin-right: 9px;
+    border-radius: 8px;
+    background: #e0e0e0;
+    color: #000;
+    text-align: center;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    border: none;
+    margin-top: 3px;
+  }
+  
+  .page-item1.active {
+    background-color: #0F6466; /* or any other color you want for the active state */
+    color: white;
+  }
+  
+  .page-item1.active-prev {
+    background-color: #0F6466; /* or any other color you want for the active state */
+    color: white;
+  }
+  
+  .page-link.active {
+    background-color: #0F6466; /* or any other color you want for the active state */
+    color: white;
+  }
+  
+  @media (max-width: 1200px) {
+    /* Large screens (lg) */
+    .container6 {
+      max-width: 800px;
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+    
+    .table-div2 {
+      max-width: 800px;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    /* Small screens (sm) */
+    .container6 {
+      max-width: 100%;
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+    
+    .title6 {
+      margin-right: 20px;
+      margin-top: -30px;
+    }
+    
+    .table-div2 {
+      max-width: 100%;
+    }
+  
+    .pagination {
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+  
+    .page-item,
+    .page-item1 {
+      margin-right: 5px;
+      margin-left: 5px;
+    }
+  
+    .page-link,
+    .page-link1 {
+      font-size: 16px;
+    }
+  }
+  .content00 {
+    display: flex;
+    flex-direction: column; /* Ensure the content is arranged vertically */
+    justify-content: center; /* Center vertically */
+    align-items: center; /* Center horizontally */
+    background-image: url("../assets/background.jpg");
+    background-size: cover;
+    /* min-height: 100vh; Ensure the container takes up at least the full viewport height */
+  }
+  
+  .content01 {
+    display: flex;
+    justify-content: center; /* Center the buttons horizontally */
+    gap: 20px; /* Add some spacing between buttons */
+    margin-bottom: 20px;
+    margin-top: 30px; /* Add space below the buttons */
+  }
+  
+  .content011 {
+    background-color: #0F6466;
+    border-radius: 10px;
+    border: 1px solid #edf3f1;
+    width: 200px;
+    height: 30px;
+    display: flex;
+    justify-content: center; /* Center the text horizontally */
+    align-items: center; /* Center the text vertically */
+    color: white;
+    text-decoration: none;
+    font-family: Inter;
+    font-size: 18px;
+    font-weight: 500;
+  }
+  
+  /* Modal container */
+/* Modal container */
+.ReactModal__Overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.75);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+/* Modal content */
+.ReactModal__Content {
+  background: white;
+  padding: 30px;
+  max-width: 800px;
+  width: 100%;
+  max-height: 90vh; /* Set max height for the modal */
+  overflow-y: auto; /* Enable vertical scrolling */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  font-family: 'Inter', sans-serif;
+}
+
+/* Modal header */
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #9c0f0f;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+
+.modal-header h3 {
+  font-size: 1.5rem;
+  color: #fff;
+  font-weight: 700;
+  margin: 0;
+  background-color: #0F6466;
+  padding: 12px;
+  border-radius: 30px;
+}
+
+/* Image section */
+.modal-images {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
+}
+
+.image-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.image-container h4 {
+  margin-bottom: 10px;
+}
+
+.passport-image,
+.face-image {
+  width: 150px;
+  height: 150px;
+  border-radius: 8px;
+  object-fit: cover;
+  border: 1px solid #ccc;
+}
+
+/* Modal Body */
+.modal-body {
+  font-size: 1rem;
+  color: #333;
+  line-height: 1.6;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+/* Modal sections */
+.modal-section {
+  margin-bottom: 20px;
+}
+
+.modal-section h4 {
+  margin-bottom: 10px;
+}
+
+.modal-section p {
+  margin: 5px 0;
+  font-weight: 500;
+  color: #333;
+}
+
+/* Close button */
+.close-button {
+  background-color: rgb(160, 23, 23);
+  border: none;
+  padding: 3px;
+  width: 30px;
+  border-radius: 100%;
+  font-size: 1.1rem;
+  color: #f1dcdc;
+  cursor: pointer;
+}
+
+.close-button:hover {
+  color: #e7e4e4;
+}
+
+/* Loading and error states */
+.modal-loading,
+.modal-error {
+  text-align: center;
+  padding: 20px;
+}
+
+.more_details_btn{
+  background-color: green;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+}
+.modal-section h4{
+  font-size: large;
+  color: #0F6466;
+  font-weight: 700;;
+  border-radius: 30px;
+}
+
+.image-container h4 {
+  font-size: large;
+  color: #0F6466;
+  font-weight: 700;;
+  border-radius: 30px;
+}
+.more_details_btn_2{
+  background-color: #e02909;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+}
