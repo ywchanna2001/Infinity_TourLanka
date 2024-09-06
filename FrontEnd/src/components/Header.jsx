@@ -1,7 +1,7 @@
 import React from 'react';
 import { AppBar, Toolbar, Typography } from '@mui/material';
 import { Link } from 'react-router-dom';
-import Logo from '../Logo.png';
+import Logo from "../assets/Logo.png";
 
 
 const Header = () => {
@@ -15,24 +15,28 @@ const Header = () => {
         <img
               src={Logo}
               alt="Logo"
-              className="mx-auto mb-2"
+              className="mx-auto mb-2 ml-80"
               style={{ maxWidth: '100px' }}
             />
         </div>
-        <div className="flex space-x-4">
-          <Link to="/" className="text-white hover:text-gray-200">
+        <div className="flex space-x-20">
+          <Link to="/Home" className="text-white hover:text-gray-200">
             Home
           </Link>
-          <Link to="/visa" className="text-white hover:text-gray-200">
+          <Link to="/VisaProcessingHome" className="text-white hover:text-gray-200">
             Visa
           </Link>
-          <Link to="/tours" className="text-white hover:text-gray-200">
+          <Link to="/TourGenerating" className="text-white hover:text-gray-200">
             Tours
           </Link>
           <Link to="/security" className="text-white hover:text-gray-200">
             Security
           </Link>
         </div>
+        <div>
+          <Typography variant="h7">userName</Typography>
+        </div>
+     
       </Toolbar>
     </AppBar>
   );
