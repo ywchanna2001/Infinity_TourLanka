@@ -4,8 +4,8 @@ import { ThemeProvider } from '@mui/material/styles';
 import '@fontsource/poppins'; 
 
 import TourGenerating from './pages/TourGenerating';
-import Footer from './assets/components/Footer';
-import Header from './assets/components/Header';
+import Footer from './components/Footer';
+import Header from './components/Header';
 import theme from './utils/Theme.jsx'; // Import custom theme
 
 function App() {

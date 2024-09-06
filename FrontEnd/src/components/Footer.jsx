@@ -1,10 +1,10 @@
 import React from 'react';
 import { Container, Grid, Typography, Link, Box } from '@mui/material';
-import ToutismAuthority from "../ToutismAuthority.png";
-import Facebook from "../Facebook.png";
-import Instagram from "../Instagram.png";
-import Tiktok from "../Tiktok.png";
-import Youtube from "../Youtube.png";
+import ToutismAuthority from "../assets/ToutismAuthority.png";
+import Facebook from "../assets/Facebook.png";
+import Instagram from "../assets/Instagram.png"
+import Tiktok from "../assets/Tiktok.png";
+import Youtube from "../assets/Youtube.png";
 
 const Footer = () => {
   return (

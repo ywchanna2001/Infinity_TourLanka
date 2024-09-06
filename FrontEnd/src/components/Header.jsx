@@ -1,7 +1,7 @@
 import React from 'react';
 import { AppBar, Toolbar, Typography } from '@mui/material';
 import { Link } from 'react-router-dom';
-import Logo from '../Logo.png';
+import Logo from "../assets/Logo.png";
 
 
 const Header = () => {
