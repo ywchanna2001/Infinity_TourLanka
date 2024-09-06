@@ -2,28 +2,11 @@ import React from 'react';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { ThemeProvider } from '@mui/material/styles';
 import '@fontsource/poppins'; 
-import theme from './utils/Theme.jsx'; // Import custom theme
-
-import VisaProcessingPayment from './pages/VisaProcessingPayment.jsx';
-import VisaProcessingHome from './pages/VisaProcessingHome.jsx';
-import VisaProcessingPersonal from './pages/VisaProcessingPersonal.jsx';
-
-import VisaProcessingTravel from './pages/ViisaProcessingTravel.jsx';
-import VisaProcessingUpload from './pages/VisaProcesssingUpload.jsx';
-
-import VisaApproveTable from './components/VisaApproveTable.jsx';
-import VisaRejectTable from './components/VisaRejectTable.jsx';
-import VisaRequestedTable from './components/VisaRequestedTable.jsx';
 
 import TourGenerating from './pages/TourGenerating';
-import Footer from './assets/components/Footer.jsx';
-import Header from './assets/components/Header.jsx';
-import FeatureCard from './components/FeatureCard.jsx';
-import Login from './components/Login.jsx';
-// import LandingPage from './pages/LandingPage .jsx';
-
-import Home from './pages/Home.jsx';
-import VisaProcessingPaymentSuccessful from './pages/VisaProcessingPaymentSuccessful.jsx';
+import Footer from './components/Footer';
+import Header from './components/Header';
+import theme from './utils/Theme.jsx'; // Import custom theme
 
 function App() {
   return (
