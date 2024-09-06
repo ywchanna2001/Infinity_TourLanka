@@ -70,10 +70,10 @@ function VisaApproveTable(props) {
               });
           
               setapplicant(Array.isArray(response.data) ? response.data : []);
-              setApplicants(Array.isArray(response.data) ? response.data : []);
+
             } catch (error) {
               console.error('Error fetching data:', error);
-              setApplicants([]);  // Ensure applicants is an empty array on error
+              // setApplicant([]);  // Ensure applicants is an empty array on error
             }
           };
                   
