@@ -1,8 +1,8 @@
 import React from 'react';
-import PackageCategory3 from './PackageCategory3';
-import PackageCategory2 from './PackageCategory2';
-import PackageCategory1 from './PackageCategory1';
-import PackageCategory4 from './PackageCategory4';
+import PackageCategory3 from './PackageCategory/PackageCategory3';
+import PackageCategory2 from './PackageCategory/PackageCategory2';
+import PackageCategory1 from './PackageCategory/PackageCategory1';
+import PackageCategory4 from './PackageCategory/PackageCategory4';
 import './TrendingSection.css';
 
 const categories1 = [

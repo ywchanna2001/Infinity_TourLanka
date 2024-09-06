@@ -1,9 +1,10 @@
 import React from 'react';
-import PackageCard4 from './PackageCard4';
-import Variants from './Variants';
-import VariantsSea from './VariantsSea';
+import PackageCard1 from '../PacageCard/PackageCard1';
+import './PackageCategory1.css'; // Assuming you'll add your styles here
+import CycleCard from '../Cards/CycleCard';
+import Variants from '../Variants';
 
-function PackageCategory4({ category }) {
+function PackageCategory1({ category }) {
   return (
     <div className="mb-5">
       <h2 className="text-center mb-3">{category.title}</h2>
@@ -11,13 +12,11 @@ function PackageCategory4({ category }) {
       <p className="text-center description">{category.description}</p>
       <div className="row">
         {category.packages.map((pkg, index) => (
-          <div key={index}>
-            <VariantsSea></VariantsSea>
-          </div>
+          <Variants></Variants>
         ))}
       </div>
     </div>
   );
 }
 
-export default PackageCategory4;
+export default PackageCategory1;

@@ -1,8 +1,8 @@
 import React from 'react';
 import Card from 'react-bootstrap/Card';
-import CycleCard from './Cards/CycleCard';
-import SurfCard from './Cards/SurfCard';
-import SafariCard from './Cards/SafariCard';
+import CycleCard from '../Cards/CycleCard';
+import SurfCard from '../Cards/SurfCard';
+import SafariCard from '../Cards/SafariCard';
 
 function PackageCard2({ packageInfo, cardType }) {
   // Determine which card to render based on the cardType prop

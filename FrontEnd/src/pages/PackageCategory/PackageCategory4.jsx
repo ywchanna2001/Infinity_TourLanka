@@ -1,8 +1,9 @@
 import React from 'react';
-import './PackageCategory1.css'; 
-import VariantsCul from './VariantsCul';
+import PackageCard4 from '../PacageCard/PackageCard4';
+import Variants from '../Variants';
+import VariantsSea from '../VariantsSea';
 
-function PackageCategory2({ category }) {
+function PackageCategory4({ category }) {
   return (
     <div className="mb-5">
       <h2 className="text-center mb-3">{category.title}</h2>
@@ -10,11 +11,13 @@ function PackageCategory2({ category }) {
       <p className="text-center description">{category.description}</p>
       <div className="row">
         {category.packages.map((pkg, index) => (
-          <VariantsCul></VariantsCul>
+          <div key={index}>
+            <VariantsSea></VariantsSea>
+          </div>
         ))}
       </div>
     </div>
   );
 }
 
-export default PackageCategory2;
+export default PackageCategory4;
