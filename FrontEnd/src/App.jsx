@@ -65,7 +65,7 @@ function Layout() {
         <Route path="/VisaRejected" element={<VisaRejectTable title="Rejected visa" />} />
         <Route path="/VisaApproved" element={<VisaApproveTable title="Approved visa" />} />
         <Route path="/Login" element={<Login />} />
-        {/* <Route path="/LandingPage" element={<LandingPage />} /> */}
+        {/*  */}
         {/* <Route path="/signup" element={<Signup />} /> */}
       </Routes>
 
