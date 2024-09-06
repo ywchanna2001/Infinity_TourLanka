@@ -11,8 +11,6 @@ import VisaProcessingPersonal from './pages/VisaProcessingPersonal.jsx';
 import VisaProcessingTravel from './pages/ViisaProcessingTravel.jsx';
 import VisaProcessingUpload from './pages/VisaProcesssingUpload.jsx';
 
-import VisaProcessingTravel from './pages/ViisaProcessingTravel.jsx'; // Fixed typo
-
 import VisaApproveTable from './components/VisaApproveTable.jsx';
 import VisaRejectTable from './components/VisaRejectTable.jsx';
 import VisaRequestedTable from './components/VisaRequestedTable.jsx';
@@ -25,6 +23,7 @@ import Login from './components/Login.jsx';
 // import LandingPage from './pages/LandingPage .jsx';
 
 import Home from './pages/Home.jsx';
+import VisaProcessingPaymentSuccessful from './pages/VisaProcessingPaymentSuccessful.jsx';
 
 function App() {
   return (
@@ -43,6 +42,7 @@ function App() {
             {/* Visa Processing Routes */}
              
             <Route path="/VisaProcessingPayment" element={<VisaProcessingPayment />} />  
+            <Route path="/VisaProcessingPaymentSuccessful" element={<VisaProcessingPaymentSuccessful />} /> 
             
 
             {/* Admin dashboard routes */}
@@ -78,6 +78,7 @@ function Layout() {
         <Route path="/VisaProcessingPersonal" element={<VisaProcessingPersonal />} />
         <Route path="/VisaProcessingTravel" element={<VisaProcessingTravel />} />
         <Route path="/VisaProcessingPayment" element={<VisaProcessingPayment />} />
+        <Route path="/VisaProcessingPaymentSuccessful" element={<VisaProcessingPaymentSuccessful />} />
         <Route path="/AdminDashboard" element={<FeatureCard />} />
         <Route path="/VisaRequested" element={<VisaRequestedTable title="Requested visa" />} />
         <Route path="/VisaRejected" element={<VisaRejectTable title="Rejected visa" />} />
