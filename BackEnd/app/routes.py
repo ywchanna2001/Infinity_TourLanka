@@ -61,6 +61,6 @@ def update_personal_info_visa_approve_status(personal_info_id: str , newStatus_d
 def get_applicant(user_id: str , current_user: User = Depends(get_current_user)):
     return app.services.get_applicant_details(user_id,current_user)
 
-@router.get("/send_email{user_id}")
-def send_mail(user_id: str ,current_user: User = Depends(get_current_user)):
-    return app.services.send_visa_application(user_id,current_user)
+@router.get("/send_email/{user_id}")
+def send_mail(user_id: str, current_user: User = Depends(get_current_user)):
+    return app.services.send_visa_application(user_id, current_user)

@@ -361,14 +361,10 @@ def send_visa_application(user_id: str, current_user: User):
     if not application:
         raise HTTPException(status_code=404, detail="Applicant not found")
 
+    # Extract applicant data to be used in EmailJS
     applicant_data = {
-        "EMAILJS_SERVICE_ID": EMAILJS_SERVICE_ID,
-        "EMAILJS_TEMPLATE_ID": EMAILJS_TEMPLATE_ID,
-        "EMAILJS_USER_ID": EMAILJS_USER_ID,
         "firstName": application.get("firstName", ""),
         "lastName": application.get("lastName", ""),
-        "personal_info_id": application.get("personal_info_id", ""),
         "email": application.get("email", ""),
     }
     return applicant_data
-
