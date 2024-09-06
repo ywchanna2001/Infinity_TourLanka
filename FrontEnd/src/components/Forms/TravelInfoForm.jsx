@@ -575,6 +575,7 @@ const TravelInfoForm = () => {
               color: "white",
               marginLeft: "auto",
             }}
+            onClick={() => handleNavigate("/VisaProcessingUpload")}
           >
             Save and Continue
           </Button>
