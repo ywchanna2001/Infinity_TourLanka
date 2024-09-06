@@ -1,38 +1,39 @@
 import React, { useState } from "react";
-import Modal from "react-modal";
-import { ImCheckmark, ImCross } from "react-icons/im";
-import "../styles/visaapprovebutton.css";
-import { set } from "date-fns";
 import axios from "axios";
+import "../styles/visaapprovebutton.css"; // Ensure correct path
 
-function VisaApproveButton(onStatusChange, id, endpointUrl ) {
-
+const VisaApproveButton = ({ onStatusChange, id, endpointUrl }) => {
   const [status, setStatus] = useState(null);
-  const [modalIsOpen,setModalIsOpen]= useState(false);
-
   
+  // Corrected: console.log instead of consol.log
+  console.log("id", id);
+  console.log("endpointUrl", endpointUrl);
 
   const handleStatusChange = async (newStatus) => {
     setStatus(newStatus);
 
-    const accessToken = localStorage.getItem("token");
+    
 
     try {
+      console.log(newStatus);
+      const accessToken = localStorage.getItem("access_token");
       const response = await axios.put(
-        endpointUrl.replace("{id}", id),
+        `http://localhost:8000/update_personal_info_visa_approve_status/${id}`,
         { new_status: newStatus },
         {
           headers: {
-            "Content-Type": "application/json",
             Authorization: `Bearer ${accessToken}`,
+            'Content-Type': 'application/json',
           },
         }
       );
-      console.log("Response:", id, response.data.message);
 
       if (response.status === 200) {
         const data = response.data;
+          
+        window.location.reload();
         onStatusChange(data.message);
+        console.log(response.data)
       } else {
         throw new Error("Failed to update status");
       }
@@ -40,23 +41,25 @@ function VisaApproveButton(onStatusChange, id, endpointUrl ) {
       console.error("Error:", error.message);
     }
   };
+
   return (
     <div className="btn-types align-items-center">
-      <div className="btn-panel flex ">
-        {status === null && (
+      <div className="btn-panel flex">
+        {status === null ? (
           <>
-            <button className="img-button1" onClick={()=>handleStatusChange("approved")}>
+            <button className="img-button1" onClick={() => handleStatusChange("Approved")}>
               Approve
             </button>
-            <button className="img-button2" onClick={() => handleStatusChange("rejected")}>
-              Reject
+            <button className="img-button2" onClick={() => handleStatusChange("Deny")}>
+              Deny
             </button>
           </>
+        ) : (
+          <p className="btn-status">{status}</p>
         )}
       </div>
-      {status && <p className="btn-status">{status}</p>}
     </div>
-  )
-}
+  );
+};
 
-export default VisaApproveButton
+export default VisaApproveButton;

@@ -11,6 +11,8 @@ import Paper from '@mui/material/Paper';
 import VisaDetailsPdf from './VisaDetailsPdf';
 import VisaApproveButton from './VisaApproveButton';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import Modal from 'react-modal';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -22,6 +24,7 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
     fontWeight: 800,
     lineHeight: 'normal',
     letterSpacing: '0.18px',
+
   },
   [`&.${tableCellClasses.body}`]: {
     color: '#000',
@@ -43,49 +46,104 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
 }));
 
-const itemsPerPages = 8;
+const itemsPerPage = 8;
 
 function VisaRequestedTable(props) {
     const [currentPage, setCurrentPage] = useState(1);
-    const [applicant, setapplicant] = useState([]);
+    const [applicants, setApplicants] = useState([]);
+    const [modalIsOpen, setModalIsOpen] = useState(false);
+   const [selectedDetails, setSelectedDetails] = useState(null);
+   const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
-        const fetchAppicant = async () => {
+        const fetchApplicant = async () => {
             try {
-                const response = await axios.get('http://localhost:8000/requested-applicants');
-                console.log('Response data:', response.data);
-                setapplicant(Array.isArray(response.data) ? response.data : []);
-            } catch (error) {
-                console.error('Error fetching data:', error);
-                setapplicant([]);  // Ensure hrbills is an empty array on error
-            }
-        };
-        fetchAppicant();
+              const accessToken = localStorage.getItem('access_token');
+              if (!accessToken) {
+                console.error('Token not found');
+                return;
+              }
+          
+              const response = await axios.get('http://localhost:8000/requested-applicants', {
+                headers: {
+                  Authorization: `Bearer ${accessToken}`,
+                  'Content-Type': 'application/json',
+                },
+              });
+          
+              setApplicants(Array.isArray(response.data) ? response.data : []);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+        setApplicants([]);  // Ensure applicants is an empty array on error
+      }
+          };
+                  
+        fetchApplicant();
     }, []);
+    
 
-    const indexOfLastItem = currentPage * itemsPerPages;
-    const indexOfFirstItem = indexOfLastItem - itemsPerPages;
-    const currentItems = applicant.slice(indexOfFirstItem, indexOfLastItem);
-
-    const totalPages = Math.ceil(applicant.length / itemsPerPages);
-
-    const handlePageChange4 = (newPage1) => {
-        setCurrentPage(newPage1);
-    };
-
-    const handleStatusChange = (id, newStatus) => {
+    const openModal = async (userId) => {
+        setIsLoading(true);
+        try {
+          const accessToken = localStorage.getItem('access_token');
+          if (!accessToken) {
+            console.error('Token not found');
+            return;
+          }
+    
+          const response = await axios.get(`http://localhost:8000/applicant/${userId}`, {
+            headers: {
+              Authorization: `Bearer ${accessToken}`,
+              'Content-Type': 'application/json',
+            },
+          });
+    
+          setSelectedDetails(response.data);
+          setModalIsOpen(true);
+        } catch (error) {
+          console.error('Error fetching applicant details:', error);
+          // Optionally, display an error message to the user
+        } finally {
+          setIsLoading(false);
+        }
+      };
+    
+      const closeModal = () => {
+        setModalIsOpen(false);
+        setSelectedDetails(null);
+      };
+    
+      const indexOfLastItem = currentPage * itemsPerPage;
+      const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+      const currentItems = applicants.slice(indexOfFirstItem, indexOfLastItem);
+    
+      const totalPages = Math.ceil(applicants.length / itemsPerPage);
+    
+      const handlePageChange = (newPage) => {
+        if(newPage < 1 || newPage > totalPages) return;
+        setCurrentPage(newPage);
+      };
+      const handleStatusChange = (id, newStatus) => {
         const updateaplicant = applicant.map((apct) => 
           apct.application_id === id ? { ...apct, status: newStatus } : apct
         );
         setapplicant(updateaplicant);
-    };
+    };  
+    
+      const navigate = useNavigate();
+    
+      const handleNavigate = (path) => {
+        navigate(path);
+      };
+      
+
 
     return (
-        <div className='content00'>
+        <div className='content00' >
             <div className='content01'>
-                <a href="" className='content011'>rejected visa</a>
-                <a href="" className='content011'>requested visa</a>
-                <a href="" className='content011'>approved visa</a>
+                <a href="" className='content011' onClick={() => handleNavigate('/VisaRejected')}>rejected visa</a>
+                <a href="" className='content011'onClick={() => handleNavigate('/VisaRequested')}>requested visa</a>
+                <a href="" className='content011'onClick={() => handleNavigate('/VisaApproved')}>approved visa</a>
             </div>
 
             <div className="container6">
@@ -99,31 +157,27 @@ function VisaRequestedTable(props) {
                                 <TableRow>
                                     <StyledTableCell align="center">Applicant ID</StyledTableCell>
                                     <StyledTableCell align="center">Applicant Name</StyledTableCell>
-                                    <StyledTableCell align="center">Riskey</StyledTableCell>
-                                    <StyledTableCell align="center">Download Document</StyledTableCell>
+                                    <StyledTableCell align="center">Risky</StyledTableCell>
+                                    <StyledTableCell align="center">Applicant Details</StyledTableCell>
                                     <StyledTableCell align="center">Action</StyledTableCell>
                                 </TableRow>
                             </TableHead>
                             <TableBody>
-                                {currentItems.map((row4) => (
-                                    <StyledTableRow key={row4.ID}>
-                                        <StyledTableCell align="center">{row4.application_id}</StyledTableCell>
-                                        <StyledTableCell align="center">{row4.user_name}</StyledTableCell>
-                                        <StyledTableCell align="center">{row4.status}</StyledTableCell>
+                                {currentItems.map((applicant) => (
+                                    <StyledTableRow key={applicant.user_id}>
+                                        <StyledTableCell align="center">{applicant.user_id}</StyledTableCell>
+                                        <StyledTableCell align="center">{`${applicant.firstName} ${applicant.lastName}`}</StyledTableCell>
+                                        <StyledTableCell align="center">{applicant.risky_status}</StyledTableCell>
                                         <StyledTableCell align="center">
-                                            <VisaDetailsPdf
-                                                endpointUrl=""
-                                                cvId={row4.application_id}
-                                                filename="Employeebill"
-                                            />
+                                        <button className="more_details_btn" onClick={() => openModal(applicant.user_id)}>View Details</button>
                                         </StyledTableCell>
                                         <StyledTableCell align="center">
                                             <VisaApproveButton
                                                 onStatusChange={handleStatusChange}
-                                                id={row4.application_id}
-                                                endpointUrl=""
-                                            />
-                                        </StyledTableCell>
+                                                id={applicant.personal_info_id}
+                                                endpointUrl={`http://localhost:5173/update_personal_info_visa_approve_status/${applicant.personal_info_id}`}
+                                             />
+                                            </StyledTableCell>
                                     </StyledTableRow>
                                 ))}
                             </TableBody>
@@ -131,38 +185,137 @@ function VisaRequestedTable(props) {
                     </TableContainer>
 
                     <nav aria-label="Page-navigation">
-                        <ul className="pagination">
-                            <li className={`page-item ${currentPage === 1 ? 'disabled' : ''}`}>
-                                <button
-                                    className={`page-link1 ${currentPage === 1 ? 'active-prev' : ''}`}
-                                    onClick={() => handlePageChange4(currentPage - 1)}
-                                >
-                                    Previous
-                                </button>
-                            </li>
-                            {Array.from({ length: totalPages }, (_, index) => (
-                                <li
-                                    key={index}
-                                    className={`page-item1 ${currentPage === index + 1 ? 'active' : ''}`}
-                                >
-                                    <button
-                                        className={`page-link ${currentPage === index + 1 ? 'active' : ''}`}
-                                        onClick={() => handlePageChange4(index + 1)}
-                                    >
-                                        {index + 1}
-                                    </button>
-                                </li>
-                            ))}
-                            <li className={`page-item ${currentPage === totalPages ? 'disabled' : ''}`}>
-                                <button
-                                    className={`page-link1 ${currentPage === totalPages ? 'active-next' : ''}`}
-                                    onClick={() => handlePageChange4(currentPage + 1)}
-                                >
-                                    Next
-                                </button>
-                            </li>
-                        </ul>
-                    </nav>
+            <ul className="pagination">
+              <li className={`page-item ${currentPage === 1 ? 'disabled' : ''}`}>
+                <button
+                  className={`page-link1 ${currentPage === 1 ? 'active-prev' : ''}`}
+                  onClick={() => handlePageChange(currentPage - 1)}
+                  disabled={currentPage === 1}
+                >
+                  Previous
+                </button>
+              </li>
+              {Array.from({ length: totalPages }, (_, index) => (
+                <li
+                  key={index}
+                  className={`page-item1 ${currentPage === index + 1 ? 'active' : ''}`}
+                >
+                  <button
+                    className={`page-link ${currentPage === index + 1 ? 'active' : ''}`}
+                    onClick={() => handlePageChange(index + 1)}
+                  >
+                    {index + 1}
+                  </button>
+                </li>
+              ))}
+              <li className={`page-item ${currentPage === totalPages ? 'disabled' : ''}`}>
+                <button
+                  className={`page-link1 ${currentPage === totalPages ? 'active-next' : ''}`}
+                  onClick={() => handlePageChange(currentPage + 1)}
+                  disabled={currentPage === totalPages}
+                >
+                  Next
+                </button>
+              </li>
+            </ul>
+          </nav>
+
+          {/* Modal for More Details */}
+          <Modal
+  isOpen={modalIsOpen}
+  onRequestClose={closeModal}
+  overlayClassName="ReactModal__Overlay"
+  className="ReactModal__Content"
+  contentLabel="Applicant Details"
+  ariaHideApp={false}
+>
+  {isLoading ? (
+    <div className="modal-loading">
+      <p>Loading...</p>
+    </div>
+  ) : selectedDetails ? (
+    <div>
+      <div className="modal-header">
+        <h3>Applicant Details</h3>
+        <button className="close-button" onClick={closeModal}>
+          &times;
+        </button>
+      </div>
+
+      {/* Image Section */}
+      <div className="modal-images">
+        <div className="image-container">
+          <h4>Passport Image</h4>
+          <img
+            src={selectedDetails.passportImageUrl}
+            alt="Passport"
+            className="passport-image"
+          />
+        </div>
+        <div className="image-container">
+          <h4>Current Face Image</h4>
+          <img
+            src={selectedDetails.currentFaceImageUrl}
+            alt="Current Face"
+            className="face-image"
+          />
+        </div>
+      </div>
+
+      <div className="modal-body">
+        {/* Personal Information */}
+        <div className="modal-section">
+          <h4>Personal Information</h4>
+          <p>
+            <strong>Full Name:</strong> {`${selectedDetails.prefix} ${selectedDetails.firstName} ${selectedDetails.middleName} ${selectedDetails.lastName}`}
+          </p>
+          <p><strong>Date of Birth:</strong> {selectedDetails.dateOfBirth}</p>
+          <p><strong>Gender:</strong> {selectedDetails.gender}</p>
+          <p><strong>Religion:</strong> {selectedDetails.religion}</p>
+          <p><strong>Marital Status:</strong> {selectedDetails.maritalStatus}</p>
+          <p><strong>Country of Birth:</strong> {selectedDetails.countryOfBirth}</p>
+          <p><strong>City of Birth:</strong> {selectedDetails.cityOfBirth}</p>
+        </div>
+
+        {/* Contact Information */}
+        <div className="modal-section">
+          <h4>Contact Information</h4>
+          <p><strong>Present Address:</strong> {selectedDetails.presentAddress}</p>
+          <p><strong>Country of Residence:</strong> {selectedDetails.countryOfResidence}</p>
+          <p><strong>Postal Code:</strong> {selectedDetails.postalCode}</p>
+          <p><strong>Mobile Number:</strong> {selectedDetails.mobileNumber}</p>
+          <p><strong>Email:</strong> {selectedDetails.email}</p>
+        </div>
+
+        {/* Education and Employment */}
+        <div className="modal-section">
+          <h4>Education and Employment</h4>
+          <p><strong>Education Level:</strong> {selectedDetails.educationLevel}</p>
+          <p><strong>Field of Study:</strong> {selectedDetails.fieldOfStudy}</p>
+          <p><strong>Occupation:</strong> {selectedDetails.occupation}</p>
+          <p><strong>Company Name:</strong> {selectedDetails.companyName}</p>
+          <p><strong>Company Address:</strong> {selectedDetails.companyAddress}</p>
+        </div>
+
+        {/* Parental Information */}
+        <div className="modal-section">
+          <h4>Parental Information</h4>
+          <p><strong>Father's Name:</strong> {selectedDetails.fathersName}</p>
+          <p><strong>Father's Country of Birth:</strong> {selectedDetails.fathersCountryOfBirth}</p>
+          <p><strong>Father's Nationality:</strong> {selectedDetails.fathersNationality}</p>
+          <p><strong>Mother's Name:</strong> {selectedDetails.mothersName}</p>
+          <p><strong>Mother's Country of Birth:</strong> {selectedDetails.mothersCountryOfBirth}</p>
+          <p><strong>Mother's Nationality:</strong> {selectedDetails.mothersNationality}</p>
+        </div>
+      </div>
+    </div>
+  ) : (
+    <div className="modal-error">
+      <p>Unable to load applicant details.</p>
+    </div>
+  )}
+</Modal>
+
                 </div>
             </div>
         </div>
