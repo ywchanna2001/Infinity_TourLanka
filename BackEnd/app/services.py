@@ -243,4 +243,44 @@ def update_personal_info_visa_approve_status(personal_info_id: str , newStatus_d
 
 
 
+def get_applicant_details(user_id: str, current_user: User):
+    if current_user.get("user_type") != "admin":
+        raise HTTPException(status_code=403, detail="Unauthorized, only admin can view information")
+    
+    application = collection_personal_info.find_one({"user_id": user_id})
+    if not application:
+        raise HTTPException(status_code=404, detail="Applicant not found")
+    
+    applicant_data = {
+        "user_id": application["user_id"],
+        "personal_info_id": application["personal_info_id"],
+        "prefix": application.get("prefix", ""),
+        "firstName": application.get("firstName", ""),
+        "middleName": application.get("middleName", ""),
+        "lastName": application.get("lastName", ""),
+        "dateOfBirth": application.get("dateOfBirth", ""),
+        "gender": application.get("gender", ""),
+        "religion": application.get("religion", ""),
+        "maritalStatus": application.get("maritalStatus", ""),
+        "countryOfBirth": application.get("countryOfBirth", ""),
+        "cityOfBirth": application.get("cityOfBirth", ""),
+        "presentAddress": application.get("presentAddress", ""),
+        "countryOfResidence": application.get("countryOfResidence", ""),
+        "postalCode": application.get("postalCode", ""),
+        "mobileNumber": application.get("mobileNumber", ""),
+        "email": application.get("email", ""),
+        "educationLevel": application.get("educationLevel", ""),
+        "fieldOfStudy": application.get("fieldOfStudy", ""),
+        "occupation": application.get("occupation", ""),
+        "companyName": application.get("companyName", ""),
+        "companyAddress": application.get("companyAddress", ""),
+        "fathersName": application.get("fathersName", ""),
+        "fathersCountryOfBirth": application.get("fathersCountryOfBirth", ""),
+        "fathersNationality": application.get("fathersNationality", ""),
+        "mothersName": application.get("mothersName", ""),
+        "mothersCountryOfBirth": application.get("mothersCountryOfBirth", ""),
+        "mothersNationality": application.get("mothersNationality", ""),
+        "visa_approve_status": application.get("visa_approve_status", ""),
+    }
 
+    return applicant_data

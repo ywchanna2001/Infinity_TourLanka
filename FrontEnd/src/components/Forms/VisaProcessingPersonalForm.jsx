@@ -1,5 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import { useNavigate } from "react-router-dom";
+
 
 import {
   Box,
@@ -17,20 +19,16 @@ import {
 function VisaProcessingForm() {
   const navigate = useNavigate();
 
-  const handleNavigate = (path) => {
-    navigate(path);
-  };
-
-  // State to manage form inputs
-  const [formData, setFormData] = useState({
-    prefix: "Mr",
+  // Initialize formData with values from localStorage if available
+  const initialFormData = JSON.parse(localStorage.getItem("visaFormData")) || {
+    prefix: "",
     firstName: "",
     middleName: "",
     lastName: "",
     dateOfBirth: "",
     religion: "",
-    gender: "Male",
-    maritalStatus: "Single",
+    gender: "",
+    maritalStatus: "",
     countryOfBirth: "",
     cityOfBirth: "",
     presentAddress: "",
@@ -49,26 +47,70 @@ function VisaProcessingForm() {
     mothersName: "",
     mothersCountryOfBirth: "",
     mothersNationality: "",
-  });
-
-  // State to manage form errors
-  const [errors, setErrors] = useState({});
-
-  // Handle change in form inputs
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
   };
 
-  // Validate form data
+  const [formData, setFormData] = useState(initialFormData);
+  const [errors, setErrors] = useState({});
+
+  useEffect(() => {
+    // Load form data from localStorage when the component mounts
+    const savedData = JSON.parse(localStorage.getItem("visaFormData"));
+    if (savedData) {
+      setFormData(savedData);
+    }
+  }, []);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    if (!validateForm()) {
+      return;
+    }
+
+    const accessToken = localStorage.getItem("access_token");
+    try {
+      const response = await axios.post(
+        "http://localhost:8000/personal-info",
+        formData,
+        {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      console.log(response.data);
+      // Navigate to the next page upon successful submission
+      navigate("/VisaProcessingTravel");
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+
+    setFormData((prevFormData) => {
+      const updatedFormData = {
+        ...prevFormData,
+        [name]: value,
+      };
+      // Save form data to localStorage on each change
+      localStorage.setItem("visaFormData", JSON.stringify(updatedFormData));
+      return updatedFormData;
+    });
+
+    // Clear the error for the field being edited
+    setErrors((prevErrors) => ({
+      ...prevErrors,
+      [name]: "",
+    }));
+  };
+
   const validateForm = () => {
     const newErrors = {};
     Object.keys(formData).forEach((key) => {
       if (formData[key] === "" && key !== "middleName") {
-        // Allow 'middleName' to be empty
         newErrors[key] = "This field is required";
       }
     });
@@ -76,14 +118,11 @@ function VisaProcessingForm() {
     return Object.keys(newErrors).length === 0;
   };
 
-  // Handle form submission
-  const handleSubmit = (e) => {
-    e.preventDefault(); // Prevent default form submission behavior
-    if (validateForm()) {
-      console.log(formData);
-      navigate("/VisaProcessingTravel");
-    }
-  };
+  const handleNavigate = (path) => {
+    navigate(path);
+  };  
+
+  
 
   return (
     <Box

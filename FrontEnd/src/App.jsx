@@ -20,6 +20,7 @@ import Header from './assets/components/Header.jsx';
 import FeatureCard from './components/FeatureCard.jsx';
 import Login from './components/Login.jsx';
 import Home from './pages/Home.jsx';
+import VisaProcessingPaymentSuccessful from './pages/VisaProcessingPaymentSuccessful.jsx';
 
 function App() {
   return (
@@ -36,12 +37,22 @@ function App() {
 
             <Route path="/TourGenerating" element={<TourGenerating />} />
 
+            <Route path="/VisaProcessingUpload" element={<VisaProcessingUpload />} />
+
+
+            {/* Visa Processing Routes */}
+             
+            <Route path="/VisaProcessingPayment" element={<VisaProcessingPayment />} />  
+            <Route path="/VisaProcessingPaymentSuccessful" element={<VisaProcessingPaymentSuccessful />} /> 
+            
+
             {/* Admin dashboard routes */}
             <Route path="/AdminDashboard" element={<FeatureCard />} />
             <Route path="/VisaRequested" element={<VisaRequestedTable title="Requested visa" />} />
             <Route path="/VisaRejected" element={<VisaRejectTable title="Rejected visa" />} />
             <Route path="/VisaApproved" element={<VisaApproveTable title="Approved visa" />} />
             <Route path="/Login" element={<Login />} />
+
             <Route path="/Home" element={<Home />} />
 
           </Route>
@@ -66,6 +77,7 @@ function Layout() {
         <Route path="/VisaProcessingPersonal" element={<VisaProcessingPersonal />} />
         <Route path="/VisaProcessingTravel" element={<VisaProcessingTravel />} />
         <Route path="/VisaProcessingPayment" element={<VisaProcessingPayment />} />
+        <Route path="/VisaProcessingPaymentSuccessful" element={<VisaProcessingPaymentSuccessful />} />
         <Route path="/AdminDashboard" element={<FeatureCard />} />
         <Route path="/VisaRequested" element={<VisaRequestedTable title="Requested visa" />} />
         <Route path="/VisaRejected" element={<VisaRejectTable title="Rejected visa" />} />
@@ -74,6 +86,7 @@ function Layout() {
         <Route path="/Home" element={<Home />} />
          <Route path="/VisaProcessingUpload" element={<VisaProcessingUpload />} />
          <Route path="/TourGenerating" element={<TourGenerating />} />
+
 
         {/* <Route path="/signup" element={<Signup />} /> */}
       </Routes>
