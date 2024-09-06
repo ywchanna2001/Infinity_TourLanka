@@ -49,9 +49,9 @@ def get_applicants_rejected(current_user: User = Depends(get_current_user)):
 def check_applicant(name: str):
     return app.services.check_applicant_by(name)
 
-@router.post("/upload-image/")
-async def upload_image(file: UploadFile):
-    return await app.services.upload_image(file)
+@router.post("/upload-images/")
+async def upload_image(passportPhoto: UploadFile,bioPagePhoto: UploadFile, current_user: User = Depends(get_current_user)):
+    return await app.services.upload_image(passportPhoto,bioPagePhoto, current_user)
 
 @router.put("/update_personal_info_visa_approve_status/{personal_info_id}")
 def update_personal_info_visa_approve_status(personal_info_id: str , newStatus_data:Update_personal_info_approve_satats, current_user: User = Depends(get_current_user)):

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Box, TextField, Typography, Grid, MenuItem, FormControl, FormLabel, RadioGroup, FormControlLabel, Radio, Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 
 const TravelInfoForm = () => {
@@ -106,29 +107,30 @@ const TravelInfoForm = () => {
   };
 
   // Handle form submission
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(formData); // Print the form data to the console
     
+    
     // Reset form data after submission
-    setFormData({
-      passportType: '',
-      issuingCountry: '',
-      nationality: '',
-      passportNumber: '',
-      placeOfIssue: '',
-      dateOfIssue: '',
-      dateOfExpire: '',
-      nationalityAcquisition: '',
-      portOfEntry: '',
-      portOfDeparture: '',
-      visitingCities: '',
-      expectedArrivalDate: '',
-      expectedDepartureDate: '',
-      emergencyContactName: '',
-      emergencyAddress: '',
-      emergencyMobileNumber: ''
-    });
+    const accessToken = localStorage.getItem("access_token");
+    try {
+      const response = await axios.post(
+        "http://localhost:8000/travel-info",
+        formData,
+        {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      console.log(response.data);
+      // Navigate to the next page upon successful submission
+      navigate("/VisaProcessingUpload");
+    } catch (error) {
+      console.error("Error:", error);
+    }
   };
 
   return (

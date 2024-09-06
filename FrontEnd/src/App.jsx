@@ -11,7 +11,6 @@ import VisaProcessingPersonal from './pages/VisaProcessingPersonal.jsx';
 import VisaProcessingTravel from './pages/ViisaProcessingTravel.jsx';
 import VisaProcessingUpload from './pages/VisaProcesssingUpload.jsx';
 
-import VisaProcessingTravel from './pages/ViisaProcessingTravel.jsx'; // Fixed typo
 
 import VisaApproveTable from './components/VisaApproveTable.jsx';
 import VisaRejectTable from './components/VisaRejectTable.jsx';
