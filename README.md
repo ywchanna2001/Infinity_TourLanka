@@ -79,6 +79,15 @@ Navigate to Project Directory: Open your terminal or command prompt and navigate
  2) run the project using this code : npm run dev
 
 # Login Page
+ Tourists can login to the system by creating an account or using an existing account.
+ 
+ Admins can login to the system using following Email and Password.
+ 
+Email   : admin@gmail.com
+
+Password: admin1234
+
+
 ![Screenshot (968)](https://github.com/user-attachments/assets/4df3b01b-08a8-4895-bdfd-b1b9cfb5b672)
 
 # Signup page
