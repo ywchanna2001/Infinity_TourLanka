@@ -1,4 +1,4 @@
-## TraveApp Project Backend
+![image](https://github.com/user-attachments/assets/6bd8904e-8a4a-463b-b428-ba4fe9522da4)![Screenshot (969)](https://github.com/user-attachments/assets/b2e21c52-6752-4c60-a683-a7e10294021f)## TraveApp Project Backend
 
 This is a Travelapp project using fastapi and mongodb for backend.
 
@@ -77,3 +77,27 @@ Navigate to Project Directory: Open your terminal or command prompt and navigate
  1) install libraries using this code : npm i or npm install
 
  2) run the project using this code : npm run dev
+
+# Login Page
+![Screenshot (968)](https://github.com/user-attachments/assets/4df3b01b-08a8-4895-bdfd-b1b9cfb5b672)
+
+# Signup page
+![Screenshot (978)](https://github.com/user-attachments/assets/9e755a28-051f-4513-a28d-7f79413cb8a1)
+
+# Home page
+![Screenshot (972)](https://github.com/user-attachments/assets/780da4c4-0c3a-4078-9a00-e9e95149dad1)
+
+# Visa Processsing Home page
+![Screenshot (973)](https://github.com/user-attachments/assets/2e53083a-6c29-47e7-af3e-c20f0e12d29c)
+
+# Pament Successfull page
+![Screenshot (974)](https://github.com/user-attachments/assets/47049da8-5c32-4937-827d-bf1ec00c7c40)
+
+# Admin dashboard page
+![Screenshot (969)](https://github.com/user-attachments/assets/88520722-7b01-4250-b38f-60584e83ae01)
+
+# visa approvel section
+![Screenshot (971)](https://github.com/user-attachments/assets/c1400303-5960-4152-99d0-00f50da86b99)
+
+# Applicant details windo
+![Screenshot (977)](https://github.com/user-attachments/assets/6398303f-1c4a-40a7-b465-a160f64890b1)
