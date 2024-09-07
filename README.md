@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/6bd8904e-8a4a-463b-b428-ba4fe9522da4)![Screenshot (969)](https://github.com/user-attachments/assets/b2e21c52-6752-4c60-a683-a7e10294021f)## TraveApp Project Backend
+# TraveApp Project Backend
 
 This is a Travelapp project using fastapi and mongodb for backend.
 
