@@ -19,7 +19,8 @@ import Home from './pages/Home';
 
 
 
-import TourGenerating from './pages/TourGenerating';
+import TourGenerating from './pages/GeneratingTours';
+import GeneratedTours from './pages/GeneratedTours';
 import Footer from './components/Footer';
 import Header from './components/Header';
 import theme from './utils/Theme.jsx'; // Import custom theme
@@ -33,7 +34,8 @@ function App() {
             <Route path="/VisaProcessingHome" element={<VisaProcessingHome />} />
             <Route path="/VisaProcessingPersonal" element={<VisaProcessingPersonal />} />
             <Route path="/VisaProcessingTravel" element={<VisaProcessingTravel />} />
-            <Route path="/TourGenerating" element={<TourGenerating />} />
+            <Route path="/TourGenerating" element={<TourGenerating/>} />
+            <Route path="/generated-tours" element={<GeneratedTours/>} />
 
             <Route path="/VisaProcessingUpload" element={<VisaProcessingUpload />} />
 

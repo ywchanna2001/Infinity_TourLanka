@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 import { Button, Container, Typography, Grid, Card, CardContent, CardMedia, TextField, Box,Divider } from '@mui/material';
 import TPBackgroundImage1 from '../assets/TPBackgroundImage1.png';
 import TPBackgroundImage2 from '../assets/TPBackgroundImage2.png';
@@ -19,6 +20,7 @@ const TripPackageBanner = () => {
   ];
   const [currentSlide, setCurrentSlide] = useState(0);
   const [showForm, setShowForm] = useState(false); // State to toggle between form and banner
+  const navigate = useNavigate();
 
   useEffect(() => {
     const slideInterval = setInterval(() => {
@@ -30,6 +32,9 @@ const TripPackageBanner = () => {
 
   const handlePlanClick = () => {
     setShowForm(true); // Show the form when button is clicked
+  };
+  const handleGeneratedTours = () => {
+    navigate(`/generated-tours`); // Navigate to the generated tours page
   };
 
   return (
@@ -176,6 +181,7 @@ const TripPackageBanner = () => {
 
     {/* Submit Button */}
     <Button
+    type='submit'
       variant="contained"
       style={{
         backgroundColor: '#008080',
@@ -184,6 +190,7 @@ const TripPackageBanner = () => {
         width: '150px',
         margin: '0 auto',
       }}
+      onClick={handleGeneratedTours} // Trigger form display
     >
       Let's Plan
     </Button>
